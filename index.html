@@ -104,7 +104,7 @@
   /* size */
   --control-lg: 48px;
   --control-sm: 32px;
-  --header-h: 64px;
+  --header-h: 80px;
   --field-h: 50px;
   --auth-btn-h: 64px;
   --sns-btn: 48px;
@@ -365,6 +365,7 @@ a { color: inherit; }
 
 /* Small orange buttons: never below 16px/700 */
 .sng-btn-primary.sng-btn-sm { font-size: 16px; font-weight: 700; letter-spacing: 0; }
+a.sng-btn { text-decoration: none; }
 
 /* DEMO banner: fixed on every screen */
 .demo-bar { position: sticky; top: 0; z-index: 100; height: var(--demo-h); display: flex; align-items: center; justify-content: center; gap: var(--space-2); padding: 0 var(--space-4); background: var(--tooltip-bg); color: var(--bg-100); font: 700 13px/1.2 var(--font-sans); text-align: center; }
@@ -378,14 +379,25 @@ a { color: inherit; }
 .wordmark .wm { display: block; height: 20px; width: auto; }
 .wordmark .wm-label { font: 700 12px/1 var(--font-sans); color: var(--text-250); border: 1px solid var(--line-300); border-radius: var(--radius-tag); padding: var(--space-1) var(--space-2); }
 
-/* GNB */
-.site-gnb { position: sticky; top: var(--demo-h); z-index: 90; padding: 0; gap: 0; border-bottom: 1px solid var(--line-100); }
-.gnb-in { display: flex; align-items: center; gap: 36px; height: 100%; }
-.gnb-link { white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: var(--text-100); font: var(--type-body); cursor: pointer; text-decoration: none; }
+/* GNB: 이벤트 서브사이트 헤더 (아시안스윙 페이지와 같은 구조: 왼쪽 이벤트 로고, 가운데 메뉴, 오른쪽 SPOTV NOW Golf 연결) */
+.site-gnb { position: sticky; top: var(--demo-h); z-index: 90; padding: 0; gap: 0; border-bottom: 1px solid var(--line-100); background: color-mix(in srgb, var(--bg-000) 92%, transparent); }
+.gnb-in { display: flex; align-items: center; gap: 32px; height: 100%; }
+.gnb-link { white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: var(--text-100); font: 500 18px/1 var(--font-sans); letter-spacing: -0.3px; cursor: pointer; text-decoration: none; transition: color .15s ease; }
+.sng-gnb-menu { gap: 32px; }
+.sng-gnb-menu .gnb-link:hover { color: var(--text-200); }
 .sng-gnb-menu li.is-active .gnb-link { color: var(--brand); }
-.sng-gnb-util { align-items: center; }
-.sng-gnb-util .gnb-link { font-size: 14px; color: var(--text-200); }
-.gnb-user { color: var(--text-250); font-size: 14px; }
+.sng-gnb-util { align-items: center; gap: var(--space-4); }
+.sng-gnb-util .gnb-link { font: 500 15px/1 var(--font-sans); color: var(--text-200); }
+.gnb-user { display: none; color: var(--text-250); font-size: 15px; white-space: nowrap; }
+/* 이벤트 로고: SPOTV NOW Golf 로고 + 이벤트명(GNB 메뉴명 미정, 임시) */
+.ev-logo { display: inline-flex; align-items: center; gap: var(--space-3); min-height: 44px; text-decoration: none; white-space: nowrap; }
+.ev-logo .wm { display: block; height: 24px; width: auto; }
+.ev-logo .ev-name { padding-left: var(--space-3); border-left: 1px solid var(--line-400); font: 800 20px/1 var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); }
+/* 중계 보러가기: SPOTV NOW Golf 서비스로 이동 (새 창) */
+.watch { display: inline-flex; align-items: center; gap: var(--space-2); height: 44px; padding: 0 var(--space-4) 0 var(--space-3); border-radius: var(--radius-pill); border: 1px solid var(--line-400); color: var(--text-100); font: 700 15px/1 var(--font-sans); text-decoration: none; white-space: nowrap; transition: background-color .15s ease, border-color .15s ease; }
+.watch:hover { background: var(--surface-200); border-color: var(--text-300); }
+.watch .play { width: 24px; height: 24px; flex: none; }
+.watch .ext { width: 14px; height: 14px; flex: none; color: var(--text-300); }
 .gnb-m { display: none; margin-left: auto; align-items: center; gap: var(--space-2); }
 .icon-btn { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 0; border-radius: var(--radius-md); background: transparent; color: var(--text-100); cursor: pointer; }
 .icon-btn .bars, .icon-btn .bars::before, .icon-btn .bars::after { display: block; width: 20px; height: 2px; background: var(--text-100); border-radius: var(--radius-xs); position: relative; content: ""; }
@@ -444,34 +456,61 @@ html { scrollbar-color: var(--surface-300) var(--bg-100); }
 .cta-help b { color: var(--text-200); font-weight: 700; letter-spacing: 0.5px; }
 .cta-help a, .cta-help button { color: var(--text-250); background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
-/* Stage: countdown over the PGA TOUR photo */
-.stage { position: relative; overflow: hidden; background: var(--bg-000); min-height: clamp(480px, calc(100svh - var(--demo-h) - var(--header-h) - 216px), 640px); display: flex; align-items: center; }
-.stage-photo { position: absolute; top: 0; right: 0; bottom: 0; width: 60%; }
-.stage-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 38%); mask-image: linear-gradient(to right, transparent 0, #000 38%); }
-.stage-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, var(--scrim-strong) 58%, var(--bg-000) 72%); }
-.stage-in { position: relative; z-index: 1; padding-top: var(--space-12); padding-bottom: var(--space-12); }
+/* Stage: 카운트다운(왼쪽) + 대회 키 비주얼(오른쪽) + 4대4 팀 명단 */
+.stage { position: relative; overflow: hidden; background: var(--bg-000); }
+.stage-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: var(--space-12); padding-top: var(--space-12); padding-bottom: var(--space-6); }
+.stage-copy { min-width: 0; }
 .tee { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); }
-.count-num { font: 800 clamp(128px, 17vw, 260px)/0.8 var(--font-sans); letter-spacing: -0.04em; color: var(--text-100); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.count-num { font: 800 clamp(120px, 13.2vw, 200px)/0.8 var(--font-sans); letter-spacing: -0.04em; color: var(--text-100); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .count-num .n { color: var(--brand); }
-.count-meta { display: flex; align-items: baseline; gap: var(--space-2); }
-.count-meta b { font: 700 28px/1.1 var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.count-meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2); }
+.count-meta b { font: 700 26px/1.1 var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); font-variant-numeric: tabular-nums; }
 .count-meta span { font: 500 17px/24px var(--font-sans); color: var(--text-250); }
-.stage-event { margin-top: var(--space-6); font: 700 36px/1.25 var(--font-sans); letter-spacing: -0.9px; color: var(--text-100); max-width: 15em; }
-.stage-sub { margin-top: var(--space-3); font: 400 18px/28px var(--font-sans); color: var(--text-250); max-width: 30em; }
+.stage-event { margin-top: var(--space-6); font: 700 32px/1.25 var(--font-sans); letter-spacing: -0.9px; color: var(--text-100); }
+.stage-sub { margin-top: var(--space-3); font: 400 18px/28px var(--font-sans); color: var(--text-250); max-width: 28em; }
 .stage-sub b { color: var(--text-100); font-weight: 700; }
+.stage-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin-top: var(--space-6); }
+.stage-cta .cta-help { margin: 0; }
+.stage-kv { position: relative; margin: 0; border-radius: var(--radius-md); overflow: hidden; background: var(--bg-300); box-shadow: 0 24px 64px -24px var(--scrim-strong); }
+.stage-kv img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.stage-kv figcaption { position: absolute; left: var(--space-3); top: var(--space-3); padding: 2px var(--space-2); border-radius: var(--radius-xs); background: var(--scrim-soft); font: 400 11px/16px var(--font-sans); color: var(--text-150); }
 @media (prefers-reduced-motion: no-preference) {
   .count-num { animation: rise .9s cubic-bezier(.16, 1, .3, 1) both; }
-  .count-meta, .stage-event, .stage-sub { animation: rise .9s .12s cubic-bezier(.16, 1, .3, 1) both; }
+  .count-meta, .stage-event, .stage-sub, .stage-cta { animation: rise .9s .12s cubic-bezier(.16, 1, .3, 1) both; }
 }
 @keyframes rise { from { transform: translateY(24px); clip-path: inset(0 0 100% 0); } to { transform: none; clip-path: inset(0 0 -10% 0); } }
 
-/* Lineup band: h1 + 4 team slots + CTA (lower-third) */
+/* 4 vs 4 매치업: 프로 팀 명단 */
+.matchup { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; gap: var(--space-6); margin-bottom: var(--space-12); padding: var(--space-6); border-radius: var(--radius-md); background: var(--bg-300); border: 1px solid var(--line-100); }
+.side h2 { display: flex; align-items: baseline; gap: var(--space-2); font: 800 22px/1.2 var(--font-sans); letter-spacing: -0.5px; color: var(--text-100); }
+.side h2 small { font: 700 13px/1 var(--font-sans); letter-spacing: 1px; color: var(--text-300); }
+.side ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); margin-top: var(--space-3); list-style: none; }
+.side li { display: flex; flex-direction: column; gap: 2px; padding: var(--space-3); border-radius: var(--radius-sm); background: var(--surface-100); }
+.side li b { font: 700 16px/22px var(--font-sans); color: var(--text-100); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side li span { font: 400 13px/18px var(--font-sans); color: var(--text-250); }
+.side li.cap { box-shadow: inset 0 0 0 1px var(--line-400); }
+.side.is-right h2 { justify-content: flex-end; }
+.vs { align-self: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-1); }
+.vs b { font: 800 36px/1 var(--font-sans); letter-spacing: -1px; color: var(--text-100); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vs span { font: 500 13px/18px var(--font-sans); color: var(--text-250); white-space: nowrap; }
+
+/* Lineup band = 내 팀 현황: 응모 요약 + 4칸 팀 슬롯 */
 .lineup { position: relative; background: var(--bg-300); border-top: 1px solid var(--line-200); border-bottom: 1px solid var(--line-200); }
-.lineup-in { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) auto; align-items: center; gap: var(--space-12); padding-top: var(--space-12); padding-bottom: var(--space-12); }
-.lineup h1 { font: 700 30px/1.3 var(--font-sans); letter-spacing: -0.75px; color: var(--text-100); }
-.lineup-copy p { margin-top: var(--space-2); font: var(--type-helper); color: var(--text-300); }
-.lineup-copy p b { color: var(--text-200); }
-.lineup-cta { display: flex; flex-direction: column; align-items: stretch; min-width: 280px; }
+.lineup-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: var(--space-12); padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.lineup h1 { font: 800 32px/1.3 var(--font-sans); letter-spacing: -0.9px; color: var(--text-100); }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-6); margin-top: var(--space-6); list-style: none; }
+.facts li { display: flex; flex-direction: column; gap: var(--space-1); padding-top: var(--space-3); border-top: 1px solid var(--line-300); }
+.facts dt, .facts .k { font: 500 14px/20px var(--font-sans); color: var(--text-250); }
+.facts .v { font: 700 18px/26px var(--font-sans); letter-spacing: -0.3px; color: var(--text-100); }
+.lineup-team { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); border-radius: var(--radius-md); background: var(--surface-100); }
+.lt-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); }
+.lt-head h2 { font: 700 20px/28px var(--font-sans); color: var(--text-100); }
+.lt-count { font: 500 16px/1 var(--font-sans); color: var(--text-250); font-variant-numeric: tabular-nums; }
+.lt-count b { font: 800 32px/1 var(--font-sans); letter-spacing: -0.8px; color: var(--text-100); margin-right: 2px; }
+.lt-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.lt-msg { font: 400 16px/24px var(--font-sans); color: var(--text-200); }
+.lt-msg b { color: var(--text-100); font-weight: 700; letter-spacing: 0.5px; }
+.lt-msg a { color: var(--text-100); text-underline-offset: 3px; }
 
 /* Team slots (shared) */
 .team { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); list-style: none; }
@@ -497,7 +536,7 @@ html { scrollbar-color: var(--surface-300) var(--bg-100); }
 .dock-team p { font: 400 15px/22px var(--font-sans); color: var(--text-250); }
 .dock-team p b { color: var(--text-100); }
 .dock .cta-pill { margin-left: auto; min-height: 52px; font-size: 17px; }
-body.has-dock .fab { bottom: calc(80px + var(--space-4) + env(safe-area-inset-bottom)); }
+body.has-dock .fab { bottom: calc(80px + var(--space-4) + 56px + var(--space-3) + env(safe-area-inset-bottom)); }
 body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 
 /* Section heads for promo */
@@ -557,13 +596,94 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 .event-body dt { color: var(--text-300); }
 .event-body dd { margin: 0; color: var(--text-100); }
 .event-body .sng-btn { align-self: flex-start; margin-top: var(--space-2); }
-.reach { display: grid; grid-template-columns: 280px minmax(0, 1fr); align-items: center; gap: var(--space-12); margin-top: var(--space-3); padding: var(--space-6); border-radius: var(--radius-md); background: var(--bg-300); }
-.reach img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-sm); }
-.reach h3 { font: 800 32px/1.25 var(--font-sans); letter-spacing: -1px; color: var(--text-100); }
-.reach p { margin-top: var(--space-3); font: var(--type-body); color: var(--text-250); max-width: 34em; }
-.reach ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); list-style: none; }
-.reach li { height: 36px; display: inline-flex; align-items: center; padding: 0 var(--space-4); border-radius: var(--radius-chip); border: 1px solid var(--line-400); font: 700 14px/1 var(--font-sans); color: var(--text-200); }
-.reach li.is-plus { border-color: var(--text-250); color: var(--text-100); }
+/* Games: 일반 대회와 무엇이 다른가 (비교표) */
+.blk + .blk { margin-top: calc(var(--space-12) + var(--space-6)); }
+.blk-h { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-4); }
+.blk-h h3 { font: 700 24px/32px var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); }
+.blk-h p { font: var(--type-helper); color: var(--text-250); }
+.cmp { width: 100%; border-collapse: collapse; table-layout: fixed; font: 400 16px/24px var(--font-sans); }
+.cmp th, .cmp td { padding: var(--space-4) var(--space-6); text-align: left; vertical-align: top; border-top: 1px solid var(--line-200); }
+.cmp thead th { padding-top: 0; border-top: 0; font: 700 14px/20px var(--font-sans); color: var(--text-250); }
+.cmp thead th.is-gcg { color: var(--text-100); }
+.cmp tbody th { width: 160px; font: 700 15px/24px var(--font-sans); color: var(--text-250); }
+.cmp td { color: var(--text-250); }
+.cmp td.is-gcg { background: var(--surface-100); color: var(--text-100); font-weight: 700; }
+.cmp td.is-gcg small { display: block; margin-top: 2px; font: 400 14px/20px var(--font-sans); color: var(--text-250); }
+.cmp tbody tr:first-child td.is-gcg { border-top-left-radius: var(--radius-sm); border-top-right-radius: var(--radius-sm); }
+.cmp tbody tr:last-child td.is-gcg { border-bottom-left-radius: var(--radius-sm); border-bottom-right-radius: var(--radius-sm); }
+.cmp col.c1 { width: 160px; }
+
+/* Games: 일정 (미국 → 한국 → 시청) */
+.when { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; border-radius: var(--radius-md); overflow: hidden; background: var(--bg-300); }
+.when li { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); }
+.when li + li { border-left: 1px solid var(--line-200); }
+.when .t { font: 500 14px/20px var(--font-sans); color: var(--text-250); }
+.when .d { font: 800 40px/1 var(--font-sans); letter-spacing: -1.2px; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.when .d small { margin-left: var(--space-1); font: 700 18px/1 var(--font-sans); letter-spacing: 0; color: var(--text-200); }
+.when p { font: 400 15px/22px var(--font-sans); color: var(--text-250); }
+.when p b { color: var(--text-100); }
+.when .sng-btn { align-self: flex-start; margin-top: var(--space-2); }
+
+/* Games: 경기 규칙 (룰북 행) */
+.rules { list-style: none; border-top: 1px solid var(--line-300); }
+.rule { display: grid; grid-template-columns: 240px minmax(0, 1fr) 200px; align-items: start; gap: var(--space-6); padding: var(--space-6) 0; border-bottom: 1px solid var(--line-200); }
+.rule h4 { margin: 0; font: 700 22px/30px var(--font-sans); letter-spacing: -0.5px; color: var(--text-100); }
+.rule .tag { display: inline-flex; align-items: center; height: 26px; margin-top: var(--space-2); padding: 0 var(--space-2); border-radius: var(--radius-tag); border: 1px solid var(--line-400); font: 700 12px/1 var(--font-sans); color: var(--text-200); }
+.rule .tag.is-new { background: var(--text-100); border-color: var(--text-100); color: var(--bg-100); }
+.rule p { font: 400 16px/26px var(--font-sans); color: var(--text-200); max-width: 40em; }
+.rule .spec { text-align: right; font: 800 24px/1.2 var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.rule .spec small { display: block; margin-top: var(--space-1); font: 500 13px/18px var(--font-sans); letter-spacing: 0; color: var(--text-250); }
+.src-note { margin-top: var(--space-4); font: 400 13px/20px var(--font-sans); color: var(--text-300); }
+.src-note a { color: var(--text-250); text-underline-offset: 3px; }
+
+/* Last year: 2025 결과 스코어보드 */
+.final { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: var(--space-6); padding: var(--space-6) var(--space-12); border-radius: var(--radius-md); background: var(--bg-300); }
+.fteam { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--space-1) var(--space-6); }
+.fteam.is-r { grid-template-columns: auto minmax(0, 1fr); }
+.fn { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: var(--space-2); font: 800 26px/1.2 var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); }
+.fm { grid-column: 1; grid-row: 2; font: 400 14px/20px var(--font-sans); color: var(--text-250); }
+.fs { grid-column: 2; grid-row: 1 / span 2; font: 800 88px/0.9 var(--font-sans); letter-spacing: -0.04em; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.fteam.is-r .fn, .fteam.is-r .fm { grid-column: 2; text-align: right; }
+.fteam.is-r .fn { justify-content: flex-end; }
+.fteam.is-r .fs { grid-column: 1; }
+.fteam.is-lose .fs, .fteam.is-lose .fn { color: var(--text-250); }
+.win { display: inline-flex; align-items: center; height: 26px; padding: 0 var(--space-2); border-radius: var(--radius-tag); background: var(--text-100); color: var(--bg-100); font: 700 13px/1 var(--font-sans); letter-spacing: 0; }
+.fmid { display: flex; flex-direction: column; align-items: center; gap: var(--space-1); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); background: var(--surface-100); text-align: center; }
+.fmid b { font: 800 15px/20px var(--font-sans); color: var(--text-100); }
+.fmid span { font: 400 13px/18px var(--font-sans); color: var(--text-250); }
+.prog { width: 100%; margin-top: var(--space-4); border-collapse: collapse; font: 400 16px/24px var(--font-sans); }
+.prog th, .prog td { padding: var(--space-4); text-align: left; border-bottom: 1px solid var(--line-200); vertical-align: middle; }
+.prog thead th { padding-top: var(--space-2); padding-bottom: var(--space-2); font: 700 13px/18px var(--font-sans); color: var(--text-250); border-bottom-color: var(--line-300); }
+.prog tbody th { font: 700 17px/24px var(--font-sans); color: var(--text-100); white-space: nowrap; }
+.prog tbody th small { display: block; font: 400 13px/18px var(--font-sans); color: var(--text-250); }
+.prog td { color: var(--text-200); }
+.prog .w { font-weight: 700; color: var(--text-100); white-space: nowrap; }
+.prog .sc { text-align: right; font: 800 22px/1 var(--font-sans); color: var(--text-100); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.prog thead .sc { font: 700 13px/18px var(--font-sans); color: var(--text-250); }
+.prog tr.is-po th, .prog tr.is-po td { background: var(--surface-100); }
+
+/* Broadcast: SPOTV NOW Golf 중계 투어 */
+.tours { display: grid; grid-template-columns: 1.25fr 1fr 1fr; grid-template-rows: auto auto; gap: var(--space-3); }
+.tour { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-6); border-radius: var(--radius-md); background: var(--surface-100); }
+.tour .lg { display: flex; align-items: center; height: 72px; }
+.tour .lg img { display: block; height: 72px; width: auto; }
+.tour .lg img.is-wide { height: 42px; }
+.tour h3 { font: 800 22px/1.25 var(--font-sans); letter-spacing: -0.5px; color: var(--text-100); }
+.tour .cat { font: 500 14px/20px var(--font-sans); color: var(--text-250); }
+.tour .ex { margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--line-200); font: 400 14px/21px var(--font-sans); color: var(--text-200); }
+.tour .ex b { display: block; margin-bottom: 2px; font: 700 12px/18px var(--font-sans); color: var(--text-250); }
+.tour.is-feat { grid-row: 1 / span 2; padding: 0; overflow: hidden; background: var(--bg-300); }
+.tour.is-feat > img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.tour.is-feat .tb { display: flex; flex-direction: column; gap: var(--space-3); flex: 1; padding: var(--space-6); }
+.tour.is-feat h3 { font-size: 30px; letter-spacing: -0.8px; }
+.tour .tx { width: 64px; height: 64px; display: grid; place-items: center; border-radius: var(--radius-sm); border: 1px solid var(--line-400); font: 800 15px/1 var(--font-sans); color: var(--text-100); letter-spacing: -0.3px; }
+.also { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-3); }
+.also > div { padding: var(--space-6); border-radius: var(--radius-md); border: 1px solid var(--line-200); }
+.also h3 { font: 700 18px/26px var(--font-sans); color: var(--text-100); }
+.also p { margin-top: var(--space-1); font: 400 14px/21px var(--font-sans); color: var(--text-250); }
+.also ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); list-style: none; }
+.also li { height: 36px; display: inline-flex; align-items: center; padding: 0 var(--space-4); border-radius: var(--radius-chip); background: var(--surface-200); font: 700 14px/1 var(--font-sans); color: var(--text-100); }
+.bc-cta { display: flex; justify-content: center; margin-top: var(--space-6); }
 
 /* Notice */
 .notice-wrap { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: var(--space-12); padding-top: var(--space-12); border-top: 1px solid var(--line-200); }
@@ -583,15 +703,28 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 /* Notice */
 .notice { list-style: disc; padding-left: var(--space-6); display: grid; gap: var(--space-2); font: var(--type-helper); color: var(--text-300); }
 
-/* Footer */
-.site-foot { background: var(--bg-000); border-top: 1px solid var(--line-100); padding: var(--space-6) 0; font: 400 13px/20px var(--font-sans); color: var(--text-300); }
-.site-foot p + p { margin-top: var(--space-1); }
+/* Footer: spotvnowgolf.co.kr/golf 푸터와 같은 구성 (로고 · 사업자 정보 · 저작권 · 앱 다운로드) */
+.site-foot { background: var(--bg-100); border-top: 1px solid #2a2a2a; padding: 80px 0 81px; font: 400 14px/18px var(--font-sans); color: #6a6a6a; }
+.foot-in { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-12); }
+.foot-logo { display: block; width: 181px; height: auto; }
+.foot-info { margin-top: var(--space-6); }
+.foot-info .m { display: none; }
+.foot-info span[role="link"], .foot-info a { color: inherit; text-decoration: none; cursor: pointer; }
+.foot-copy { margin-top: var(--space-6); }
+.foot-apps { display: flex; gap: 20px; flex: none; }
+.foot-apps a { display: block; border-radius: 6px; }
+.foot-apps img { display: block; height: 40px; width: auto; }
+/* 맨 위로 버튼 (/golf 페이지와 같은 원형 버튼) */
+.top-btn { position: fixed; right: var(--space-6); bottom: var(--space-6); z-index: 80; width: 56px; height: 56px; display: grid; place-items: center; border: 1px solid #484848; border-radius: var(--radius-full); background: #1a1a1a; color: var(--text-200); cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, visibility 0s .2s; }
+.top-btn.show { opacity: 1; visibility: visible; transform: none; transition: opacity .2s ease, transform .2s ease; }
+.top-btn:hover { color: var(--text-100); border-color: var(--text-300); }
+body.has-dock .top-btn { bottom: calc(80px + var(--space-4) + env(safe-area-inset-bottom)); }
 
 /* Mobile fixed CTA (shown < 768px only) */
 .m-cta { display: none; }
 
 /* Demo tools trigger */
-.fab { position: fixed; left: var(--space-6); bottom: var(--space-6); z-index: 80; min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--line-300); border-radius: var(--radius-chip); background: var(--surface-300); color: var(--text-100); font: 700 14px var(--font-sans); cursor: pointer; }
+.fab { position: fixed; right: var(--space-6); bottom: calc(var(--space-6) + 56px + var(--space-3)); z-index: 80; min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--line-300); border-radius: var(--radius-chip); background: var(--surface-300); color: var(--text-100); font: 700 14px var(--font-sans); cursor: pointer; }
 
 /* Toast */
 .toast { position: fixed; left: 50%; top: calc(var(--demo-h) + var(--header-h) + var(--space-3)); z-index: 120; max-width: calc(100% - var(--space-4) * 2); transform: translate(-50%, calc(var(--space-2) * -1)); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); background: var(--tooltip-bg); color: var(--bg-100); font: 700 14px/20px var(--font-sans); text-align: center; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
@@ -624,7 +757,8 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 .f-msg { margin-top: var(--space-2); font: var(--type-helper); min-height: 0; }
 .f-msg.ok { color: var(--text-250); }
 .f-msg.err, .form-err { color: var(--text-100); font-weight: 700; }
-.f-msg.err::before, .form-err:not(:empty)::before { content: "!"; display: inline-grid; place-items: center; width: 18px; height: 18px; margin-right: var(--space-2); border: 1.5px solid var(--text-100); border-radius: var(--radius-full); font-size: 12px; line-height: 1; vertical-align: 1px; }
+.f-msg.err::before, .form-err:not(:empty)::before { content: ""; display: inline-block; width: 18px; height: 18px; margin-right: var(--space-2); vertical-align: -4px; background: currentColor; -webkit-mask: var(--ic-alert) center / contain no-repeat; mask: var(--ic-alert) center / contain no-repeat; }
+:root { --ic-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M12 7.5v5.5'/%3E%3Ccircle cx='12' cy='16.5' r='.6' fill='black'/%3E%3C/svg%3E"); }
 .form-err:empty { display: none; }
 .sng-pwd-toggle { width: 44px; height: 44px; right: var(--space-1); font: 400 13px var(--font-sans); color: var(--text-300); }
 .sng-field.has-toggle .sng-input { padding-right: 56px; }
@@ -715,11 +849,24 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 .from { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-4) var(--space-1) var(--space-1); border-radius: var(--radius-full); background: var(--surface-200); color: var(--text-200); font: 400 15px var(--font-sans); }
 
 /* ===== Responsive ===== */
-/* Small desktop 1024–1279: tighter GNB */
-@media (max-width: 1279px) {
-  :root { --gutter: var(--space-12); }
+/* Desktop 1024–1365: GNB 글자·간격 줄이기, 중계 버튼은 짧은 이름 */
+.watch .s { display: none; }
+@media (max-width: 1365px) {
   .gnb-in { gap: var(--space-6); }
   .sng-gnb-menu { gap: var(--space-6); }
+  .gnb-link { font-size: 16px; }
+  .ev-logo .wm { height: 21px; }
+  .ev-logo .ev-name { font-size: 18px; }
+  .watch .l { display: none; }
+  .watch .s { display: inline; }
+  .rule { grid-template-columns: 200px minmax(0, 1fr) 170px; }
+  .side ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Small desktop 1024–1279 */
+@media (max-width: 1279px) {
+  :root { --gutter: var(--space-12); }
+  .sng-gnb-menu { gap: 20px; }
+  .gnb-link { font-size: 15px; }
 }
 /* Tablet 768–1023 */
 @media (max-width: 1023px) {
@@ -727,17 +874,29 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
   .site-gnb nav, .sng-gnb-util { display: none; }
   .gnb-m { display: flex; }
   .gnb-m .gnb-link { white-space: nowrap; flex: none; padding: 0 var(--space-2); font-size: 15px; }
-  .stage-photo { width: 72%; }
-  .stage-event { font-size: 30px; }
-  .lineup-in { grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-6) var(--space-12); }
-  .lineup-in .team { grid-column: 1 / -1; grid-row: 2; }
-  .lineup-cta { grid-column: 2; grid-row: 1; }
+  .stage-in { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding-top: var(--space-6); }
+  .stage-kv { order: -1; }
+  .stage-event { font-size: 28px; }
+  .matchup { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .side.is-right h2 { justify-content: flex-start; }
+  .side ul { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .vs { flex-direction: row; justify-content: flex-start; gap: var(--space-3); }
+  .vs b { font-size: 24px; }
+  .lineup-in { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .p-head { flex-direction: column; align-items: flex-start; }
   .p-head h2 { font-size: 36px; }
   .course-body .nm { font-size: 28px; }
   .goods { grid-template-columns: minmax(0, 1fr); }
   .events { grid-template-columns: minmax(0, 1fr); }
-  .reach { grid-template-columns: 200px minmax(0, 1fr); gap: var(--space-6); }
+  .cmp th, .cmp td { padding: var(--space-3) var(--space-4); }
+  .cmp col.c1 { width: 110px; }
+  .rule { grid-template-columns: 180px minmax(0, 1fr); }
+  .rule .spec { grid-column: 2; text-align: left; }
+  .final { padding: var(--space-6); }
+  .fs { font-size: 64px; }
+  .tours { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tour.is-feat { grid-column: 1 / -1; grid-row: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .tour.is-feat { align-items: center; }
   .notice-wrap { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .login-page .sng-login-panel { width: min(var(--login-panel-w), 62%); }
   .kv-caption, .kv-foot { max-width: calc(38% - var(--gutter) - var(--space-4)); }
@@ -746,33 +905,46 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 }
 /* Mobile < 768 */
 @media (max-width: 767px) {
-  :root { --gutter: var(--space-4); --header-h: 56px; }
+  :root { --gutter: var(--space-4); --header-h: 64px; }
   .demo-bar .more { display: none; }
   .wordmark { gap: var(--space-2); }
   .wordmark .wm { height: 15px; }
   .wordmark .wm-label { font-size: 11px; padding: 3px 6px; }
   .gnb-in { gap: var(--space-2); }
+  .ev-logo { gap: var(--space-2); }
+  .ev-logo .wm { height: 16px; }
+  .ev-logo .ev-name { padding-left: var(--space-2); font-size: 15px; letter-spacing: -0.4px; }
+  .gnb-m .watch { width: 44px; padding: 0; justify-content: center; border-color: transparent; }
+  .gnb-m .watch .s, .gnb-m .watch .ext { display: none; }
   .team li { min-height: 76px; font-size: 13px; }
   .team.is-lg li { min-height: 88px; font-size: 13px; }
   .team.is-lg li .ic, .team.is-lg li.on .sng-check-box { width: 32px; height: 32px; font-size: 15px; }
   .gnb-m { display: flex; }
   .gnb-m .gnb-link { padding: 0 var(--space-2); font-size: 15px; }
-  /* Stage: photo on top, countdown overlapping its lower edge */
-  .stage { display: block; min-height: 0; }
-  .stage-photo { position: relative; width: 100%; height: 240px; }
-  .stage-photo img { -webkit-mask-image: none; mask-image: none; object-position: 50% 8%; }
-  .stage-photo::after { background: linear-gradient(to bottom, transparent 22%, var(--scrim-strong) 62%, var(--bg-000) 80%); }
-  .stage-in { margin-top: -88px; padding-top: 0; padding-bottom: var(--space-6); }
+  /* Stage: 키 비주얼이 위, 카운트다운이 아래 */
+  .stage-in { padding-top: 0; padding-bottom: var(--space-4); gap: var(--space-4); }
+  .stage-kv { margin: 0 calc(var(--gutter) * -1); border-radius: 0; box-shadow: none; }
   .tee { gap: var(--space-3); }
-  .count-num { font-size: 112px; }
+  .count-num { font-size: 104px; }
   .count-meta b { font-size: 20px; }
   .count-meta span { font-size: 14px; line-height: 20px; }
-  .stage-event { margin-top: var(--space-4); font-size: 24px; letter-spacing: -0.6px; }
+  .stage-event { margin-top: var(--space-4); font-size: 22px; letter-spacing: -0.6px; }
   .stage-sub { font-size: 15px; line-height: 22px; }
-  .lineup-in { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding-top: var(--space-6); padding-bottom: var(--space-6); }
-  .lineup-in .team { grid-row: auto; }
-  .lineup-cta { grid-column: auto; grid-row: auto; min-width: 0; }
+  .stage-cta { margin-top: var(--space-4); }
+  .stage-cta .cta-pill { width: 100%; }
+  .matchup { margin-bottom: var(--space-6); padding: var(--space-4); }
+  .side h2 { font-size: 18px; }
+  .side ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .side li { padding: var(--space-2) var(--space-3); }
+  .side li b { font-size: 15px; line-height: 20px; }
+  .side li span { font-size: 12px; }
+  .lineup-in { gap: var(--space-4); padding-top: var(--space-6); padding-bottom: var(--space-6); }
   .lineup h1 { font-size: 22px; letter-spacing: -0.5px; }
+  .facts { gap: var(--space-3) var(--space-4); margin-top: var(--space-4); }
+  .facts .v { font-size: 16px; line-height: 22px; }
+  .lineup-team { padding: var(--space-4); }
+  .lt-msg { font-size: 15px; line-height: 22px; }
+  .lt-foot .sng-btn { width: 100%; }
   .cta-pill { min-height: 56px; font-size: 18px; }
   .dock-in { gap: var(--space-3); min-height: 72px; }
   .dock-team p { display: none; }
@@ -798,9 +970,56 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
   .event-date b { font-size: 44px; }
   .event-body h3 { font-size: 20px; line-height: 28px; }
   .event-body > p { font-size: 15px; line-height: 22px; }
-  .reach { grid-template-columns: minmax(0, 1fr); padding: var(--space-4); }
-  .reach img { max-width: 240px; }
-  .reach h3 { font-size: 24px; }
+  .blk + .blk { margin-top: var(--space-12); }
+  .blk-h h3 { font-size: 20px; line-height: 28px; }
+  .cmp { font-size: 14px; line-height: 21px; }
+  .cmp th, .cmp td { padding: var(--space-3) var(--space-2); }
+  .cmp col.c1 { width: 64px; }
+  .cmp tbody th { font-size: 13px; line-height: 21px; }
+  .cmp td.is-gcg small { font-size: 12px; line-height: 18px; }
+  .when { grid-template-columns: minmax(0, 1fr); }
+  .when li { padding: var(--space-4); }
+  .when li + li { border-left: 0; border-top: 1px solid var(--line-200); }
+  .when .d { font-size: 32px; }
+  .rule { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); padding: var(--space-4) 0; }
+  .rule .spec { grid-column: auto; font-size: 18px; }
+  .rule h4 { font-size: 19px; line-height: 26px; }
+  .rule > div { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); }
+  .rule .tag { margin: 0; }
+  .rule p { font-size: 15px; line-height: 23px; }
+  .final { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4); padding: var(--space-4); }
+  .fmid { grid-column: 1 / -1; grid-row: 2; flex-direction: row; justify-content: center; gap: var(--space-2); }
+  .fteam, .fteam.is-r { grid-template-columns: minmax(0, 1fr); }
+  .fteam .fn, .fteam.is-r .fn { grid-column: 1; grid-row: 1; }
+  .fteam .fs, .fteam.is-r .fs { grid-column: 1; grid-row: 2; font-size: 56px; }
+  .fteam .fm, .fteam.is-r .fm { grid-column: 1; grid-row: 3; }
+  .fteam.is-r .fs { text-align: right; }
+  .fn { font-size: 18px; }
+  .fm { font-size: 12px; line-height: 17px; }
+  .prog { font-size: 14px; line-height: 20px; }
+  .prog th, .prog td { padding: var(--space-3) var(--space-2); }
+  .prog .hide-m { display: none; }
+  .prog tbody th { font-size: 15px; }
+  .prog .sc { font-size: 18px; }
+  .tours { grid-template-columns: minmax(0, 1fr); }
+  .tour { padding: var(--space-4); }
+  .tour.is-feat { display: flex; }
+  .tour.is-feat .tb { padding: var(--space-4); }
+  .tour.is-feat h3 { font-size: 24px; }
+  .tour .lg, .tour .lg img { height: 56px; }
+  .tour .lg img.is-wide { height: 32px; }
+  .also { grid-template-columns: minmax(0, 1fr); }
+  .also > div { padding: var(--space-4); }
+  .site-foot { padding: 40px 0 84px; text-align: center; }
+  body.has-dock .site-foot { padding-bottom: calc(84px + 72px); }
+  .foot-in { flex-direction: column; align-items: center; gap: var(--space-6); }
+  .foot-logo { margin: 0 auto; width: 209px; }
+  .foot-info .d { display: none; }
+  .foot-info .m { display: block; }
+  .foot-apps { justify-content: center; gap: 12px; }
+  .foot-apps img { height: 32px; }
+  .top-btn { right: var(--space-3); bottom: var(--space-3); width: 48px; height: 48px; }
+  body.has-dock .top-btn { bottom: calc(72px + var(--space-3) + env(safe-area-inset-bottom)); }
   .sec { padding: calc(var(--space-12) - var(--space-4)) 0; }
   .sec-head .sng-section-title { font-size: 20px; }
   .card { padding: var(--space-4); }
@@ -811,7 +1030,9 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
   .m-cta .sng-btn { width: 100%; }
   body { padding-bottom: calc(44px + var(--space-6)); }
   body.has-mcta { padding-bottom: calc(var(--m-cta-h) + env(safe-area-inset-bottom)); }
-  .fab, body.has-dock .fab, body.has-mcta .fab { left: auto; right: var(--space-3); bottom: auto; top: calc(var(--demo-h) + var(--header-h) + var(--space-2)); min-height: 36px; padding: 0 var(--space-3); font-size: 13px; opacity: .92; }
+  /* 모바일: 데모 도구는 상단 DEMO 배너 오른쪽 끝 글자 버튼 (히어로를 가리지 않게) */
+  .demo-bar { justify-content: flex-start; }
+  .fab, body.has-dock .fab, body.has-mcta .fab { z-index: 101; left: auto; right: 0; bottom: auto; top: 0; height: var(--demo-h); min-height: 0; padding: 0 var(--space-4); border: 0; border-radius: 0; background: transparent; color: var(--bg-100); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 
   .login-page .sng-login-visual { display: none; }
   .login-page .sng-login-panel { width: 100%; background: var(--bg-100); padding: var(--space-6) var(--space-4) calc(var(--space-12) + var(--space-12)); align-items: flex-start; min-height: 0; }
@@ -951,28 +1172,36 @@ function render(){
 /* ---------- Shared chrome ---------- */
 const wordmark = (tag = 'a', cls = '') => `<${tag} class="wordmark ${cls}" ${tag === 'a' ? 'href="#/"' : ''} aria-label="SPOTV NOW Golf 친구초대 이벤트 홈"><img class="wm" src="assets/spotvnow-golf-logo-w.png" alt="SPOTV NOW Golf" width="175" height="20"><span class="wm-label">친구초대</span></${tag}>`;
 
+/* GNB 메뉴명 미정: spotvnowgolf.co.kr 상단 GNB의 '아시안스윙' 자리에 들어갈 이름. 확정되면 이 값만 바꿉니다. */
+const EVENT_NAME = '친구초대 이벤트';
+/* SPOTV NOW Golf 서비스 바로가기 (아시안스윙 페이지처럼 utm으로 유입 구분) */
+const WATCH_URL = 'https://www.spotvnowgolf.co.kr/?utm_source=golf-invite&utm_medium=header';
+const PLAY_IC = '<svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="var(--brand)"/><path d="M10 8.2v7.6l6-3.8z" fill="#fff"/></svg>';
+const EXT_IC = '<svg class="ext" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3 7.5 8.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const watchBtn = () => `<a class="watch" href="${WATCH_URL}" target="_blank" rel="noopener" aria-label="SPOTV NOW Golf에서 중계 보기 (새 창)">${PLAY_IC}<span class="l">SPOTV NOW Golf에서 중계 보기</span><span class="s">중계 보기</span>${EXT_IC}</a>`;
+
 function gnb(active){
   const u = me();
-  const items = [['/', 'intro', '이벤트 안내'], ['/', 'how', '참여 방법'], ['/', 'prizes', '경품'], ['/', 'special', '이색 대회'], ['/', 'notice', '유의사항'], ['/my', '', '내 팀 현황']];
+  const items = [['/', 'how', '참여 방법'], ['/', 'prizes', '경품'], ['/', 'games', '대회 정보'], ['/', 'special', '이색 대회'], ['/my', '', '내 팀 현황']];
   const menu = items.map(([p, sec, l]) => {
-    const on = (active === 'my' && p === '/my') || (active === 'promo' && sec === 'intro');
+    const on = active === 'my' && p === '/my';
     return `<li class="${on ? 'is-active' : ''}"><a class="gnb-link" href="#${p === '/my' ? '/my' : '/'}" ${sec ? `onclick="return toSec('${sec}')"` : ''} ${on ? 'aria-current="page"' : ''}>${l}</a></li>`;
   }).join('');
   const util = u
     ? `<span class="gnb-user">${esc(maskName(u.name))} 님</span><button type="button" class="gnb-link" onclick="logout()">로그아웃</button>`
-    : `<a class="gnb-link" href="#/login">로그인</a><a class="gnb-link" href="#/signup">회원가입</a>`;
+    : `<a class="gnb-link" href="#/login">로그인</a>`;
   const mItems = [
     ...items.map(([p, sec, l]) => `<li><a class="gnb-link" href="#${p}" ${sec ? `onclick="closeMenu();return toSec('${sec}')"` : 'onclick="closeMenu()"'} ${active === 'my' && p === '/my' ? 'aria-current="page"' : ''}>${l}</a></li>`),
-    u ? `<li><button type="button" class="gnb-link" onclick="closeMenu();logout()">로그아웃</button></li>` : `<li><a class="gnb-link" href="#/signup" onclick="closeMenu()">회원가입</a></li>`
+    u ? `<li><button type="button" class="gnb-link" onclick="closeMenu();logout()">로그아웃</button></li>` : `<li><a class="gnb-link" href="#/login" onclick="closeMenu()">로그인</a></li><li><a class="gnb-link" href="#/signup" onclick="closeMenu()">회원가입</a></li>`
   ].join('');
   return `
   <header class="sng-gnb site-gnb">
     <div class="wrap gnb-in">
-      ${wordmark()}
+      <a class="ev-logo" href="#/" onclick="if(parse().path==='/'){window.scrollTo(0,0);return false}" aria-label="SPOTV NOW Golf ${EVENT_NAME} 홈"><img class="wm" src="assets/spotvnow-golf-logo-w.png" alt="SPOTV NOW Golf" width="175" height="20"><span class="ev-name">${EVENT_NAME}</span></a>
       <nav aria-label="이벤트 메뉴"><ul class="sng-gnb-menu">${menu}</ul></nav>
-      <div class="sng-gnb-util">${util}</div>
+      <div class="sng-gnb-util">${util}${watchBtn()}</div>
       <div class="gnb-m">
-        ${u ? '' : '<a class="gnb-link" href="#/login">로그인</a>'}
+        ${watchBtn()}
         <button type="button" class="icon-btn" id="menuBtn" aria-expanded="false" aria-controls="mMenu" onclick="toggleMenu()"><span class="bars" aria-hidden="true"></span><span class="sr-only">메뉴</span></button>
       </div>
     </div>
@@ -996,11 +1225,25 @@ function toSec(id){
   else document.getElementById(id)?.scrollIntoView();
   return false;
 }
+/* 푸터: spotvnowgolf.co.kr/golf 푸터 문구·구성 그대로 (2026.11.25 확인) */
 const footer = () => `
-  <footer class="site-foot"><div class="wrap">
-    <p>기획 검토용 데모 페이지입니다. 실제 SPOTV NOW Golf 서비스가 아니며, 입력값은 이 브라우저(localStorage)에만 저장되고 외부로 전송되지 않습니다.</p>
-    <p>이벤트 기간은 예시입니다. 이미지: SPOTV NOW Golf 2026 PGA 투어 홍보 이미지.</p>
-  </div></footer>`;
+  <footer class="site-foot"><div class="wrap foot-in">
+    <div class="foot-text">
+      <img class="foot-logo" src="assets/spotvnow-golf-logo-w.png" alt="SPOTV NOW Golf" width="175" height="20" loading="lazy">
+      <div class="foot-info">
+        <p class="d">(주)스포티비 | 사업자등록번호 220-87-69074 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2208769074" target="_blank" rel="noopener">[사업자정보확인]</a> | 통신판매신고번호 2025-서울마포-0258<br>서울특별시 마포구 월드컵북로56길 12, 5층 (상암동, TRUTEC BUILDING)<br>대표이사 홍우승 | 청소년보호책임자 김태영 | 이메일 spotv_now@spotv.net | 고객센터 1833-8910</p>
+        <p class="m">(주)스포티비 | 사업자등록번호 220-87-69074<br><a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2208769074" target="_blank" rel="noopener">[사업자정보확인]</a> | 통신판매신고번호 2025-서울마포-0258<br>서울특별시 마포구 월드컵북로56길 12, 5층 (상암동, TRUTEC BUILDING) 대표이사 홍우승 | 청소년보호책임자 김태영 | 이메일 spotv_now@spotv.net | 고객센터 1833-8910</p>
+      </div>
+      <p class="foot-copy">©SPOTV Co., Ltd. ALL RIGHTS RESERVED.</p>
+    </div>
+    <div class="foot-apps">
+      <a href="https://play.google.com/store/apps/details?id=kr.co.spotvnow.golf" target="_blank" rel="noopener"><img src="assets/store-google.png" alt="Google Play에서 받기" width="135" height="40" loading="lazy"></a>
+      <a href="https://apps.apple.com/kr/app/id6756334598" target="_blank" rel="noopener"><img src="assets/store-apple.png" alt="App Store에서 받기" width="120" height="40" loading="lazy"></a>
+    </div>
+  </div></footer>
+  <button type="button" class="top-btn" id="topBtn" onclick="window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })" aria-label="맨 위로"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+/* 맨 위로 버튼: 한 화면 이상 내려가면 보입니다. */
+window.addEventListener('scroll', () => { document.getElementById('topBtn')?.classList.toggle('show', window.scrollY > 600); }, { passive: true });
 
 function logout(){ db.session = null; save(); toast('로그아웃되었습니다.'); go('/'); }
 
@@ -1086,6 +1329,40 @@ function setupDock(){
   dockObs.observe(cta);
 }
 
+/* ---------- 옵텀 골프채널 게임스 정보 (출처: 골프채널 2026.11.2 보도자료, 2025 라이브 기사) ---------- */
+const PRO_TEAMS = [
+  { nm: '팀 로리', en: 'TEAM RORY', players: [
+    { nm: '로리 매킬로이', note: '주장 · 세계 2위', cap: true }, { nm: '맷 피츠패트릭', note: '세계 3위' },
+    { nm: '김시우', note: '세계 14위' }, { nm: '리하오퉁', note: '2년 연속 출전' }] },
+  { nm: '팀 스코티', en: 'TEAM SCOTTIE', badge: '지난해 우승', players: [
+    { nm: '스코티 셰플러', note: '주장 · 세계 1위', cap: true }, { nm: '크리스 고터럽', note: '세계 6위' },
+    { nm: '마이클 브레넌', note: '세계 18위' }, { nm: '잭슨 코이번', note: 'PGA 투어 루키' }] }
+];
+const RULE_TAG = { y26: '2026 확정', new: '2026 신규', y25: '2025 방식' };
+const RULES = [
+  { nm: '팀 릴레이', st: 'y26', tx: '파4 홀을 4명이 이어 칩니다. 한 명이 티샷, 다른 한 명이 어프로치를 하고, 나머지 두 명이 그린 주변에서 번갈아 쳐 홀아웃합니다. 세션마다 가장 빠른 기록과 가장 적은 타수에 승점을 줍니다.', spec: '4명 이어 치기', specSub: '시간 + 타수로 승부' },
+  { nm: '14클럽 챌린지', st: 'y26', tx: '2명씩 짝을 지어 한 가방에 든 14개 클럽을 하나씩 골라 핀에 붙입니다. 한 번 쓴 클럽은 다시 못 쓰고 드라이버와 퍼터로도 쳐야 합니다. 팀마다 한 명은 15번째 샷을 왼손으로 칩니다.', spec: '클럽 14개', specSub: '약 170야드 니어핀' },
+  { nm: '새 챌린지', st: 'new', tx: '골프채널이 올해 새 게임을 더한다고 밝혔습니다. 세부 방식은 대회 전에 공개됩니다.', spec: '추후 공개', specSub: '올해 처음 열리는 게임' },
+  { nm: '드라이빙', st: 'y25', tx: '1대1로 4경기를 치릅니다. 2분 안에 5개를 치고 보너스 볼 1개를 더 칩니다. 거리와 정확도로 점수를 매깁니다.', spec: '2분 · 5구', specSub: '+ 보너스 볼 1개' },
+  { nm: '숏게임', st: 'y25', tx: '4분 안에 칩샷 4번, 벙커샷 1번, 벽을 넘기는 플롭샷, 5·10·15·50피트 퍼트를 연달아 칩니다.', spec: '4분', specSub: '칩 · 벙커 · 플롭 · 퍼트' },
+  { nm: '캡틴 챌린지', st: 'y25', tx: '두 주장이 200야드부터 15피트 퍼트까지 정해진 자리에서 10번 칩니다. 공이 물에 빠지면 감점입니다.', spec: '승점 2', specSub: '주장 1대1 · 10샷' }
+];
+const LAST_YEAR = [
+  { nm: '드라이빙', w: '팀 스코티', tx: '1대1 4경기 중 3경기 승리', sc: '1 : 0' },
+  { nm: '숏게임', w: '팀 스코티', tx: '2승 2패, 최고 점수(브래들리 22점) 보너스로 승점', sc: '2 : 0' },
+  { nm: '팀 릴레이', w: '팀 로리', tx: '마지막 세션, 셰인 로리의 15피트 버디 퍼트', sc: '2 : 1' },
+  { nm: '14클럽 챌린지', w: '팀 스코티', tx: '클랜턴·브래들리 3대 1, 셰플러·번스 2대 1', sc: '3 : 1' },
+  { nm: '캡틴 챌린지', sub: '승점 2', w: '팀 로리', tx: '매킬로이가 10샷 대결에서 6대 1로 승리', sc: '3 : 3' },
+  { nm: '연장', sub: '47야드 니어핀', w: '팀 스코티', tx: '두 주장 모두 6피트 안팎, 셰플러가 1인치 더 가까이', sc: '우승', po: true }
+];
+/* SPOTV NOW Golf 중계 투어 (spotvnowgolf.co.kr/golf 중계 일정 탭 기준, 2026.11.25 확인) */
+const TOURS = [
+  { nm: 'LPGA 투어', cat: '여자 · 미국', logo: 'assets/tour-lpga.png', alt: 'LPGA', w: 100, h: 122, exT: '최근 중계', ex: '뷰익 LPGA 상하이, BMW 레이디스 챔피언십, CME 그룹 투어 챔피언십' },
+  { nm: 'DP 월드투어', cat: '남자 · 유럽', logo: 'assets/tour-dpwt.png', alt: 'DP World Tour', w: 182, h: 66, wide: true, exT: '이번 주', ex: 'BMW 호주 PGA 챔피언십 (11.26~11.29)' },
+  { nm: 'LET', cat: '여자 · 유럽 (레이디스 유러피언 투어)', logo: 'assets/tour-let.png', alt: 'LET', w: 96, h: 122, exT: '이번 주', ex: '안달루시아 코스타 델 솔 에스파냐 오픈 (11.26~11.29)' },
+  { nm: 'PGA 투어 챔피언스', cat: '50세 이상 시니어 · 미국', exT: '다가오는 대회', ex: 'PNC 챔피언십 (12.21 최종 라운드)' }
+];
+
 /* =========================================================
    Screen 1. Promo (#/) - 티오프 카운트다운
    ========================================================= */
@@ -1100,29 +1377,49 @@ function Promo(){
   const html = `
   ${gnb('promo')}
   <main>
-    <section class="stage" id="intro" aria-label="2026 PGA 투어 옵텀 골프 채널 게임즈 ${ddText(n)}">
-      <div class="stage-photo" aria-hidden="true"><img src="assets/kv-pga-tour.jpg" alt="" width="1280" height="720"></div>
+    <section class="stage" id="intro" aria-label="2026 PGA 투어 옵텀 골프채널 게임스 ${ddText(n)}">
       <div class="wrap stage-in">
-        <div class="tee">
-          <p class="count-num">${n > 0 ? `D-<span class="n">${n}</span>` : n === 0 ? 'D-<span class="n">DAY</span>' : '<span class="n">종료</span>'}</p>
-          <p class="count-meta"><b>12.17 목</b><span>티오프까지</span></p>
+        <div class="stage-copy">
+          <div class="tee">
+            <p class="count-num">${n > 0 ? `D-<span class="n">${n}</span>` : n === 0 ? 'D-<span class="n">DAY</span>' : '<span class="n">종료</span>'}</p>
+            <p class="count-meta"><b>12.17 목 오전</b><span>한국 시간 · 티오프까지</span></p>
+          </div>
+          <p class="stage-event">2026 PGA 투어<br>옵텀 골프채널 게임스</p>
+          <p class="stage-sub">세계 1위 셰플러와 2위 매킬로이가 <b>4명씩 팀을 꾸려</b> 겨루는 프라임타임 팀 대항전. SPOTV NOW Golf에서 생중계합니다.</p>
+          <div class="stage-cta">${ctaButton('heroCta')}<p class="cta-help">${ctaState().help}</p></div>
         </div>
-        <p class="stage-event">2026 PGA 투어 옵텀 골프 채널 게임즈</p>
-        <p class="stage-sub">PGA 투어 선수들이 팀을 꾸려 겨루는 <b>팀 대항전</b>, SPOTV NOW Golf에서 생중계합니다.</p>
+        <figure class="stage-kv"><img src="assets/kv-golf-channel-games.jpg" alt="옵텀 골프채널 게임스 12월 16일(미국 시간) 키 비주얼. 왼쪽 팀 매킬로이(김시우, 리하오퉁, 맷 피츠패트릭), 오른쪽 팀 셰플러(크리스 고터럽, 잭슨 코이번, 마이클 브레넌)" width="1280" height="720" fetchpriority="high"><figcaption>사진 골프채널</figcaption></figure>
+      </div>
+      <div class="wrap">
+        <div class="matchup" aria-label="2026 출전 팀">
+          ${PRO_TEAMS.map((t, i) => `${i === 1 ? '<p class="vs"><b>4 vs 4</b><span>4명이 한 팀</span></p>' : ''}
+          <div class="side ${i === 1 ? 'is-right' : ''}"><h2>${t.badge ? `<span class="win">${t.badge}</span>` : ''}${t.nm}<small>${t.en}</small></h2>
+            <ul>${t.players.map(p => `<li class="${p.cap ? 'cap' : ''}"><b>${p.nm}</b><span>${p.note}</span></li>`).join('')}</ul>
+          </div>`).join('')}
+        </div>
       </div>
     </section>
 
     <section class="lineup" aria-labelledby="heroTitle"><div class="wrap lineup-in">
       <div class="lineup-copy">
-        <h1 id="heroTitle">프로는 팀으로 겨루고,<br>우리는 4명이 팀으로 응모합니다</h1>
-        <p>친구 3명이 가입하면 <b>서산수CC · 파인비치 · 군산CC</b> 라운드에 자동 응모 · 기간 ~ ${endLabel()} (예시)</p>
+        <h1 id="heroTitle">프로처럼 4명이 한 팀,<br>친구 3명이 가입하면 자동 응모</h1>
+        <ul class="facts">
+          <li><span class="k">팀 구성</span><span class="v">나 + 친구 3명</span></li>
+          <li><span class="k">응모 방법</span><span class="v">3명 가입 완료 시 자동</span></li>
+          <li><span class="k">경품</span><span class="v">서산수CC · 파인비치 · 군산CC</span></li>
+          <li><span class="k">이벤트 기간</span><span class="v">~ ${endLabel()} (예시)</span></li>
+        </ul>
       </div>
-      ${teamSlots(u, list, { me: 'owner', ownerLabel: u ? `${esc(maskName(u.name))}(나)` : '나', lg: true })}
-      <div class="lineup-cta">${ctaButton('heroCta')}<p class="cta-help">${ctaState().help}</p></div>
+      <div class="lineup-team">
+        <div class="lt-head"><h2>내 팀 현황</h2><p class="lt-count"><b>${u ? Math.min(cnt + 1, TEAM_SIZE) : 0}</b>/${TEAM_SIZE}명</p></div>
+        ${teamSlots(u, list, { me: 'owner', ownerLabel: u ? `${esc(maskName(u.name))}(나)` : '나', lg: true })}
+        <div class="lt-foot"><p class="lt-msg">${u ? (u.entered ? '<b>4명 팀 완성!</b> 자동 응모되었습니다.' : `친구 <b>${MAX_INVITES - cnt}명</b>만 더 가입하면 자동 응모됩니다.`) : '로그인하고 초대코드를 만들면 내 팀이 시작됩니다.'}</p>
+          ${u ? `<a class="sng-btn sng-btn-secondary sng-btn-lg" href="#/my">내 팀 자세히 보기</a>` : `<a class="sng-btn sng-btn-secondary sng-btn-lg" href="#/login?next=/my">로그인</a>`}</div>
+      </div>
     </div></section>
 
     <section class="p-sec" id="how" aria-labelledby="howTitle"><div class="wrap">
-      <div class="p-head"><h2 id="howTitle">대회도 팀전,<br>응모도 팀으로</h2><p>12월 17일 옵텀 골프 채널 게임즈에서는 PGA 투어 선수들이 개인이 아닌 팀으로 승부를 겨룹니다. 친구초대 이벤트도 나와 친구 3명, 4명이 한 팀이 되면 따로 신청하지 않아도 자동으로 응모됩니다.</p></div>
+      <div class="p-head"><h2 id="howTitle">대회도 팀전,<br>응모도 팀으로</h2><p>12월 17일 옵텀 골프채널 게임스에서는 PGA 투어 선수들이 개인이 아닌 팀으로 승부를 겨룹니다. 친구초대 이벤트도 나와 친구 3명, 4명이 한 팀이 되면 따로 신청하지 않아도 자동으로 응모됩니다.</p></div>
       <ol class="steps">
         <li><span class="no">1</span><h3>초대코드 만들기</h3><p>SPOTV NOW Golf 계정으로 로그인하면 나만의 초대코드가 발급됩니다.</p></li>
         <li><span class="no">2</span><h3>친구 3명에게 공유</h3><p>초대 링크를 받은 친구는 코드가 입력된 회원가입 화면에서 바로 가입합니다.</p></li>
@@ -1135,15 +1432,67 @@ function Promo(){
       ${prizesHTML('h3')}
     </div></section>
 
+    <section class="p-sec" id="games" aria-labelledby="gmTitle"><div class="wrap">
+      <div class="p-head"><h2 id="gmTitle">골프채널 게임스,<br>무엇이 다를까</h2><p>나흘 동안 72홀을 도는 정규 대회와 달리, 하룻밤 동안 시계와 싸우는 팀 챌린지로 승부를 냅니다. 이기는 건 개인이 아니라 팀입니다.</p></div>
+
+      <div class="blk">
+        <div class="blk-h"><h3>정규 대회 vs 골프채널 게임스</h3></div>
+        <table class="cmp">
+          <colgroup><col class="c1"><col><col></colgroup>
+          <thead><tr><th scope="col"><span class="sr-only">항목</span></th><th scope="col">일반 투어 대회</th><th scope="col" class="is-gcg">옵텀 골프채널 게임스</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">일정</th><td>목~일 4일, 72홀</td><td class="is-gcg">하룻밤, 프라임타임<small>조명 아래에서 열리는 저녁 경기</small></td></tr>
+            <tr><th scope="row">승부 단위</th><td>선수 개인</td><td class="is-gcg">4명이 한 팀<small>팀 로리 vs 팀 스코티</small></td></tr>
+            <tr><th scope="row">승부 방식</th><td>가장 적은 타수 (스트로크 플레이)</td><td class="is-gcg">챌린지마다 승점<small>동점이면 두 주장의 연장 한 샷으로 결정</small></td></tr>
+            <tr><th scope="row">시간</th><td>경기 속도 규정만 적용</td><td class="is-gcg">모든 챌린지에 시계<small>드라이빙 2분, 숏게임 4분, 릴레이는 초 단위 기록</small></td></tr>
+            <tr><th scope="row">장소</th><td>대회마다 다른 코스</td><td class="is-gcg">트럼프 내셔널 GC 주피터<small>미국 플로리다, 2년 연속 개최</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="blk">
+        <div class="blk-h"><h3>일정</h3><p>방송 편성 시간은 추후 안내됩니다.</p></div>
+        <ol class="when">
+          <li><span class="t">미국 현지</span><p class="d">12.16<small>수 저녁</small></p><p>미국 동부 프라임타임, 골프채널과 USA 네트워크 중계</p></li>
+          <li><span class="t">한국 시간</span><p class="d">12.17<small>목 오전</small></p><p>지난해에는 <b>오전 9시 30분쯤</b> 첫 챌린지가 시작됐습니다.</p></li>
+          <li><span class="t">시청</span><p class="d">${ddText(n)}</p><p>SPOTV NOW Golf 앱과 웹에서 생중계</p><a class="sng-btn sng-btn-secondary sng-btn-lg" href="${WATCH_URL}" target="_blank" rel="noopener">SPOTV NOW Golf 바로가기</a></li>
+        </ol>
+      </div>
+
+      <div class="blk">
+        <div class="blk-h"><h3>경기 규칙</h3><p>올해 다시 열리는 챌린지 2개와 새 게임, 지난해 열린 챌린지</p></div>
+        <ul class="rules">${RULES.map(r => `
+          <li class="rule"><div><h4>${r.nm}</h4><span class="tag ${r.st === 'new' ? 'is-new' : ''}">${RULE_TAG[r.st]}</span></div><p>${r.tx}</p><p class="spec">${r.spec}<small>${r.specSub}</small></p></li>`).join('')}
+        </ul>
+        <p class="src-note">2026년 세부 규칙은 대회 전에 공개됩니다. 설명은 모두 지난해(2025) 방식 기준이라 올해 바뀔 수 있습니다. 세계 랭킹은 11월 2일 발표 기준입니다. 출처: <a href="https://www.golfchannel.com/pga-tour/live/optum-golf-channel-games-2025-live-updates-scoring-and-highlights-from-team-scheffler-and-team-mcilroy" target="_blank" rel="noopener">Golf Channel</a>, 골프채널 2026.11.2 보도자료</p>
+      </div>
+    </div></section>
+
+    <section class="p-sec" id="lastyear" aria-labelledby="lyTitle"><div class="wrap">
+      <div class="p-head"><h2 id="lyTitle">지난해 승부는<br>1인치 차이</h2><p>2025년 첫 대회. 다섯 개 챌린지가 끝나고 3대 3 동점, 두 주장이 47야드에서 한 번씩 친 연장 샷에서 셰플러가 1인치 더 붙였습니다.</p></div>
+      <div class="final" aria-label="2025 최종 결과: 팀 스코티 3, 팀 로리 3, 연장에서 팀 스코티 우승">
+        <div class="fteam"><p class="fn">팀 스코티 <span class="win">우승</span></p><p class="fm">스코티 셰플러 · 샘 번스 · 키건 브래들리 · 루크 클랜턴</p><p class="fs">3</p></div>
+        <div class="fmid"><b>연장 승</b><span>47야드 니어핀<br>1인치 차</span></div>
+        <div class="fteam is-r is-lose"><p class="fn">팀 로리</p><p class="fm">로리 매킬로이 · 셰인 로리 · 루크 도널드 · 리하오퉁</p><p class="fs">3</p></div>
+      </div>
+      <table class="prog">
+        <thead><tr><th scope="col">챌린지</th><th scope="col">이긴 팀</th><th scope="col" class="hide-m">승부처</th><th scope="col" class="sc">스코티 : 로리</th></tr></thead>
+        <tbody>${LAST_YEAR.map(r => `
+          <tr class="${r.po ? 'is-po' : ''}"><th scope="row">${r.nm}${r.sub ? `<small>${r.sub}</small>` : ''}</th><td class="w">${r.w}</td><td class="hide-m">${r.tx}</td><td class="sc">${r.sc}</td></tr>`).join('')}
+        </tbody>
+      </table>
+      <p class="src-note">2025년 12월 17일(미국 시간), 트럼프 내셔널 GC 주피터. 출처: <a href="https://www.golfchannel.com/pga-tour/live/optum-golf-channel-games-2025-live-updates-scoring-and-highlights-from-team-scheffler-and-team-mcilroy" target="_blank" rel="noopener">Golf Channel</a></p>
+    </div></section>
+
     <section class="p-sec" id="special" aria-labelledby="spTitle"><div class="wrap">
       <div class="p-head"><h2 id="spTitle">이색 대회 일정</h2><p>12월, 팀으로 치는 골프가 이어집니다. 정규 투어 밖의 특별한 대회도 SPOTV NOW Golf에서 생중계합니다.</p></div>
       <div class="events">
         <article class="event" aria-labelledby="ev1">
-          <div class="event-top"><p class="event-date"><b>12.17</b><span>목요일</span></p><p class="event-dd">${ddText(n)}</p></div>
+          <div class="event-top"><p class="event-date"><b>12.17</b><span>목요일 오전</span></p><p class="event-dd">${ddText(n)}</p></div>
           <div class="event-body">
-            <h3 id="ev1">2026 PGA 투어 옵텀 골프 채널 게임즈</h3>
-            <p>PGA 투어 선수들이 팀을 꾸려 겨루는 팀전 포맷의 이벤트 대회입니다. 이번 친구초대 이벤트가 이 대회에 맞춰 열립니다.</p>
-            <dl><dt>형식</dt><dd>팀 대항전</dd><dt>편성</dt><dd>SPOTV NOW Golf 생중계 · 시간 추후 안내</dd></dl>
+            <h3 id="ev1">2026 PGA 투어 옵텀 골프채널 게임스</h3>
+            <p>세계 1·2위가 주장을 맡아 4명씩 팀을 꾸려 겨루는 팀 대항전입니다. 이번 친구초대 이벤트가 이 대회에 맞춰 열립니다.</p>
+            <dl><dt>형식</dt><dd>4대4 팀 챌린지</dd><dt>출전</dt><dd>팀 로리(매킬로이 외 3명) vs 팀 스코티(셰플러 외 3명)</dd><dt>편성</dt><dd>SPOTV NOW Golf 생중계 · 시간 추후 안내</dd></dl>
             <button type="button" class="sng-btn sng-btn-primary sng-btn-lg" onclick="toSec('intro')">이벤트 참여하기</button>
           </div>
         </article>
@@ -1156,17 +1505,34 @@ function Promo(){
           </div>
         </article>
       </div>
-      <div class="reach">
-        <img src="assets/pga-2026-live.jpg" alt="2026 PGA 투어 독점 생중계, SPOTV Golf &amp; Health · SPOTV NOW Golf" width="720" height="720" loading="lazy">
-        <div>
-          <h3>PGA · LPGA 너머,<br>이색 대회까지 생중계</h3>
-          <p>PGA 투어, LPGA 투어 정규 대회만이 아닙니다. 팀 대항전, 가족이 함께 출전하는 대회처럼 특별한 이벤트 대회도 SPOTV NOW Golf에서 볼 수 있습니다.</p>
-          <ul><li>PGA 투어</li><li>LPGA 투어</li><li class="is-plus">+ 이색 대회</li></ul>
-        </div>
-      </div>
     </div></section>
 
-    <section class="p-sec" id="notice" aria-labelledby="ntTitle"><div class="wrap notice-wrap">
+    <section class="p-sec" id="broadcast" aria-labelledby="bcTitle"><div class="wrap">
+      <div class="p-head"><h2 id="bcTitle">SPOTV NOW Golf가<br>중계하는 투어</h2><p>남녀 정규 투어부터 시니어 투어, 대항전, 이색 대회까지 실시간 중계와 다시보기로 볼 수 있습니다.</p></div>
+      <div class="tours">
+        <article class="tour is-feat">
+          <img src="assets/pga-2026-live.jpg" alt="2026 PGA 투어 독점 생중계, SPOTV Golf &amp; Health · SPOTV NOW Golf" width="720" height="720" loading="lazy">
+          <div class="tb">
+            <div class="lg"><img src="assets/tour-pga.png" alt="PGA TOUR" width="104" height="122" loading="lazy"></div>
+            <h3>PGA 투어</h3><p class="cat">남자 · 미국</p>
+            <p class="ex"><b>이번 시즌</b>2026 시즌 독점 생중계, 옵텀 골프채널 게임스(12.17)</p>
+          </div>
+        </article>
+        ${TOURS.map(t => `
+        <article class="tour">
+          ${t.logo ? `<div class="lg"><img src="${t.logo}" alt="${t.alt}" width="${t.w}" height="${t.h}" loading="lazy" ${t.wide ? 'class="is-wide"' : ''}></div>` : ''}
+          <h3>${t.nm}</h3><p class="cat">${t.cat}</p>
+          <p class="ex"><b>${t.exT}</b>${t.ex}</p>
+        </article>`).join('')}
+      </div>
+      <div class="also">
+        <div><h3>대항전 · 메이저 대회</h3><p>국가 대항전과 협회 주관 대회도 중계합니다.</p><ul><li>프레지던츠컵</li><li>솔하임컵</li><li>USGA</li><li>PGA of America</li></ul></div>
+        <div><h3>이색 대회</h3><p>팀 대항전, 프로와 가족이 함께 나오는 대회처럼 특별한 이벤트 대회까지.</p><ul><li>옵텀 골프채널 게임스</li><li>PNC 챔피언십</li></ul></div>
+      </div>
+      <div class="bc-cta"><a class="watch" href="https://www.spotvnowgolf.co.kr/golf?utm_source=golf-invite&amp;utm_medium=broadcast" target="_blank" rel="noopener">${PLAY_IC}전체 중계 일정 보기${EXT_IC}</a></div>
+    </div></section>
+
+    <section class="p-sec" id="notice" aria-labelledby="ntTitle"><div class="wrap"><div class="notice-wrap">
       <h2 id="ntTitle">유의사항</h2>
       <ul class="notice">
         <li>초대한 사람을 포함해 4명이 한 팀이 되면 이벤트에 자동 응모됩니다.</li>
@@ -1178,7 +1544,7 @@ function Promo(){
         <li>추가 경품은 PGA 드라이버 커버 3명, 볼빅 골프공 10명입니다.</li>
         <li>부정 참여가 확인되면 당첨이 취소될 수 있습니다.</li>
       </ul>
-    </div></section>
+    </div></div></section>
   </main>
   ${footer()}
   <div class="dock" id="dock" inert><div class="wrap dock-in">
@@ -1221,7 +1587,7 @@ function Login(q){
     <div class="sng-login-visual" aria-hidden="true">
       <img src="assets/kv-pga-tour.jpg" alt="">
       <div class="kv-caption"><strong>친구 3명과 한 팀</strong><span>4명이 한 팀이 되면 골프장 라운드 이벤트에 자동으로 응모됩니다.</span></div>
-      <p class="kv-foot">12.17(목) 2026 PGA 투어 옵텀 골프 채널 게임즈 · SPOTV NOW Golf 생중계</p>
+      <p class="kv-foot">12.17(목) 2026 PGA 투어 옵텀 골프채널 게임스 · SPOTV NOW Golf 생중계</p>
     </div>
     <div class="sng-login-panel">
       <div class="sng-form is-panel">

@@ -30,7 +30,7 @@ colors:
 typography:
   display-numeral:
     fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
-    fontSize: "clamp(128px, 17vw, 260px)"
+    fontSize: "clamp(120px, 13.2vw, 200px)"
     fontWeight: 800
     lineHeight: 0.8
     letterSpacing: "-0.04em"
@@ -220,10 +220,20 @@ components:
     padding: "0 8px"
     height: "28px"
   gnb:
-    backgroundColor: "{colors.scrim-strong}"
+    backgroundColor: "{colors.bg-000}"
     textColor: "{colors.text-100}"
     typography: "{typography.body}"
-    height: "64px"
+    height: "80px"
+  watch-button:
+    backgroundColor: "transparent"
+    textColor: "{colors.text-100}"
+    rounded: "{rounded.pill}"
+    padding: "0 16px 0 12px"
+    height: "44px"
+  footer:
+    backgroundColor: "{colors.bg-100}"
+    textColor: "#6a6a6a"
+    padding: "80px 0 81px"
 ---
 
 # Design System: SPOTV NOW Golf 친구초대 이벤트
@@ -280,7 +290,8 @@ ds5의 무채색 다크 스케일 위에 단 하나의 강한 오렌지가 놓�
 **Character:** 한 가족의 글꼴을 굵기와 크기만으로 나눕니다. 숫자는 800 굵기와 좁은 자간으로 경기장 전광판처럼 세우고, 안내 문장은 400 굵기로 조용히 둡니다.
 
 ### Hierarchy
-- **Display Numeral** (800, clamp(128px, 17vw, 260px), 0.8): 스테이지의 "D-22" 카운트다운 단 하나. 모바일 112px.
+- **Display Numeral** (800, clamp(120px, 13.2vw, 200px), 0.8): 스테이지의 "D-22" 카운트다운 단 하나. 키 비주얼과 나란히 서도록 왼쪽 5/12 칸에 맞춘 크기. 모바일 104px.
+- **Score Numeral** (800, 88px, 0.9): 지난해 결과 스코어보드의 팀 점수. 모바일 56px.
 - **Numeral Large** (800, 64px, 0.9): 이벤트 카드의 대회 날짜(12.17). 모바일 44px. 같은 계열로 경품 수량(44px), 골프장 이름(36px, 자간 -1.2px), 단계 번호(40px, `text-400`)가 있습니다.
 - **Display** (800, 44px, 1.2, -1.5px): 홍보 섹션 제목. 태블릿 36px, 모바일 28px.
 - **Headline** (700, 36px, 1.25, -0.9px): 스테이지의 대회명. 태블릿 30px, 모바일 24px.
@@ -307,7 +318,7 @@ ds5의 무채색 다크 스케일 위에 단 하나의 강한 오렌지가 놓�
 - **홍보 섹션 리듬:** 섹션 상하 96px(모바일 48px), 연속 섹션은 위 여백 0. 섹션 머리는 제목과 설명을 양 끝 아래 정렬로 두고 아래 48px(모바일 24px).
 - **그리드:** 3단계와 골프장 카드는 3열, 추가 경품과 이벤트 카드는 2열, 모두 간격 12px. 태블릿 이하 1열.
 - **간격 단위:** 4 / 8 / 12 / 16 / 24 / 48px만 씁니다. 큰 간격은 48의 배수로 만듭니다.
-- **고정 요소:** DEMO 배너(32px)와 GNB(64px, 모바일 56px)는 위에 고정(sticky). 라인업의 CTA가 화면 위로 사라지면 하단 대시가 올라옵니다. 터치 영역은 모두 44px 이상.
+- **고정 요소:** DEMO 배너(32px)와 GNB(80px, 모바일 64px)는 위에 고정(sticky). 히어로의 CTA가 화면 위로 사라지면 하단 대시가 올라옵니다. 오른쪽 아래에는 맨 위로 버튼(56px 원)과 그 위 데모 도구 버튼. 터치 영역은 모두 44px 이상.
 
 ## Elevation & Depth
 
@@ -319,7 +330,7 @@ ds5의 무채색 다크 스케일 위에 단 하나의 강한 오렌지가 놓�
 ### Named Rules
 **The Tonal Stack Rule.** 바깥 그림자(drop shadow)는 쓰지 않습니다. 층은 바탕 톤 단계와 1px 선으로만 나누고, `box-shadow`는 상태를 알리는 안쪽 링에만 씁니다.
 
-**The Melt-to-Black Rule.** 큰 사진은 가장자리를 `bg-000`으로 녹입니다. 스테이지 사진은 왼쪽 38%까지 마스크로 사라지고 아래쪽은 `scrim-strong`에서 `bg-000`으로 이어집니다. 사진 카드는 아래 60%에 `scrim-strong` 그라데이션을 깔고 그 위에 글자를 올립니다.
+**The Melt-to-Black Rule.** 글자가 없는 큰 사진은 가장자리를 `bg-000`으로 녹입니다. 사진 카드는 아래 60%에 `scrim-strong` 그라데이션을 깔고 그 위에 글자를 올립니다. 예외: 대회 키 비주얼처럼 글자와 선수 이름이 가장자리까지 들어간 포스터는 녹이지 않고 8px 모서리 액자(16:9, 아래쪽 부드러운 그림자)로 원본 그대로 보여 줍니다. 출처는 왼쪽 위 작은 캡션.
 
 ## Shapes
 
@@ -359,6 +370,24 @@ ds5의 무채색 다크 스케일 위에 단 하나의 강한 오렌지가 놓�
 ### Event Cards (이색 대회 카드)
 중계 편성표처럼 날짜가 먼저 보이는 카드입니다. `surface-100` 몸통, 8px 모서리. 상단은 `bg-300` 띠에 대회 날짜 64px/800과 요일, 오른쪽 끝에 D-day 28px/800 `text-300`, 아래 1px `line-100`. 몸통은 제목 24px/700, 본문, 위 선이 있는 정의 목록(형식·편성·출전, `text-300` 이름 / `text-100` 값), 필요할 때만 기본 주요 버튼.
 
+### Matchup Band (4 vs 4 프로 팀 명단)
+히어로 아래 `bg-300` 상자, 1px `line-100`. 양쪽에 팀 이름 22px/800 + 작은 영문/보조 라벨, 선수 칸 4개(`surface-100`, 이름 16px/700, 보조 13px `text-250`, 주장 칸만 1px `line-400` 테두리). 가운데 "4 vs 4" 36px/800. 이벤트의 "4명이 한 팀"과 같은 숫자를 일부러 맞춥니다.
+
+### Rulebook Rows (경기 규칙)
+카드가 아닌 행 목록입니다. 위 1px `line-300`, 행 사이 1px `line-200`, 3열(이름 22px/700 + 상태 태그 / 설명 16px `text-200` / 오른쪽 정렬 핵심 수치 24px/800). 상태 태그는 테두리형("2026 확정", "2025 방식"), 신규만 흰 바탕 검정 글자.
+
+### Comparison Table (정규 대회 vs 골프채널 게임스)
+`<table>`, 행 사이 1px `line-200`. 비교 대상 열은 `text-250`, 이 대회 열은 `surface-100` 바탕 + `text-100` 굵은 값과 14px 보조 설명.
+
+### Scoreboard (지난해 결과)
+`bg-300` 상자에 팀 이름 26px/800, 명단 14px, 점수 88px/800. 이긴 팀은 흰 바탕 "우승" 태그, 진 팀 점수와 이름은 `text-250`. 가운데 `surface-100` 작은 칸에 연장 설명. 아래 챌린지별 `<table>`(누적 점수 오른쪽 정렬, 연장 행만 `surface-100`).
+
+### Tour Tiles (중계 투어)
+3열 그리드. 첫 열은 PGA 투어 대표 타일(위 4:3 사진 + 로고 + 30px 제목, 두 행 차지), 나머지는 로고(72px, 가로형 42px) + 22px/800 이름 + 분류 + 위 선이 있는 "이번 주/최근 중계" 줄. 아래 테두리 상자 2개에 대항전·이색 대회 칩(`surface-200`).
+
+### Footer
+spotvnowgolf.co.kr/golf 푸터를 그대로 옮깁니다. 위 1px `#2a2a2a`, 위아래 80/81px, 14px/18px `#6a6a6a`. 왼쪽 로고(181px) → 사업자 정보 3줄 → 저작권, 오른쪽 Google Play·App Store 배지(40px, 간격 20px). 모바일은 가운데 정렬, 배지 32px.
+
 ### Cards / Containers
 - **Corner Style:** 일반 카드 5px, 홍보 카드 8px.
 - **Background:** `surface-200`(일반, 내 팀 현황), `surface-100`(홍보 카드), `bg-300`(밴드, 노출 안내 블록).
@@ -376,8 +405,9 @@ ds5의 무채색 다크 스케일 위에 단 하나의 강한 오렌지가 놓�
 - **Error:** `text-100` 700 굵기 문장(Color-Free Error Rule).
 
 ### Navigation
-- **GNB:** 높이 64px(모바일 56px), `scrim-strong` 반투명 바탕, 아래 1px `line-100`, DEMO 배너 아래 sticky. 왼쪽 흰색 공식 로고(20px, 모바일 15px) + 1px 테두리 "친구초대" 라벨, 메뉴 16px 흰 글자 간격 36px, 현재 메뉴는 `brand`. 오른쪽 유틸 14px `text-200`.
-- **모바일/태블릿(≤1023px):** 메뉴를 숨기고 44px 햄버거 버튼 + 로그인 링크. 펼친 메뉴는 ds5 사용자 메뉴 패널(`surface-100`) 안 가운데 정렬 목록, 현재 위치 `brand`.
+- **GNB(이벤트 서브사이트 헤더):** spotvnowgolf.co.kr/asian-swing과 같은 틀. 높이 80px(모바일 64px), `bg-000` 92% 바탕, 아래 1px `line-100`, DEMO 배너 아래 sticky. 왼쪽 흰색 공식 로고(24px) + 1px `line-400` 세로선 + 이벤트명 20px/800(GNB 메뉴명 미정, `EVENT_NAME`). 메뉴 18px/500 간격 32px(1365px 이하 16px, 1279px 이하 15px), 현재 메뉴는 `brand`. 오른쪽 로그인 15px `text-200`과 "SPOTV NOW Golf에서 중계 보기" 버튼.
+- **중계 보기 버튼:** 44px 알약, 1px `line-400` 테두리, 왼쪽 24px 오렌지 원 재생 아이콘(SPOTV NOW 로고의 ▶와 같은 역할), 15px/700, 오른쪽 새 창 아이콘. 1365px 이하 "중계 보기", 모바일은 아이콘만.
+- **모바일/태블릿(≤1023px):** 메뉴를 숨기고 중계 보기 버튼 + 44px 햄버거 버튼. 로그인·회원가입은 펼친 메뉴 안. 펼친 메뉴는 ds5 사용자 메뉴 패널(`surface-100`) 안 가운데 정렬 목록, 현재 위치 `brand`.
 
 ## Do's and Don'ts
 
