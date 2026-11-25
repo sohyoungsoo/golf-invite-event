@@ -1144,7 +1144,7 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
    원칙: 빛 번짐·유리 카드·아이콘 타일·무지개색 없이, 단색 면과 선, 큰 타이포로 위계.
    색은 의미가 있을 때만: 오렌지 = 행동·지금, 민트/블루 = 팀 로리/팀 스코티, 네이비 = 중계 화면.
    ===================================================================== */
-:root { --navy: #14213d; --navy-2: #0e1830; --navy-3: #1d2f57; --teal: #21c7a8; --blue: #4f7cff; --r-card: 12px; }
+:root { --navy: #14213d; --navy-2: #0e1830; --navy-3: #1d2f57; --teal: #3f8f86; --blue: #5470b4; --r-card: 12px; }
 .t-rory { --tc: var(--teal); } .t-scottie { --tc: var(--blue); }
 
 /* 키 비주얼 + D-day: 키 비주얼의 네이비를 그대로 이어 받는 단색 면 */
@@ -1155,16 +1155,11 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
 /* 팀 머리판(팀 색 단색) + 리더보드식 명단 */
 .side { display: block; }
 .side-h { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-6); background: var(--tc); }
-.t-rory .side-h { color: #08241f; } .t-scottie .side-h { color: #fff; }
+.side-h { color: #fff; }
 .side-h .crest { flex: none; width: 44px; height: 50px; }
 .side h2 { display: flex; align-items: center; gap: var(--space-3); color: inherit; }
 .side h2 .win { background: #fff; color: #111; }
-.side ul { display: block; margin: 0; padding: var(--space-2) var(--space-6) var(--space-4); }
-.side li { display: flex; flex-direction: row; align-items: baseline; gap: var(--space-3); padding: var(--space-3) 0; border: 0; border-radius: 0; background: none; }
-.side li + li { border-top: 1px solid rgba(255, 255, 255, .12); }
-.side li b { flex: none; }
-.side li .cap-tag { font: 700 14px/1 var(--font-sans); color: var(--tc); }
-.side li .rk, main.promo .side li .rk { margin-left: auto; font: 600 16px/1 var(--font-sans); color: rgba(255, 255, 255, .78); font-variant-numeric: tabular-nums; }
+
 .vs { align-self: stretch; justify-content: center; gap: var(--space-1); padding: 0 var(--space-6); background: var(--navy); border-left: 1px solid rgba(255, 255, 255, .12); border-right: 1px solid rgba(255, 255, 255, .12); }
 .vs b { font: 900 40px/1 var(--font-sans); letter-spacing: -1.5px; color: #fff; }
 .vs span { color: rgba(255, 255, 255, .72); }
@@ -1186,9 +1181,52 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
 .facts li + li { border-left: 1px solid var(--line-200); }
 .facts li:first-child { padding-left: 0; }
 
-/* 섹션 제목: 설명 시작 위치를 모든 섹션에서 같게 (제목 8 : 설명 4) */
-.p-head { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); align-items: end; gap: var(--space-3) var(--space-12); }
-.p-head p { max-width: none; }
+/* 섹션 제목: 설명(서브타이틀)은 제목 바로 아래. PC는 문장 단위 줄바꿈(br-d), 좁은 화면은 자연 줄바꿈 */
+.p-head { display: block; }
+.p-head p { margin-top: var(--space-3); max-width: none; padding: 0; }
+.blk-h { display: block; }
+.blk-h p { margin-top: var(--space-1); }
+@media (max-width: 1023px) { .br-d { display: none; } }
+
+/* 선수 프로필 (4 vs 4 보드, 지난해 스코어보드 공용) */
+.pf-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); margin: 0; padding: var(--space-6); list-style: none; }
+.pf-list .pf { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); min-width: 0; padding: 0; border: 0; background: none; text-align: center; }
+.pf-ph { width: 88px; height: 88px; display: grid; place-items: center; border-radius: 50%; overflow: hidden; background: #eef0f3; color: #8d97ab; box-shadow: 0 0 0 2px rgba(255, 255, 255, .16); }
+.pf-ph img { width: 100%; height: 100%; object-fit: cover; }
+.pf-ph svg { width: 58%; height: 58%; margin-top: 18%; }
+.pf.is-cap .pf-ph { box-shadow: 0 0 0 3px color-mix(in srgb, var(--tc) 75%, #fff); }
+.pf-tx { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
+.pf-list .pf-tx b { font: 700 17px/23px var(--font-sans); color: #fff; white-space: normal; overflow: visible; }
+.pf-list .pf-rk { font: 600 14px/20px var(--font-sans); color: rgba(255, 255, 255, .72); font-variant-numeric: tabular-nums; }
+.pf-tx em { margin-top: 2px; font: 700 12px/16px var(--font-sans); font-style: normal; color: color-mix(in srgb, var(--tc) 55%, #fff); }
+.pf-list.is-sm { gap: var(--space-2); padding: var(--space-4) var(--space-6) var(--space-6); }
+.pf-list.is-sm .pf-ph { width: 60px; height: 60px; }
+.pf-list.is-sm .pf-tx b { font-size: 15px; line-height: 21px; }
+.pf-list.is-sm .pf-rk { font-size: 13px; }
+.matchup .pf-list { grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
+.matchup .pf-ph { color: #8d97ab; }
+@media (max-width: 767px) {
+  .pf-list, .matchup .pf-list { gap: var(--space-2); padding: var(--space-4); }
+  .pf-ph { width: 60px; height: 60px; }
+  .pf-list .pf-tx b { font-size: 14px; line-height: 19px; }
+  .pf-list .pf-rk { font-size: 12px; line-height: 17px; }
+  .pf-list.is-sm .pf-ph { width: 52px; height: 52px; }
+  .f-roster { grid-template-columns: minmax(0, 1fr); }
+  .f-roster .pf-list + .pf-list { border-left: 0; border-top: 1px solid rgba(255, 255, 255, .12); }
+}
+.f-roster { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(255, 255, 255, .12); }
+.f-roster .pf-list + .pf-list { border-left: 1px solid rgba(255, 255, 255, .12); }
+.fteam .fm { color: rgba(255, 255, 255, .6); }
+
+/* 대회 일정: 두 카드의 제목·설명·형식·출전·편성 줄 높이를 맞춤 (subgrid) */
+@media (min-width: 1024px) {
+  .events { row-gap: 0; }
+  .event { display: grid; grid-template-rows: subgrid; grid-row: span 6; }
+  .event-body { display: contents; }
+  .event-body > h3 { padding: var(--space-6) var(--space-6) 0; }
+  .event-body > p { padding: var(--space-3) var(--space-6) 0; }
+  .event-body dl { grid-row: span 3; grid-template-rows: subgrid; row-gap: var(--space-2); margin: var(--space-4) var(--space-6) var(--space-6); padding-top: var(--space-3); }
+}
 /* 카드 공통 모서리 12px, 그라데이션 없는 단색 */
 .course, .steps li, .event, .good { border-radius: var(--r-card); }
 .good { background: var(--surface-100); }
@@ -1274,9 +1312,6 @@ main.promo .when .d small { font: 700 18px/1 var(--font-sans); color: var(--text
   .facts li:nth-child(2) { padding-left: var(--space-4); }
   .side-h { padding: var(--space-3) var(--space-4); }
   .side-h .crest { width: 36px; height: 41px; }
-  .side ul { padding: var(--space-1) var(--space-4) var(--space-3); }
-  main.promo .side li b { font-size: 17px; }
-  main.promo .side li .rk { font-size: 15px; }
   .p-head { display: block; }
   .cmp, .cmp tbody, .cmp thead { display: block; }
   .cmp colgroup { display: none; }
@@ -1551,7 +1586,7 @@ const checkBadge = (cx, cy) => `<circle cx="${cx}" cy="${cy}" r="10" fill="#fff"
 const spark = (x, y, s, c) => `<path d="M${x} ${y - s}C${x + s * .15} ${y - s * .15} ${x + s * .15} ${y - s * .15} ${x + s} ${y}C${x + s * .15} ${y + s * .15} ${x + s * .15} ${y + s * .15} ${x} ${y + s}C${x - s * .15} ${y + s * .15} ${x - s * .15} ${y + s * .15} ${x - s} ${y}C${x - s * .15} ${y - s * .15} ${x - s * .15} ${y - s * .15} ${x} ${y - s}z" fill="${c}"/>`;
 /* 팀 문장(방패) SVG. TGL처럼 팀을 엠블럼으로 보여 줍니다. 색은 장식용 팀 색(실제 팀 색 아님) */
 const CREST = (c1, c2, ch, id) => `<svg class="crest" viewBox="0 0 64 72" aria-hidden="true"><defs><linearGradient id="cr-${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><path d="M32 3 59 12.5V34c0 17.5-11.5 29-27 35C16.5 63 5 51.5 5 34V12.5z" fill="url(#cr-${id})" stroke="rgba(255,255,255,.9)" stroke-width="2.5"/><path d="M14 22h36" stroke="rgba(255,255,255,.35)" stroke-width="2"/><text x="32" y="50" text-anchor="middle" font-size="24" font-weight="800" fill="#fff">${ch}</text></svg>`;
-const TEAM_COLOR = { rory: ['#2fe0c0', '#0e8f7b'], scottie: ['#6f95ff', '#2f4fd1'] };
+const TEAM_COLOR = { rory: ['#6fb5ac', '#2f6f67'], scottie: ['#8aa0d8', '#3d5592'] };
 const ART = {
   /* 1. 초대코드 티켓 */
   code: `<svg class="st-art" viewBox="0 0 320 200" aria-hidden="true">
@@ -1671,14 +1706,24 @@ function setupDock(){
 }
 
 /* ---------- 옵텀 골프채널 게임스 정보 (출처: 골프채널 2026.11.2 보도자료, 2025 라이브 기사) ---------- */
+/* 선수 프로필: 사진은 PGA TOUR 공식 프로필(assets/players), 랭킹은 OWGR 2026년 47주차(11.22) 기준 */
+const OWGR_DATE = '2026.11.22';
 const PRO_TEAMS = [
-  { nm: '팀 로리', en: 'TEAM RORY', key: 'rory', ch: 'R', players: [
-    { nm: '로리 매킬로이', note: '세계 2위', cap: true }, { nm: '맷 피츠패트릭', note: '세계 3위' },
-    { nm: '김시우', note: '세계 14위' }, { nm: '리하오퉁', note: '2년 연속 출전' }] },
-  { nm: '팀 스코티', en: 'TEAM SCOTTIE', key: 'scottie', ch: 'S', badge: '지난해 우승', players: [
-    { nm: '스코티 셰플러', note: '세계 1위', cap: true }, { nm: '크리스 고터럽', note: '세계 6위' },
-    { nm: '마이클 브레넌', note: '세계 18위' }, { nm: '잭슨 코이번', note: 'PGA 투어 루키' }] }
+  { nm: '팀 로리', key: 'rory', ch: 'R', players: [
+    { nm: '로리 매킬로이', rank: 2, img: 'mcilroy', cap: true }, { nm: '맷 피츠패트릭', rank: 3, img: 'fitzpatrick' },
+    { nm: '김시우', rank: 15, img: 'kim-siwoo' }, { nm: '리하오퉁', rank: 96, img: 'li-haotong' }] },
+  { nm: '팀 스코티', key: 'scottie', ch: 'S', badge: '지난해 우승', players: [
+    { nm: '스코티 셰플러', rank: 1, img: 'scheffler', cap: true }, { nm: '크리스 고터럽', rank: 7, img: 'gotterup' },
+    { nm: '마이클 브레넌', rank: 19, img: 'brennan' }, { nm: '잭슨 코이번', rank: 52, img: 'koivun' }] }
 ];
+/* 2025 대회 출전 명단 (지난해 결과 스코어보드). 루크 도널드는 사진 자료가 없어 아이콘으로 임시 표시 */
+const TEAMS_2025 = {
+  scottie: [{ nm: '스코티 셰플러', rank: 1, img: 'scheffler', cap: true }, { nm: '샘 번스', rank: 10, img: 'burns' }, { nm: '키건 브래들리', rank: 61, img: 'bradley' }, { nm: '루크 클랜턴', rank: 273, img: 'clanton' }],
+  rory: [{ nm: '로리 매킬로이', rank: 2, img: 'mcilroy', cap: true }, { nm: '셰인 로리', rank: 42, img: 'lowry' }, { nm: '루크 도널드', rank: null, img: null }, { nm: '리하오퉁', rank: 96, img: 'li-haotong' }]
+};
+const PERSON_IC = '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="8" fill="currentColor"/><path d="M8 42a16 13 0 0 1 32 0z" fill="currentColor"/></svg>';
+const rankText = r => r ? `세계 ${r}위` : '세계 1000위 밖';
+const profile = p => `<li class="pf${p.cap ? ' is-cap' : ''}"><span class="pf-ph">${p.img ? `<img src="assets/players/${p.img}.jpg" alt="" width="240" height="240" loading="lazy">` : PERSON_IC}</span><span class="pf-tx"><b>${p.nm}</b><span class="pf-rk">${rankText(p.rank)}</span>${p.cap ? '<em>주장</em>' : ''}</span></li>`;
 const RULE_TAG = { y26: '2026 확정', new: '2026 신규', y25: '2025 방식' };
 const RULES = [
   { nm: '팀 릴레이', st: 'y26', tx: '파4 홀을 4명이 이어 칩니다. 한 명이 티샷, 다른 한 명이 어프로치를 하고, 나머지 두 명이 그린 주변에서 번갈아 쳐 홀아웃합니다. 세션마다 가장 빠른 기록과 가장 적은 타수에 승점을 줍니다.', spec: '4명 이어 치기', specSub: '시간 + 타수로 승부' },
@@ -1739,7 +1784,7 @@ function Promo(){
         <div class="matchup" aria-label="2026 출전 팀">
           ${PRO_TEAMS.map((t, i) => `${i === 1 ? '<p class="vs"><b>VS</b><span>4명 vs 4명</span></p>' : ''}
           <div class="side t-${t.key} ${i === 1 ? 'is-right' : ''}"><div class="side-h">${CREST(...TEAM_COLOR[t.key], t.ch, 'm' + t.key)}<h2>${t.nm}${t.badge ? `<span class="win">${t.badge}</span>` : ''}</h2></div>
-            <ul>${t.players.map(p => `<li><b>${p.nm}</b>${p.cap ? '<span class="cap-tag">주장</span>' : ''}<span class="rk">${p.note}</span></li>`).join('')}</ul>
+            <ul class="pf-list">${t.players.map(profile).join('')}</ul>
           </div>`).join('')}
         </div>
       </div>
@@ -1773,12 +1818,12 @@ function Promo(){
     </div></section>
 
     <section class="p-sec is-alt" id="prizes" aria-labelledby="przTitle"><div class="wrap">
-      <div class="p-head"><h2 id="przTitle">4명이 함께 나가는 골프장 라운드</h2><p>서산수CC·파인비치·군산CC 라운딩권(4인)을 1팀씩, 모두 3팀에 드립니다. 추가 경품으로 PGA 드라이버 커버와 볼빅 골프공도 준비했습니다.</p></div>
+      <div class="p-head"><h2 id="przTitle">4명이 함께 나가는 골프장 라운드</h2><p>서산수CC·파인비치·군산CC 라운딩권(4인)을 1팀씩, 모두 3팀에 드립니다.<br class="br-d">추가 경품으로 PGA 드라이버 커버와 볼빅 골프공도 준비했습니다.</p></div>
       ${prizesHTML('h3')}
     </div></section>
 
     <section class="p-sec" id="games" aria-labelledby="gmTitle"><div class="wrap">
-      <div class="p-head"><h2 id="gmTitle">골프채널 게임스, 무엇이 다를까</h2><p>나흘 동안 72홀을 도는 정규 대회와 달리, 하룻밤 동안 시계와 싸우는 팀 챌린지로 승부를 냅니다. 이기는 건 개인이 아니라 팀입니다.</p></div>
+      <div class="p-head"><h2 id="gmTitle">골프채널 게임스, 무엇이 다를까</h2><p>나흘 동안 72홀을 도는 정규 대회와 달리, 하룻밤 동안 시계와 싸우는 팀 챌린지로 승부를 냅니다.<br class="br-d">이기는 건 개인이 아니라 팀입니다.</p></div>
 
       <div class="blk">
         <div class="blk-h"><h3>정규 대회 vs 골프채널 게임스</h3></div>
@@ -1809,16 +1854,17 @@ function Promo(){
         <ul class="rules">${RULES.map(r => `
           <li class="rule"><div><h4>${r.nm}</h4><span class="tag t-${r.st}">${RULE_TAG[r.st]}</span></div><p>${r.tx}</p><p class="spec">${r.spec}<small>${r.specSub}</small></p></li>`).join('')}
         </ul>
-        <p class="src-note">2026년 세부 규칙은 대회 전에 공개됩니다. 설명은 모두 지난해(2025) 방식 기준이라 올해 바뀔 수 있습니다. 세계 랭킹은 11월 2일 발표 기준입니다. 출처: <a href="https://www.golfchannel.com/pga-tour/live/optum-golf-channel-games-2025-live-updates-scoring-and-highlights-from-team-scheffler-and-team-mcilroy" target="_blank" rel="noopener">Golf Channel</a>, 골프채널 2026.11.2 보도자료</p>
+        <p class="src-note">2026년 세부 규칙은 대회 전에 공개됩니다. 설명은 모두 지난해(2025) 방식 기준이라 올해 바뀔 수 있습니다. 세계 랭킹은 OWGR ${OWGR_DATE} 기준, 선수 사진은 PGA TOUR 공식 프로필입니다. 출처: <a href="https://www.golfchannel.com/pga-tour/live/optum-golf-channel-games-2025-live-updates-scoring-and-highlights-from-team-scheffler-and-team-mcilroy" target="_blank" rel="noopener">Golf Channel</a>, 골프채널 2026.11.2 보도자료</p>
       </div>
     </div></section>
 
     <section class="p-sec is-alt" id="lastyear" aria-labelledby="lyTitle"><div class="wrap">
-      <div class="p-head"><h2 id="lyTitle">지난해 승부는 1인치 차이</h2><p>2025년 첫 대회. 다섯 개 챌린지가 끝나고 3대 3 동점, 두 주장이 47야드에서 한 번씩 친 연장 샷에서 셰플러가 1인치 더 붙였습니다.</p></div>
+      <div class="p-head"><h2 id="lyTitle">지난해 승부는 1인치 차이</h2><p>2025년 첫 대회. 다섯 개 챌린지가 끝나고 3대 3 동점,<br class="br-d">두 주장이 47야드에서 한 번씩 친 연장 샷에서 셰플러가 1인치 더 붙였습니다.</p></div>
       <div class="final" aria-label="2025 최종 결과: 팀 스코티 3, 팀 로리 3, 연장에서 팀 스코티 우승">
-        <div class="fteam t-scottie"><span class="plate">${CREST(...TEAM_COLOR.scottie, 'S', 'fs')}</span><p class="fn">팀 스코티 <span class="win">우승</span></p><p class="fm">스코티 셰플러 · 샘 번스 · 키건 브래들리 · 루크 클랜턴</p><p class="fs">3</p></div>
+        <div class="fteam t-scottie"><span class="plate">${CREST(...TEAM_COLOR.scottie, 'S', 'fs')}</span><p class="fn">팀 스코티 <span class="win">우승</span></p><p class="fm">2025 출전 명단</p><p class="fs">3</p></div>
         <div class="fmid"><b>연장 승</b><span>47야드 니어핀<br>1인치 차</span></div>
-        <div class="fteam is-r is-lose t-rory"><span class="plate">${CREST(...TEAM_COLOR.rory, 'R', 'fr')}</span><p class="fn">팀 로리</p><p class="fm">로리 매킬로이 · 셰인 로리 · 루크 도널드 · 리하오퉁</p><p class="fs">3</p></div>
+        <div class="fteam is-r is-lose t-rory"><span class="plate">${CREST(...TEAM_COLOR.rory, 'R', 'fr')}</span><p class="fn">팀 로리</p><p class="fm">2025 출전 명단</p><p class="fs">3</p></div>
+        <div class="f-roster"><ul class="pf-list is-sm t-scottie">${TEAMS_2025.scottie.map(profile).join('')}</ul><ul class="pf-list is-sm t-rory">${TEAMS_2025.rory.map(profile).join('')}</ul></div>
       </div>
       <table class="prog">
         <thead><tr><th scope="col">챌린지</th><th scope="col">이긴 팀</th><th scope="col" class="hide-m">승부처</th><th scope="col" class="sc">스코티 : 로리</th></tr></thead>
