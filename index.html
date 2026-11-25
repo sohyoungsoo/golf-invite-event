@@ -513,22 +513,24 @@ html { scrollbar-color: var(--surface-300) var(--bg-100); }
 .lineup { position: relative; background: var(--bg-300); border-top: 1px solid var(--line-200); border-bottom: 1px solid var(--line-200); }
 .lineup-wrap { padding-top: calc(var(--space-12) + var(--space-4)); padding-bottom: calc(var(--space-12) + var(--space-4)); }
 .lineup h1 { font: 800 40px/1.25 var(--font-sans); letter-spacing: -1.2px; color: var(--text-100); }
-.lineup-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: start; gap: var(--space-12); margin-top: var(--space-6); }
-.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-6); list-style: none; }
-.facts li { display: flex; flex-direction: column; gap: var(--space-1); padding-top: var(--space-3); border-top: 1px solid var(--line-300); }
-.facts li.is-wide { grid-column: 1 / -1; }
-.facts .k { font: 500 16px/22px var(--font-sans); color: var(--text-200); }
-.facts .v { font: 700 21px/30px var(--font-sans); letter-spacing: -0.4px; color: var(--text-100); }
-.facts .v2 { font: 500 17px/26px var(--font-sans); color: var(--text-150); }
-.lineup-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); margin-top: var(--space-6); }
-.lineup-cta .cta-help { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--text-200); }
-.lineup-team { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); border-radius: var(--radius-md); background: var(--surface-100); }
-.lt-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); }
+/* 내 팀 패널: 왼쪽 상태·CTA, 오른쪽 큰 팀 4칸 */
+.lineup-panel { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; gap: var(--space-12); margin-top: var(--space-6); padding: calc(var(--space-6) + var(--space-2)) var(--space-12); border-radius: var(--radius-md); background: var(--surface-100); border: 1px solid var(--line-200); }
+.lt-head { display: flex; align-items: baseline; gap: var(--space-4); }
 .lt-head h2 { font: 700 24px/32px var(--font-sans); color: var(--text-100); }
 .lt-count { font: 500 18px/1 var(--font-sans); color: var(--text-200); font-variant-numeric: tabular-nums; }
 .lt-count b { font: 800 40px/1 var(--font-sans); letter-spacing: -0.8px; color: var(--text-100); margin-right: 2px; }
-.lt-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
-.lt-msg { font: 400 18px/27px var(--font-sans); color: var(--text-150); }
+.lt-msg { margin-top: var(--space-2); font: 400 18px/27px var(--font-sans); color: var(--text-150); }
+.lineup-cta { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); margin-top: var(--space-6); }
+.lineup-cta .cta-help { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--text-200); }
+.lineup-cta .text-link { padding: 0; min-height: 0; font-size: 16px; color: var(--text-200); }
+.lineup-panel .team.is-lg li { min-height: 148px; }
+/* 핵심 정보 띠: 4칸 가로, 칸 사이 세로선 */
+.facts { display: grid; grid-template-columns: 0.8fr 1fr 1.6fr 1fr; margin-top: var(--space-3); list-style: none; border-radius: var(--radius-md); border: 1px solid var(--line-200); }
+.facts li { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-6); }
+.facts li + li { border-left: 1px solid var(--line-200); }
+.facts .k { font: 500 16px/22px var(--font-sans); color: var(--text-200); }
+.facts .v { font: 700 21px/30px var(--font-sans); letter-spacing: -0.4px; color: var(--text-100); }
+.facts .v2 { font: 500 16px/24px var(--font-sans); color: var(--text-150); }
 .lt-msg b { color: var(--text-100); font-weight: 700; letter-spacing: 0.5px; }
 .lt-msg a { color: var(--text-100); text-underline-offset: 3px; }
 
@@ -561,39 +563,23 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 
 /* Section heads for promo */
 .p-sec { padding: calc(var(--space-12) * 2) 0; }
-.p-sec + .p-sec { padding-top: 0; }
+/* 섹션 구분: 위 구분선 + 배경 톤 번갈아 (is-alt) */
+.p-sec { border-top: 1px solid var(--line-200); }
+.p-sec.is-alt { background: var(--bg-000); }
 /* 섹션 제목: 한 줄 제목 + 바로 오른쪽에 설명 (자리가 모자라면 아래로) */
 .p-head { display: flex; align-items: flex-end; justify-content: flex-start; flex-wrap: wrap; gap: var(--space-3) var(--space-12); margin-bottom: var(--space-12); }
 .p-head h2 { flex: none; font: 800 44px/1.2 var(--font-sans); letter-spacing: -1.5px; color: var(--text-100); white-space: nowrap; }
 .p-head p { flex: 1 1 360px; max-width: 38em; padding-bottom: 6px; font: 400 19px/29px var(--font-sans); color: var(--text-200); }
 
-/* How: 3단계 (아이콘 + 화면 그림 + 설명) */
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); list-style: none; counter-reset: step; }
-.steps li { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); border-radius: var(--radius-md); background: var(--surface-100); }
-.st-top { display: flex; align-items: center; justify-content: space-between; }
-.st-ic { width: 64px; height: 64px; display: grid; place-items: center; border-radius: var(--radius-md); background: var(--surface-300); color: var(--text-100); }
-.st-ic svg { width: 32px; height: 32px; }
-.steps .no { font: 800 56px/1 var(--font-sans); letter-spacing: -2px; color: var(--text-400); font-variant-numeric: tabular-nums; }
-.st-vis { display: flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 112px; margin: var(--space-2) 0 var(--space-1); padding: var(--space-4); border-radius: var(--radius-sm); background: var(--bg-300); }
+/* How: 3단계 (큰 일러스트 + 번호·제목 + 설명) */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); list-style: none; }
+.steps li { display: flex; flex-direction: column; min-width: 0; border-radius: var(--radius-md); overflow: hidden; background: var(--surface-100); border: 1px solid var(--line-200); }
+.st-art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; }
+.st-body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); }
+.st-h { display: flex; align-items: center; gap: var(--space-3); }
+.st-no { flex: none; width: 36px; height: 36px; display: grid; place-items: center; border-radius: var(--radius-full); background: var(--text-100); color: var(--bg-100); font: 800 18px/1 var(--font-sans); font-variant-numeric: tabular-nums; }
 .steps h3 { font: 700 24px/32px var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); }
 .steps p { font: 400 17px/27px var(--font-sans); color: var(--text-200); }
-/* 단계 그림: 1 초대코드 티켓 */
-.v-code { display: flex; flex-direction: column; align-items: center; gap: var(--space-1); padding: var(--space-3) var(--space-6); border-radius: var(--radius-sm); border: 1px dashed var(--line-300); }
-.v-code small { font: 500 14px/18px var(--font-sans); color: var(--text-250); }
-.v-code b { font: 800 28px/1 var(--font-sans); letter-spacing: 3px; color: var(--text-100); font-variant-numeric: tabular-nums; }
-/* 2 초대 링크 공유 */
-.v-share { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-2); width: 100%; }
-.v-link { display: flex; align-items: center; gap: var(--space-2); height: 40px; padding: 0 var(--space-3); border-radius: var(--radius-pill); background: var(--surface-200); font: 500 14px/1 var(--font-sans); color: var(--text-200); overflow: hidden; white-space: nowrap; }
-.v-link svg { flex: none; width: 18px; height: 18px; color: var(--text-250); }
-.v-link span { overflow: hidden; text-overflow: ellipsis; }
-.v-friends { display: flex; justify-content: center; gap: var(--space-2); }
-.v-friends i { width: 36px; height: 36px; display: grid; place-items: center; border-radius: var(--radius-full); background: var(--surface-300); font: 700 14px/1 var(--font-sans); font-style: normal; color: var(--text-100); }
-/* 3 팀 완성 */
-.v-team { display: flex; align-items: center; gap: var(--space-2); }
-.v-team i { width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radius-sm); background: var(--surface-300); color: var(--text-100); font: 700 15px/1 var(--font-sans); font-style: normal; }
-.v-team i.me { box-shadow: inset 0 0 0 2px var(--brand); }
-.v-team i svg { width: 20px; height: 20px; }
-.v-done { margin-left: var(--space-2); display: inline-flex; align-items: center; height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-pill); background: var(--brand); color: var(--on-brand); font: 700 15px/1 var(--font-sans); white-space: nowrap; }
 
 /* Prizes: course photos + product shots */
 .courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); list-style: none; }
@@ -703,30 +689,20 @@ body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
 .prog tr.is-po th, .prog tr.is-po td { background: var(--surface-100); }
 
 /* Broadcast: SPOTV NOW Golf 중계 투어 */
-.tours { display: grid; grid-template-columns: 1.25fr 1fr 1fr; grid-template-rows: auto auto; gap: var(--space-3); }
-.tour { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-6); border-radius: var(--radius-md); background: var(--surface-100); }
-.tour .lg { display: flex; align-items: center; height: 72px; }
-.tour .lg img { display: block; height: 72px; width: auto; }
-.tour .lg img.is-wide { height: 42px; }
-.tour h3 { font: 800 22px/1.25 var(--font-sans); letter-spacing: -0.5px; color: var(--text-100); }
-.tour .cat { font: 500 14px/20px var(--font-sans); color: var(--text-250); }
-.tour .ex { margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--line-200); font: 400 14px/21px var(--font-sans); color: var(--text-200); }
-.tour .ex b { display: block; margin-bottom: 2px; font: 700 12px/18px var(--font-sans); color: var(--text-250); }
-.tour.is-feat { grid-row: 1 / span 2; padding: 0; overflow: hidden; background: var(--bg-300); }
-.tour.is-feat > img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
-.tour.is-feat .tb { display: flex; flex-direction: column; gap: var(--space-3); flex: 1; padding: var(--space-6); }
-.tour.is-feat h3 { font-size: 30px; letter-spacing: -0.8px; }
-.tour .tx { width: 64px; height: 64px; display: grid; place-items: center; border-radius: var(--radius-sm); border: 1px solid var(--line-400); font: 800 15px/1 var(--font-sans); color: var(--text-100); letter-spacing: -0.3px; }
-.also { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-3); }
-.also > div { padding: var(--space-6); border-radius: var(--radius-md); border: 1px solid var(--line-200); }
-.also h3 { font: 700 18px/26px var(--font-sans); color: var(--text-100); }
-.also p { margin-top: var(--space-1); font: 400 14px/21px var(--font-sans); color: var(--text-250); }
-.also ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); list-style: none; }
-.also li { height: 36px; display: inline-flex; align-items: center; padding: 0 var(--space-4); border-radius: var(--radius-chip); background: var(--surface-200); font: 700 14px/1 var(--font-sans); color: var(--text-100); }
+/* Broadcast: 투어 로고 + 이름 띠 */
+.tours { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); list-style: none; border-radius: var(--radius-md); border: 1px solid var(--line-200); background: var(--surface-100); overflow: hidden; }
+.tours li { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3); min-width: 0; padding: var(--space-6) var(--space-3); text-align: center; }
+.tours li + li { border-left: 1px solid var(--line-200); }
+.tours .lg { display: flex; align-items: center; justify-content: center; height: 64px; }
+.tours .lg img { display: block; height: 64px; width: auto; }
+.tours .lg img.is-wide { height: 38px; }
+.tours .lg .tx { font: 800 20px/1.1 var(--font-sans); letter-spacing: -0.4px; color: var(--text-100); }
+.tours .nm { font: 700 18px/24px var(--font-sans); color: var(--text-100); white-space: nowrap; }
+.bc-also { margin-top: var(--space-4); text-align: center; font: 400 17px/26px var(--font-sans); color: var(--text-200); }
 .bc-cta { display: flex; justify-content: center; margin-top: var(--space-6); }
 
 /* Notice */
-.notice-wrap { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: var(--space-12); padding-top: var(--space-12); border-top: 1px solid var(--line-200); }
+.notice-wrap { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: var(--space-12); }
 .notice-wrap h2 { font: 700 24px/32px var(--font-sans); color: var(--text-100); }
 
 /* Invite header on signup */
@@ -924,13 +900,6 @@ main.promo .prog .sc { font-size: 24px; }
 main.promo .event-date span { font-size: 18px; }
 main.promo .event-body h3 { font-size: 26px; line-height: 34px; }
 main.promo .event-body dl { font: 400 17px/26px var(--font-sans); }
-main.promo .tour h3 { font-size: 24px; }
-main.promo .tour .cat { font-size: 17px; line-height: 24px; }
-main.promo .tour .ex { font-size: 17px; line-height: 26px; }
-main.promo .tour .ex b { font-size: 14px; line-height: 20px; }
-main.promo .also h3 { font-size: 21px; line-height: 30px; }
-main.promo .also p { font-size: 17px; line-height: 26px; }
-main.promo .also li { height: 40px; font-size: 16px; }
 main.promo .notice { gap: var(--space-3); font: 400 17px/27px var(--font-sans); color: var(--text-200); }
 main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
 
@@ -962,22 +931,18 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
   .stage-in { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding-top: var(--space-6); padding-bottom: var(--space-6); }
   .stage-event { font-size: 30px; }
   .stage-sub { font-size: 18px; line-height: 28px; }
-  .steps { grid-template-columns: minmax(0, 1fr); }
-  .steps li { display: grid; grid-template-columns: 64px minmax(0, 1fr) 260px; grid-template-areas: "ic h vis" "ic p vis"; column-gap: var(--space-6); row-gap: var(--space-1); align-items: start; }
-  .st-top { grid-area: ic; flex-direction: column; gap: var(--space-2); }
-  .st-top .no { font-size: 32px; }
-  .st-vis { grid-area: vis; margin: 0; }
-  .steps h3 { grid-area: h; }
-  .steps p { grid-area: p; }
-  .v-team { flex-wrap: wrap; justify-content: center; gap: 6px; }
-  .v-team i { width: 38px; height: 38px; }
-  .v-done { margin-left: 0; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .steps li { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); align-items: center; }
+  .st-art { height: 100%; object-fit: cover; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts li:nth-child(3) { border-left: 0; }
+  .facts li:nth-child(n+3) { border-top: 1px solid var(--line-200); }
   .matchup { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
   .side.is-right h2 { justify-content: flex-start; }
   .side ul { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .vs { flex-direction: row; justify-content: flex-start; gap: var(--space-3); }
   .vs b { font-size: 24px; }
-  .lineup-in { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .lineup-panel { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding: var(--space-6); }
   .p-head h2 { font-size: 36px; }
   .kv-band { height: auto; }
   .kv-bg { display: none; }
@@ -991,9 +956,7 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
   .rule .spec { grid-column: 2; text-align: left; }
   .final { padding: var(--space-6); }
   .fs { font-size: 64px; }
-  .tours { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .tour.is-feat { grid-column: 1 / -1; grid-row: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .tour.is-feat { align-items: center; }
+  .tours { grid-template-columns: repeat(3, minmax(0, 1fr)); } .tours li:nth-child(n+4) { border-top: 1px solid var(--line-200); } .tours li:nth-child(4) { border-left: 0; }
   .notice-wrap { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .login-page .sng-login-panel { width: min(var(--login-panel-w), 62%); }
   .kv-caption, .kv-foot { max-width: calc(38% - var(--gutter) - var(--space-4)); }
@@ -1038,15 +1001,19 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
   .side li span { font-size: 14px; line-height: 19px; }
   .lineup-wrap { padding-top: var(--space-12); padding-bottom: var(--space-12); }
   .lineup h1 { font-size: 26px; letter-spacing: -0.6px; }
-  .lineup-in { gap: var(--space-6); margin-top: var(--space-4); }
-  .facts { gap: var(--space-3) var(--space-4); }
+  .lineup-panel { padding: var(--space-4); gap: var(--space-4); margin-top: var(--space-4); }
+  .lineup-panel .team.is-lg li { min-height: 96px; }
+  .lineup-cta { margin-top: var(--space-4); align-items: stretch; }
+  .lineup-cta .cta-pill { width: 100%; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts li { padding: var(--space-4); }
+  .facts li:nth-child(3) { border-left: 0; }
+  .facts li:nth-child(n+3) { border-top: 1px solid var(--line-200); }
+  .facts li.is-wide { grid-column: 1 / -1; border-left: 0; }
   .facts .k { font-size: 15px; }
   .facts .v { font-size: 18px; line-height: 26px; }
-  .facts .v2 { font-size: 16px; line-height: 24px; }
-  .lineup-cta .cta-pill { width: 100%; }
-  .lineup-team { padding: var(--space-4); }
+  .facts .v2 { font-size: 15px; line-height: 23px; }
   .lt-msg { font-size: 17px; line-height: 26px; }
-  .lt-foot .sng-btn { width: 100%; }
   .cta-pill { min-height: 56px; font-size: 18px; }
   .dock-in { gap: var(--space-3); min-height: 72px; }
   .dock-team p { display: none; }
@@ -1057,15 +1024,17 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
   .p-head { display: block; margin-bottom: var(--space-6); }
   .p-head h2 { font-size: 30px; letter-spacing: -0.8px; white-space: normal; }
   .p-head p { margin-top: var(--space-2); padding: 0; font-size: 17px; line-height: 26px; }
-  .steps li { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-2); padding: var(--space-4); }
+  .steps li { display: flex; flex-direction: column; }
+  .st-art { height: auto; }
   main.promo .team.is-lg li { font-size: 14px; line-height: 19px; }
-  .st-top { flex-direction: row; }
-  .st-ic { width: 52px; height: 52px; }
-  .st-ic svg { width: 28px; height: 28px; }
-  .steps .no, .st-top .no { font-size: 40px; }
-  .st-vis { min-height: 96px; margin: var(--space-1) 0; }
+  .st-body { padding: var(--space-4) var(--space-4) var(--space-6); }
+  .st-no { width: 30px; height: 30px; font-size: 16px; }
   .steps h3 { font-size: 21px; line-height: 28px; }
   .steps p { font-size: 16px; line-height: 25px; }
+  /* 모바일 섹션 구분: 섹션 사이 10px 띠 */
+  .p-sec { border-top: 10px solid var(--bg-000); }
+  .p-sec.is-alt { border-top-color: var(--bg-300); background: var(--bg-100); }
+  .lineup { border-bottom: 0; }
   /* 홍보 페이지 글자 크기 (모바일) */
   main.promo .cmp { font-size: 15px; line-height: 22px; }
   main.promo .cmp thead th { font-size: 14px; }
@@ -1082,8 +1051,6 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
   main.promo .prog .sc { font-size: 19px; }
   main.promo .event-body h3 { font-size: 21px; line-height: 29px; }
   main.promo .event-body dl { font-size: 16px; line-height: 24px; }
-  main.promo .tour h3 { font-size: 22px; }
-  main.promo .tour .ex, main.promo .also p, main.promo .tour .cat { font-size: 16px; line-height: 24px; }
   main.promo .notice { font-size: 16px; line-height: 25px; }
   main.promo .notice-wrap h2 { font-size: 24px; }
   main.promo .course-body .ct { font-size: 17px; }
@@ -1131,15 +1098,7 @@ main.promo .notice-wrap h2 { font-size: 28px; line-height: 36px; }
   .prog .hide-m { display: none; }
   .prog tbody th { font-size: 15px; }
   .prog .sc { font-size: 18px; }
-  .tours { grid-template-columns: minmax(0, 1fr); }
-  .tour { padding: var(--space-4); }
-  .tour.is-feat { display: flex; }
-  .tour.is-feat .tb { padding: var(--space-4); }
-  .tour.is-feat h3 { font-size: 24px; }
-  .tour .lg, .tour .lg img { height: 56px; }
-  .tour .lg img.is-wide { height: 32px; }
-  .also { grid-template-columns: minmax(0, 1fr); }
-  .also > div { padding: var(--space-4); }
+  .tours { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; } .tours li { flex: 0 0 42%; scroll-snap-align: start; border-top: 0 !important; border-left: 1px solid var(--line-200) !important; } .tours li:first-child { border-left: 0 !important; } .tours .lg, .tours .lg img { height: 48px; } .tours .lg img.is-wide { height: 28px; } .tours .nm { font-size: 16px; }
   .site-foot { padding: 40px 0 84px; text-align: center; }
   body.has-dock .site-foot { padding-bottom: calc(84px + 72px); }
   .foot-in { flex-direction: column; align-items: center; gap: var(--space-6); }
@@ -1417,14 +1376,69 @@ const ddText = n => n > 0 ? `D-${n}` : n === 0 ? 'D-DAY' : '종료';
 
 /* ---------- 상태별 CTA: 비로그인 / 코드 없음 / 팀 구성 중 / 응모 완료 ---------- */
 const ARROW = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-/* 참여 방법 아이콘 (같은 2px 선 굵기의 직접 그린 SVG) */
-const svgI = (d, extra = '') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${d}</svg>`;
-const IC = {
-  ticket: svgI('<path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M9 6v12" stroke-dasharray="2 2.5"/><path d="M13 10h4M13 14h3"/>'),
-  share: svgI('<circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/>'),
-  trophy: svgI('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8.5 20h7M10 17h4"/>'),
-  link: svgI('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>'),
-  check: svgI('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 'stroke-width="2.6"')
+/* 참여 방법 일러스트 (직접 그린 SVG, 320×200). 장식용이라 화면 읽기 프로그램에는 숨기고 설명은 글로 제공 */
+const avatarSil = (cx, cy, fill = 'rgba(255,255,255,.92)') => `<circle cx="${cx}" cy="${cy - 6}" r="7.5" fill="${fill}"/><path d="M${cx - 12} ${cy + 15}a12 10 0 0 1 24 0z" fill="${fill}"/>`;
+const checkBadge = (cx, cy) => `<circle cx="${cx}" cy="${cy}" r="10" fill="#fff"/><path d="M${cx - 4.5} ${cy}l3 3 6-6" fill="none" stroke="#12a150" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+const spark = (x, y, s, c) => `<path d="M${x} ${y - s}C${x + s * .15} ${y - s * .15} ${x + s * .15} ${y - s * .15} ${x + s} ${y}C${x + s * .15} ${y + s * .15} ${x + s * .15} ${y + s * .15} ${x} ${y + s}C${x - s * .15} ${y + s * .15} ${x - s * .15} ${y + s * .15} ${x - s} ${y}C${x - s * .15} ${y - s * .15} ${x - s * .15} ${y - s * .15} ${x} ${y - s}z" fill="${c}"/>`;
+const ART = {
+  /* 1. 초대코드 티켓 */
+  code: `<svg class="st-art" viewBox="0 0 320 200" aria-hidden="true">
+    <defs>
+      <linearGradient id="a1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a1a0a"/><stop offset="1" stop-color="#131313"/></linearGradient>
+      <linearGradient id="a1t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d"/><stop offset="1" stop-color="#ff4600"/></linearGradient>
+      <radialGradient id="a1g"><stop offset="0" stop-color="#ff5a14" stop-opacity=".5"/><stop offset="1" stop-color="#ff5a14" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="320" height="200" fill="url(#a1bg)"/>
+    <circle cx="160" cy="104" r="120" fill="url(#a1g)"/>
+    <g transform="rotate(-7 160 100)">
+      <path d="M68 56H110a10 10 0 0 0 20 0H254a10 10 0 0 1 10 10v68a10 10 0 0 1-10 10H130a10 10 0 0 0-20 0H68a10 10 0 0 1-10-10V66a10 10 0 0 1 10-10z" fill="url(#a1t)"/>
+      <path d="M120 74v52" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="4 5"/>
+      <circle cx="89" cy="100" r="17" fill="#fff"/>
+      <g fill="#e4e4e4"><circle cx="83" cy="94" r="2"/><circle cx="91" cy="92" r="2"/><circle cx="96" cy="99" r="2"/><circle cx="86" cy="102" r="2"/><circle cx="93" cy="107" r="2"/><circle cx="82" cy="109" r="2"/></g>
+      <text x="142" y="89" font-size="12" font-weight="700" letter-spacing="2.5" fill="rgba(255,255,255,.85)">MY CODE</text>
+      <text x="141" y="122" font-size="31" font-weight="800" letter-spacing="2" fill="#fff">GN7K2Q</text>
+    </g>
+    ${spark(266, 40, 9, '#ffd0b3')}${spark(52, 160, 7, '#ffb48a')}${spark(282, 158, 5, '#fff')}
+  </svg>`,
+  /* 2. 초대 링크가 친구 3명에게 */
+  share: `<svg class="st-art" viewBox="0 0 320 200" aria-hidden="true">
+    <defs>
+      <linearGradient id="a2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14213d"/><stop offset="1" stop-color="#121212"/></linearGradient>
+      <radialGradient id="a2g"><stop offset="0" stop-color="#4f7cff" stop-opacity=".45"/><stop offset="1" stop-color="#4f7cff" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="320" height="200" fill="url(#a2bg)"/>
+    <circle cx="104" cy="100" r="100" fill="url(#a2g)"/>
+    <g fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round">
+      <path d="M134 88C170 60 196 50 218 50"/><path d="M138 100H222"/><path d="M134 112C170 140 196 150 218 150"/>
+    </g>
+    <circle cx="104" cy="100" r="34" fill="#ff4600"/>
+    <g fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M98 106a8 8 0 0 0 11.3 0l6-6a8 8 0 0 0-11.3-11.3l-2 2"/><path d="M110 94a8 8 0 0 0-11.3 0l-6 6a8 8 0 0 0 11.3 11.3l2-2"/></g>
+    <circle cx="242" cy="50" r="24" fill="#21c7a8"/>${avatarSil(242, 52)}
+    <circle cx="250" cy="100" r="24" fill="#7b6cff"/>${avatarSil(250, 102)}
+    <circle cx="242" cy="150" r="24" fill="#ffb020"/>${avatarSil(242, 152)}
+    <rect x="62" y="146" width="84" height="26" rx="13" fill="rgba(255,255,255,.12)"/>
+    <text x="104" y="164" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">초대 링크</text>
+    ${spark(170, 36, 6, '#a9bcff')}${spark(292, 186, 5, '#fff')}
+  </svg>`,
+  /* 3. 4명 팀 완성, 자동 응모 */
+  team: `<svg class="st-art" viewBox="0 0 320 200" aria-hidden="true">
+    <defs>
+      <linearGradient id="a3bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f2a1c"/><stop offset="1" stop-color="#121212"/></linearGradient>
+      <radialGradient id="a3g"><stop offset="0" stop-color="#2fd07a" stop-opacity=".35"/><stop offset="1" stop-color="#2fd07a" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="320" height="200" fill="url(#a3bg)"/>
+    <ellipse cx="160" cy="90" rx="150" ry="90" fill="url(#a3g)"/>
+    <circle cx="70" cy="84" r="27" fill="#ff4600"/>${avatarSil(70, 86)}
+    <circle cx="130" cy="84" r="27" fill="#21c7a8"/>${avatarSil(130, 86)}${checkBadge(150, 104)}
+    <circle cx="190" cy="84" r="27" fill="#7b6cff"/>${avatarSil(190, 86)}${checkBadge(210, 104)}
+    <circle cx="250" cy="84" r="27" fill="#ffb020"/>${avatarSil(250, 86)}${checkBadge(270, 104)}
+    <text x="70" y="132" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">나</text>
+    <rect x="88" y="146" width="144" height="34" rx="17" fill="#fff"/>
+    <path d="M106 163l4 4 8-8" fill="none" stroke="#12a150" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="171" y="168.5" text-anchor="middle" font-size="14" font-weight="800" fill="#111">자동 응모 완료</text>
+    <g><rect x="40" y="30" width="8" height="4" rx="1" fill="#ffb020" transform="rotate(25 44 32)"/><rect x="280" y="34" width="8" height="4" rx="1" fill="#21c7a8" transform="rotate(-30 284 36)"/><rect x="104" y="28" width="6" height="3" rx="1" fill="#ff7a3d" transform="rotate(40 107 30)"/><rect x="228" y="24" width="7" height="3" rx="1" fill="#a99bff" transform="rotate(-20 231 26)"/><rect x="288" y="150" width="7" height="3" rx="1" fill="#ffb020" transform="rotate(15 291 152)"/><rect x="30" y="156" width="7" height="3" rx="1" fill="#21c7a8" transform="rotate(-35 33 158)"/></g>
+    ${spark(160, 30, 7, '#fff')}
+  </svg>`
 };
 function ctaState(){
   const u = me();
@@ -1512,10 +1526,11 @@ const LAST_YEAR = [
 ];
 /* SPOTV NOW Golf 중계 투어 (spotvnowgolf.co.kr/golf 중계 일정 탭 기준, 2026.11.25 확인) */
 const TOURS = [
-  { nm: 'LPGA 투어', cat: '여자 · 미국', logo: 'assets/tour-lpga.png', alt: 'LPGA', w: 100, h: 122, exT: '최근 중계', ex: '뷰익 LPGA 상하이, BMW 레이디스 챔피언십, CME 그룹 투어 챔피언십' },
-  { nm: 'DP 월드투어', cat: '남자 · 유럽', logo: 'assets/tour-dpwt.png', alt: 'DP World Tour', w: 182, h: 66, wide: true, exT: '이번 주', ex: 'BMW 호주 PGA 챔피언십 (11.26~11.29)' },
-  { nm: 'LET', cat: '여자 · 유럽 (레이디스 유러피언 투어)', logo: 'assets/tour-let.png', alt: 'LET', w: 96, h: 122, exT: '이번 주', ex: '안달루시아 코스타 델 솔 에스파냐 오픈 (11.26~11.29)' },
-  { nm: 'PGA 투어 챔피언스', cat: '50세 이상 시니어 · 미국', exT: '다가오는 대회', ex: 'PNC 챔피언십 (12.21 최종 라운드)' }
+  { nm: 'PGA 투어', logo: 'assets/tour-pga.png', w: 104, h: 122 },
+  { nm: 'LPGA 투어', logo: 'assets/tour-lpga.png', w: 100, h: 122 },
+  { nm: 'DP 월드투어', logo: 'assets/tour-dpwt.png', w: 182, h: 66, wide: true },
+  { nm: 'LET', logo: 'assets/tour-let.png', w: 96, h: 122 },
+  { nm: 'PGA 투어 챔피언스', tx: 'PGA TOUR<br>CHAMPIONS' }
 ];
 
 /* =========================================================
@@ -1560,41 +1575,32 @@ function Promo(){
 
     <section class="lineup" aria-labelledby="heroTitle"><div class="wrap lineup-wrap">
       <h1 id="heroTitle">프로처럼 4명이 한 팀, 친구 3명이 가입하면 자동 응모</h1>
-      <div class="lineup-in">
-        <div class="lineup-copy">
-          <ul class="facts">
-            <li><span class="k">팀 구성</span><span class="v">나 + 친구 3명</span></li>
-            <li><span class="k">응모 방법</span><span class="v">3명 가입 완료 시 자동</span></li>
-            <li class="is-wide"><span class="k">경품</span><span class="v">서산수CC · 파인비치 · 군산CC 라운딩권(4인)</span><span class="v2">추가 경품: PGA 드라이버 커버 3명 · 볼빅 골프공 10명</span></li>
-            <li class="is-wide"><span class="k">이벤트 기간</span><span class="v">~ ${endLabel()} (예시)</span></li>
-          </ul>
+      <div class="lineup-panel">
+        <div class="lt-left">
+          <div class="lt-head"><h2>내 팀 현황</h2><p class="lt-count"><b>${u ? Math.min(cnt + 1, TEAM_SIZE) : 0}</b>/${TEAM_SIZE}명</p></div>
+          <p class="lt-msg">${u ? (u.entered ? '<b>4명 팀 완성!</b> 자동 응모되었습니다.' : `친구 <b>${MAX_INVITES - cnt}명</b>만 더 가입하면 자동 응모됩니다.`) : '로그인하고 초대코드를 만들면 내 팀이 시작됩니다.'}</p>
           <div class="lineup-cta">${ctaButton('heroCta')}<p class="cta-help">${ctaState().help}</p></div>
         </div>
-        <div class="lineup-team">
-          <div class="lt-head"><h2>내 팀 현황</h2><p class="lt-count"><b>${u ? Math.min(cnt + 1, TEAM_SIZE) : 0}</b>/${TEAM_SIZE}명</p></div>
-          ${teamSlots(u, list, { me: 'owner', ownerLabel: u ? `${esc(maskName(u.name))}(나)` : '나', lg: true })}
-          <div class="lt-foot"><p class="lt-msg">${u ? (u.entered ? '<b>4명 팀 완성!</b> 자동 응모되었습니다.' : `친구 <b>${MAX_INVITES - cnt}명</b>만 더 가입하면 자동 응모됩니다.`) : '로그인하고 초대코드를 만들면 내 팀이 시작됩니다.'}</p>
-            ${u ? `<a class="sng-btn sng-btn-secondary sng-btn-lg" href="#/my">내 팀 자세히 보기</a>` : ''}</div>
-        </div>
+        ${teamSlots(u, list, { me: 'owner', ownerLabel: u ? `${esc(maskName(u.name))}(나)` : '나', lg: true })}
       </div>
+      <ul class="facts">
+        <li><span class="k">팀 구성</span><span class="v">나 + 친구 3명</span></li>
+        <li><span class="k">응모 방법</span><span class="v">3명 가입 완료 시 자동</span></li>
+        <li class="is-wide"><span class="k">경품</span><span class="v">서산수CC · 파인비치 · 군산CC 라운딩권(4인)</span><span class="v2">추가 경품: PGA 드라이버 커버 3명 · 볼빅 골프공 10명</span></li>
+        <li class="is-wide"><span class="k">이벤트 기간</span><span class="v">~ ${endLabel()} (예시)</span></li>
+      </ul>
     </div></section>
 
     <section class="p-sec" id="how" aria-labelledby="howTitle"><div class="wrap">
       <div class="p-head"><h2 id="howTitle">대회도 팀전, 응모도 팀으로</h2><p>프로들이 4명씩 팀으로 겨루듯, 나와 친구 3명이 한 팀이 되면 따로 신청하지 않아도 자동으로 응모됩니다.</p></div>
       <ol class="steps">
-        <li><div class="st-top"><span class="st-ic">${IC.ticket}</span><span class="no" aria-hidden="true">1</span></div>
-          <div class="st-vis" aria-hidden="true"><div class="v-code"><small>내 초대코드</small><b>GN7K2Q</b></div></div>
-          <h3>초대코드 만들기</h3><p>SPOTV NOW Golf 계정으로 로그인하면 나만의 초대코드가 바로 발급됩니다.</p></li>
-        <li><div class="st-top"><span class="st-ic">${IC.share}</span><span class="no" aria-hidden="true">2</span></div>
-          <div class="st-vis" aria-hidden="true"><div class="v-share"><div class="v-link">${IC.link}<span>spotvnowgolf.co.kr/…?ref=GN7K2Q</span></div><div class="v-friends"><i>친1</i><i>친2</i><i>친3</i></div></div></div>
-          <h3>친구 3명에게 공유</h3><p>초대 링크를 받은 친구는 코드가 미리 입력된 회원가입 화면에서 바로 가입합니다.</p></li>
-        <li><div class="st-top"><span class="st-ic">${IC.trophy}</span><span class="no" aria-hidden="true">3</span></div>
-          <div class="st-vis" aria-hidden="true"><div class="v-team"><i class="me">나</i><i>${IC.check}</i><i>${IC.check}</i><i>${IC.check}</i><span class="v-done">자동 응모</span></div></div>
-          <h3>팀 완성, 자동 응모</h3><p>3명이 가입을 마치면 4명 팀이 완성되어 자동 응모되고, 초대코드는 마감됩니다.</p></li>
+        <li>${ART.code}<div class="st-body"><div class="st-h"><span class="st-no" aria-hidden="true">1</span><h3>초대코드 만들기</h3></div><p>SPOTV NOW Golf 계정으로 로그인하면 나만의 초대코드가 바로 발급됩니다.</p></div></li>
+        <li>${ART.share}<div class="st-body"><div class="st-h"><span class="st-no" aria-hidden="true">2</span><h3>친구 3명에게 공유</h3></div><p>초대 링크를 받은 친구는 코드가 미리 입력된 회원가입 화면에서 바로 가입합니다.</p></div></li>
+        <li>${ART.team}<div class="st-body"><div class="st-h"><span class="st-no" aria-hidden="true">3</span><h3>팀 완성, 자동 응모</h3></div><p>3명이 가입을 마치면 4명 팀이 완성되어 자동 응모되고, 초대코드는 마감됩니다.</p></div></li>
       </ol>
     </div></section>
 
-    <section class="p-sec" id="prizes" aria-labelledby="przTitle"><div class="wrap">
+    <section class="p-sec is-alt" id="prizes" aria-labelledby="przTitle"><div class="wrap">
       <div class="p-head"><h2 id="przTitle">4명이 함께 나가는 골프장 라운드</h2><p>서산수CC·파인비치·군산CC 라운딩권(4인)을 1팀씩, 모두 3팀에 드립니다. 추가 경품으로 PGA 드라이버 커버와 볼빅 골프공도 준비했습니다.</p></div>
       ${prizesHTML('h3')}
     </div></section>
@@ -1635,7 +1641,7 @@ function Promo(){
       </div>
     </div></section>
 
-    <section class="p-sec" id="lastyear" aria-labelledby="lyTitle"><div class="wrap">
+    <section class="p-sec is-alt" id="lastyear" aria-labelledby="lyTitle"><div class="wrap">
       <div class="p-head"><h2 id="lyTitle">지난해 승부는 1인치 차이</h2><p>2025년 첫 대회. 다섯 개 챌린지가 끝나고 3대 3 동점, 두 주장이 47야드에서 한 번씩 친 연장 샷에서 셰플러가 1인치 더 붙였습니다.</p></div>
       <div class="final" aria-label="2025 최종 결과: 팀 스코티 3, 팀 로리 3, 연장에서 팀 스코티 우승">
         <div class="fteam"><p class="fn">팀 스코티 <span class="win">우승</span></p><p class="fm">스코티 셰플러 · 샘 번스 · 키건 브래들리 · 루크 클랜턴</p><p class="fs">3</p></div>
@@ -1673,28 +1679,12 @@ function Promo(){
       </div>
     </div></section>
 
-    <section class="p-sec" id="broadcast" aria-labelledby="bcTitle"><div class="wrap">
-      <div class="p-head"><h2 id="bcTitle">SPOTV NOW Golf가 중계하는 투어</h2><p>남녀 정규 투어부터 시니어 투어, 대항전, 이색 대회까지 실시간 중계와 다시보기로 볼 수 있습니다.</p></div>
-      <div class="tours">
-        <article class="tour is-feat">
-          <img src="assets/pga-2026-live.jpg" alt="2026 PGA 투어 독점 생중계, SPOTV Golf &amp; Health · SPOTV NOW Golf" width="720" height="720" loading="lazy">
-          <div class="tb">
-            <div class="lg"><img src="assets/tour-pga.png" alt="PGA TOUR" width="104" height="122" loading="lazy"></div>
-            <h3>PGA 투어</h3><p class="cat">남자 · 미국</p>
-            <p class="ex"><b>이번 시즌</b>2026 시즌 독점 생중계, 옵텀 골프채널 게임스(12.17)</p>
-          </div>
-        </article>
-        ${TOURS.map(t => `
-        <article class="tour">
-          ${t.logo ? `<div class="lg"><img src="${t.logo}" alt="${t.alt}" width="${t.w}" height="${t.h}" loading="lazy" ${t.wide ? 'class="is-wide"' : ''}></div>` : ''}
-          <h3>${t.nm}</h3><p class="cat">${t.cat}</p>
-          <p class="ex"><b>${t.exT}</b>${t.ex}</p>
-        </article>`).join('')}
-      </div>
-      <div class="also">
-        <div><h3>대항전 · 메이저 대회</h3><p>국가 대항전과 협회 주관 대회도 중계합니다.</p><ul><li>프레지던츠컵</li><li>솔하임컵</li><li>USGA</li><li>PGA of America</li></ul></div>
-        <div><h3>이색 대회</h3><p>팀 대항전, 프로와 가족이 함께 나오는 대회처럼 특별한 이벤트 대회까지.</p><ul><li>옵텀 골프채널 게임스</li><li>PNC 챔피언십</li></ul></div>
-      </div>
+    <section class="p-sec is-alt" id="broadcast" aria-labelledby="bcTitle"><div class="wrap">
+      <div class="p-head"><h2 id="bcTitle">SPOTV NOW Golf에서 시청하세요!</h2><p>남녀 정규 투어부터 시니어 투어까지 실시간 중계와 다시보기로 볼 수 있습니다.</p></div>
+      <ul class="tours">${TOURS.map(t => `
+        <li><div class="lg">${t.logo ? `<img src="${t.logo}" alt="" width="${t.w}" height="${t.h}" loading="lazy" ${t.wide ? 'class="is-wide"' : ''}>` : `<span class="tx" aria-hidden="true">${t.tx}</span>`}</div><p class="nm">${t.nm}</p></li>`).join('')}
+      </ul>
+      <p class="bc-also">프레지던츠컵 · 솔하임컵 · USGA · PGA of America 대회, 옵텀 골프채널 게임스 · PNC 챔피언십 같은 이색 대회도 중계합니다.</p>
       <div class="bc-cta"><a class="watch" href="https://www.spotvnowgolf.co.kr/golf?utm_source=golf-invite&amp;utm_medium=broadcast" target="_blank" rel="noopener">${PLAY_IC}전체 중계 일정 보기${EXT_IC}</a></div>
     </div></section>
 
