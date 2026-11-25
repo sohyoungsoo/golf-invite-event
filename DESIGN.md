@@ -1,0 +1,400 @@
+---
+name: SPOTV NOW Golf 친구초대 이벤트
+description: 12.17 티오프까지 남은 날을 세는 중계 오프닝 같은 팀 초대 이벤트 페이지 (SPOTV NOW ds5 위에 구축)
+colors:
+  brand: "#ff4600"
+  on-brand: "#ffffff"
+  bg-000: "#0c0c0c"
+  bg-100: "#121212"
+  bg-300: "#191919"
+  surface-100: "#1e1e1e"
+  surface-150: "#202020"
+  surface-200: "#222222"
+  surface-300: "#353535"
+  line-100: "#2a2a2a"
+  line-200: "#353535"
+  line-250: "#2e2e2e"
+  line-300: "#979797"
+  line-400: "#414141"
+  text-100: "#ffffff"
+  text-150: "#e7e7e7"
+  text-200: "#ededed"
+  text-250: "#cfcfcf"
+  text-300: "#9e9e9e"
+  text-400: "#888888"
+  text-placeholder: "#757575"
+  text-disabled: "#595959"
+  tooltip-bg: "#d8d8d8"
+  scrim-strong: "rgba(0, 0, 0, 0.9)"
+  scrim-soft: "rgba(10, 10, 10, 0.4)"
+typography:
+  display-numeral:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "clamp(128px, 17vw, 260px)"
+    fontWeight: 800
+    lineHeight: 0.8
+    letterSpacing: "-0.04em"
+    fontFeature: "tnum"
+  numeral-lg:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "64px"
+    fontWeight: 800
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
+    fontFeature: "tnum"
+  display:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "44px"
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: "-1.5px"
+  headline:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "36px"
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: "-0.9px"
+  headline-lineup:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "30px"
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: "-0.75px"
+  title:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "24px"
+    fontWeight: 700
+    lineHeight: "32px"
+    letterSpacing: "-0.6px"
+  title-sm:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "20px"
+    fontWeight: 700
+    lineHeight: "28px"
+    letterSpacing: "-0.5px"
+  body-lg:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: "26px"
+  body:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: "24px"
+  helper:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: "21px"
+  meta:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 500
+    lineHeight: "18.06px"
+    letterSpacing: "-0.35px"
+  caption:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 400
+    lineHeight: "20px"
+  label-cta:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "20px"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "-0.5px"
+  label-button:
+    fontFamily: "Pretendard, Apple SD Gothic Neo, Malgun Gothic, system-ui, sans-serif"
+    fontSize: "18px"
+    fontWeight: 700
+    lineHeight: "19.98px"
+    letterSpacing: "-0.45px"
+rounded:
+  xs: "3px"
+  sm: "5px"
+  md: "8px"
+  tag: "4px"
+  chip: "20px"
+  cta: "30px"
+  pill: "35px"
+  full: "999px"
+spacing:
+  space-1: "4px"
+  space-2: "8px"
+  space-3: "12px"
+  space-4: "16px"
+  space-6: "24px"
+  space-12: "48px"
+  section: "96px"
+  gutter: "92px"
+components:
+  cta-pill:
+    backgroundColor: "{colors.brand}"
+    textColor: "{colors.on-brand}"
+    typography: "{typography.label-cta}"
+    rounded: "{rounded.pill}"
+    padding: "0 24px 0 32px"
+    height: "64px"
+  cta-pill-done:
+    backgroundColor: "transparent"
+    textColor: "{colors.brand}"
+    typography: "{typography.label-cta}"
+    rounded: "{rounded.pill}"
+    height: "64px"
+  button-primary:
+    backgroundColor: "{colors.brand}"
+    textColor: "{colors.on-brand}"
+    typography: "{typography.label-button}"
+    rounded: "{rounded.md}"
+    padding: "0 24px"
+    height: "48px"
+  button-secondary:
+    backgroundColor: "{colors.surface-300}"
+    textColor: "{colors.text-100}"
+    typography: "{typography.label-button}"
+    rounded: "{rounded.md}"
+    padding: "0 24px"
+    height: "48px"
+  button-disabled:
+    backgroundColor: "{colors.surface-200}"
+    textColor: "{colors.text-disabled}"
+    rounded: "{rounded.md}"
+    height: "48px"
+  team-slot-empty:
+    backgroundColor: "transparent"
+    textColor: "{colors.text-300}"
+    rounded: "{rounded.md}"
+    padding: "12px 8px"
+    height: "120px"
+  team-slot-filled:
+    backgroundColor: "{colors.surface-300}"
+    textColor: "{colors.text-100}"
+    rounded: "{rounded.md}"
+    padding: "12px 8px"
+    height: "120px"
+  course-card:
+    backgroundColor: "{colors.surface-200}"
+    textColor: "{colors.text-100}"
+    rounded: "{rounded.md}"
+    padding: "24px"
+  event-card:
+    backgroundColor: "{colors.surface-100}"
+    textColor: "{colors.text-250}"
+    rounded: "{rounded.md}"
+    padding: "24px"
+  event-card-top:
+    backgroundColor: "{colors.bg-300}"
+    textColor: "{colors.text-100}"
+    typography: "{typography.numeral-lg}"
+    padding: "24px"
+  lineup-band:
+    backgroundColor: "{colors.bg-300}"
+    textColor: "{colors.text-100}"
+    padding: "48px 92px"
+  dock:
+    backgroundColor: "{colors.bg-100}"
+    textColor: "{colors.text-250}"
+    height: "80px"
+  card:
+    backgroundColor: "{colors.surface-200}"
+    textColor: "{colors.text-250}"
+    rounded: "{rounded.sm}"
+    padding: "24px"
+  input:
+    backgroundColor: "{colors.surface-150}"
+    textColor: "{colors.text-100}"
+    rounded: "{rounded.sm}"
+    padding: "0 16px"
+    height: "48px"
+  status-tag:
+    backgroundColor: "transparent"
+    textColor: "{colors.text-250}"
+    rounded: "{rounded.tag}"
+    padding: "0 8px"
+    height: "28px"
+  status-tag-on:
+    backgroundColor: "transparent"
+    textColor: "{colors.brand}"
+    rounded: "{rounded.tag}"
+    padding: "0 8px"
+    height: "28px"
+  gnb:
+    backgroundColor: "{colors.scrim-strong}"
+    textColor: "{colors.text-100}"
+    typography: "{typography.body}"
+    height: "64px"
+---
+
+# Design System: SPOTV NOW Golf 친구초대 이벤트
+
+## Overview
+
+**Creative North Star: "티오프 중계 오프닝"**
+
+이 시스템은 SPOTV NOW ds5 디자인시스템을 그대로 쓰면서, 이벤트 페이지를 골프 중계의 오프닝 화면처럼 연출합니다. 검정에 가까운 바탕 위에 대회까지 남은 날을 초대형 숫자로 세우고, 그 아래 중계 하단 자막 띠(lower-third) 같은 밴드에 "나 + 친구 3명" 팀 라인업을 놓습니다. 장식은 거의 없고, 위계는 숫자의 크기와 사진의 면적, 그리고 아주 드물게 쓰는 오렌지가 만듭니다.
+
+밀도는 홍보 화면(`#/`)에서는 낮고 넓게, 내 팀 현황·로그인·회원가입 화면에서는 ds5 기본 컴포넌트 밀도 그대로 갑니다. 실사 사진(PGA 투어, 골프장, 경품)은 큰 면으로 쓰고, 가장자리는 검정으로 녹여 바탕과 하나가 되게 합니다. 깊이는 그림자가 아니라 바탕색 단계(#0c0c0c → #121212 → #191919 → surface 계열)로 표현합니다.
+
+오렌지(`brand`)는 신호입니다. 카운트다운 숫자, 주요 CTA, 내 팀 칸, GNB 현재 위치, 체크, 응모 상태처럼 "지금 여기, 지금 할 일"에만 나타납니다. 중계 서비스의 `live`·`vod` 색은 이 이벤트 화면에서 쓰지 않습니다.
+
+**Key Characteristics:**
+- 검정 계열 바탕의 톤 단계만으로 만든 평평한 깊이
+- Pretendard 800, 음수 자간, tabular 숫자로 만든 초대형 숫자 위계
+- 점선(빈 칸) → 실선 면(채운 칸) → 오렌지 테두리(내 칸)로 상태를 보여 주는 4칸 팀 슬롯
+- #191919 하단 자막 띠 밴드와 #191919 상단을 가진 중계 편성표식 이벤트 카드
+- 검정으로 녹아드는 실사 사진과 아래쪽 scrim 그라데이션
+- 오렌지는 신호에만, 장식 면에는 쓰지 않음
+
+## Colors
+
+ds5의 무채색 다크 스케일 위에 단 하나의 강한 오렌지가 놓인, 한 가지 목소리의 팔레트입니다.
+
+### Primary
+- **티오프 오렌지** (`brand`): 카운트다운의 날짜 숫자(D- 뒤 숫자), 알약형 주요 CTA, 기본 주요 버튼, 팀 라인업의 내 칸 테두리, 대시 바의 내 칸 표시, GNB 현재 메뉴, 체크 원형, 응모 상태 태그, 포커스 링, 텍스트 선택 배경. 위에 올리는 글자는 항상 `on-brand`(흰색)입니다.
+
+### Neutral
+- **중계석 블랙** (`bg-000`): 스테이지(카운트다운 + 사진) 바탕, 로그인 비주얼 바탕, 푸터. 사진이 녹아드는 최종 색입니다.
+- **페이지 그라운드** (`bg-100`, ds5 bg-100): `body` 기본 바탕, 하단 대시와 모바일 고정 CTA 바탕.
+- **자막 띠 그레이** (`bg-300`): 라인업 밴드, 이벤트 카드 상단, 노출 안내(reach) 블록, 내 팀 현황 상단 밴드.
+- **카드 면** (`surface-100`, `surface-150`, `surface-200`): 이벤트·경품 카드(100), 입력 필드·응모 완료 줄(150), 일반 카드·모달·골프장 카드 사진 로딩 바탕(200).
+- **채운 칸 / 보조 버튼** (`surface-300`): 채워진 팀 칸 면, 보조 버튼, 진행 막대 트랙, 3단계 상단 선.
+- **선** (`line-100`, `line-200`, `line-250`, `line-400`): GNB·푸터 하단선(100), 밴드 상하선과 대시 상단선(200), 목록 구분선(250), 칩 테두리(400).
+- **점선 그레이** (`line-300`): 빈 팀 칸의 점선, 상태 태그 기본 테두리, 워드마크 라벨 테두리.
+- **글자 단계** (`text-100` ~ `text-400`): 제목과 숫자는 100, 강조 본문은 200, 본문은 250(대비 5.9:1 이상), 보조 설명은 300, 단계 번호·비활성 수준 정보는 400.
+- **밝은 띠** (`tooltip-bg`): DEMO 배너와 토스트. 어두운 화면 위 유일한 밝은 면이며 시스템 메시지 전용입니다.
+- **scrim** (`scrim-strong`, `scrim-soft`): 사진 위 글자를 받치는 그라데이션, GNB 반투명 바탕, 골프장 카드 혜택 배지.
+
+### Named Rules
+**The Orange Signal Rule.** `brand`는 카운트다운 숫자, 주요 CTA, 내 칸, GNB 현재 위치, 체크, 응모 상태, 포커스 링에만 씁니다. 배경 면, 장식 도형, 제목 강조에는 쓰지 않습니다. 한 화면에서 오렌지 요소를 모두 가려도 읽기에 문제가 없어야 하고, 오렌지만 남겨도 "어디를 누를지"가 보여야 합니다.
+
+**The No Broadcast Red Rule.** ds5의 `live`(#ff0050)·`vod`(#7a43ff)는 번들에 있지만 이 이벤트 화면에서는 쓰지 않습니다. 생중계 예고도 무채색 글자로 씁니다.
+
+**The Color-Free Error Rule.** ds5에 오류 색이 아직 없으므로, 오류 메시지는 색 대신 `text-100` 700 굵기로 구분합니다. 오류 색을 새로 만들지 않습니다.
+
+## Typography
+
+**Display Font:** Pretendard (Apple SD Gothic Neo, Malgun Gothic, system-ui 대체)
+**Body Font:** Pretendard (동일)
+
+**Character:** 한 가족의 글꼴을 굵기와 크기만으로 나눕니다. 숫자는 800 굵기와 좁은 자간으로 경기장 전광판처럼 세우고, 안내 문장은 400 굵기로 조용히 둡니다.
+
+### Hierarchy
+- **Display Numeral** (800, clamp(128px, 17vw, 260px), 0.8): 스테이지의 "D-22" 카운트다운 단 하나. 모바일 112px.
+- **Numeral Large** (800, 64px, 0.9): 이벤트 카드의 대회 날짜(12.17). 모바일 44px. 같은 계열로 경품 수량(44px), 골프장 이름(36px, 자간 -1.2px), 단계 번호(40px, `text-400`)가 있습니다.
+- **Display** (800, 44px, 1.2, -1.5px): 홍보 섹션 제목. 태블릿 36px, 모바일 28px.
+- **Headline** (700, 36px, 1.25, -0.9px): 스테이지의 대회명. 태블릿 30px, 모바일 24px.
+- **Headline Lineup** (700, 30px, 1.3): 라인업 밴드의 h1. 모바일 22px.
+- **Title** (700, 24px/32px): 이벤트 카드 제목, 추가 경품·유의사항 제목, 내 팀 현황 이름.
+- **Title Small** (700, 20px/28px): 단계 제목, 경품 이름, 카드 머리.
+- **Body Large** (400, 17–18px, 26–28px): 섹션 머리 설명과 스테이지 부제. 최대 30em.
+- **Body** (400, 16px/24px): 기본 본문.
+- **Helper** (400, 14px/21px): 보조 설명, CTA 아래 도움말, 유의사항 목록.
+- **Meta / Caption** (500 14px, 400 13px): 날짜, 링크 줄, 푸터.
+- **Label CTA** (700, 20px, -0.5px): 알약 CTA. 모바일 18px, 대시 안 17px.
+
+### Named Rules
+**The Big Numeral Rule.** 날짜, D-day, 인원, 수량 같은 숫자는 Pretendard 800, `font-variant-numeric: tabular-nums`, 음수 자간(-0.04em 안팎)으로 씁니다. 화면의 위계는 숫자가 먼저 만들고, 문장은 그 숫자를 설명합니다.
+
+**The Orange Button Floor Rule.** 오렌지 바탕 버튼의 라벨은 16px/700 아래로 내리지 않습니다. 작은 주요 버튼도 16px/700으로 올립니다.
+
+## Layout
+
+- **컨테이너:** 콘텐츠 폭 1200px(`--content-w`), 좌우 여백(gutter) 92px. 1279px 이하 48px, 767px 이하 16px.
+- **반응형 구간:** 데스크톱 ≥1280, 1024–1279(GNB 간격 축소), 768–1023(GNB를 햄버거 메뉴로, 2열 → 1열), 모바일 <768. 360px에서 가로 스크롤이 없어야 합니다.
+- **스테이지:** 화면 높이에 맞춘 높이(최소 480px, 최대 640px). 사진은 오른쪽 60%(태블릿 72%) 풀블리드, 숫자와 대회명은 왼쪽 컨테이너 안. 모바일에서는 사진 240px을 위에 두고 카운트다운이 사진 아래쪽에 88px 겹쳐 올라옵니다.
+- **라인업 밴드:** 3열 그리드(문구 1.05fr · 팀 4칸 1.2fr · CTA auto), 간격 48px. 태블릿은 문구와 CTA가 한 줄, 팀 4칸이 아래 줄 전체. 모바일은 1열.
+- **홍보 섹션 리듬:** 섹션 상하 96px(모바일 48px), 연속 섹션은 위 여백 0. 섹션 머리는 제목과 설명을 양 끝 아래 정렬로 두고 아래 48px(모바일 24px).
+- **그리드:** 3단계와 골프장 카드는 3열, 추가 경품과 이벤트 카드는 2열, 모두 간격 12px. 태블릿 이하 1열.
+- **간격 단위:** 4 / 8 / 12 / 16 / 24 / 48px만 씁니다. 큰 간격은 48의 배수로 만듭니다.
+- **고정 요소:** DEMO 배너(32px)와 GNB(64px, 모바일 56px)는 위에 고정(sticky). 라인업의 CTA가 화면 위로 사라지면 하단 대시가 올라옵니다. 터치 영역은 모두 44px 이상.
+
+## Elevation & Depth
+
+그림자로 띄우지 않고, 바탕 톤을 한 단계씩 밝혀서 층을 나눕니다. `bg-000`(스테이지, 푸터) → `bg-100`(페이지) → `bg-300`(밴드, 카드 상단) → `surface-100~300`(카드, 채운 칸) 순서로 위로 올라옵니다. 경계가 필요하면 1px 선(`line-100`/`line-200`)을 쓰고, 사진 위 글자는 scrim 그라데이션으로 받칩니다.
+
+### Shadow Vocabulary
+- **상태 링** (`box-shadow: inset 0 0 0 2px var(--brand)`): 응모 완료 상태의 알약 CTA 테두리. 활성 카드에는 1px(`inset 0 0 0 1px var(--brand)`). 바깥으로 퍼지는 그림자가 아니라 안쪽 테두리 역할만 합니다.
+
+### Named Rules
+**The Tonal Stack Rule.** 바깥 그림자(drop shadow)는 쓰지 않습니다. 층은 바탕 톤 단계와 1px 선으로만 나누고, `box-shadow`는 상태를 알리는 안쪽 링에만 씁니다.
+
+**The Melt-to-Black Rule.** 큰 사진은 가장자리를 `bg-000`으로 녹입니다. 스테이지 사진은 왼쪽 38%까지 마스크로 사라지고 아래쪽은 `scrim-strong`에서 `bg-000`으로 이어집니다. 사진 카드는 아래 60%에 `scrim-strong` 그라데이션을 깔고 그 위에 글자를 올립니다.
+
+## Shapes
+
+모서리는 작게 시작해 행동할수록 둥글어집니다. 정보 면(카드, 팀 칸, 사진 카드, 이벤트 카드)은 8px(`md`), 작은 안쪽 면(입력, 일반 카드, 썸네일, 토스트)은 5px(`sm`), 상태 태그는 4px(`tag`)입니다. 누르는 것 중 이벤트의 주요 행동은 완전한 알약(35px, `pill`), 폼 안의 알약 CTA는 30px(`cta`), 칩은 20px(`chip`)입니다. 아바타, 혜택 배지, 진행 막대, 대시의 칸 표시는 완전한 원·캡슐(999px)입니다.
+
+선은 상태를 말합니다. 1px 점선(`line-300`)은 "아직 비어 있음", 실선 면은 "채워짐", 2px 오렌지 실선은 "나"입니다.
+
+## Components
+
+### Buttons
+홍보 화면의 주요 행동은 크고 둥근 알약 하나로, 나머지는 ds5 기본 버튼으로 갑니다.
+- **알약 CTA (cta-pill):** `brand` 바탕, 흰 글자 20px/700, 높이 64px(모바일 56px, 대시 안 52px·모바일 48px), 완전한 알약, 왼쪽 패딩이 오른쪽보다 8px 넓고 오른쪽에 22px 화살표 SVG. 상태에 따라 라벨이 바뀝니다(초대코드 만들기 → 초대 링크 공유하기 → 응모 완료 · 내 팀 보기).
+- **알약 CTA 완료 (cta-pill-done):** 투명 바탕, `brand` 글자, 2px 안쪽 오렌지 링, 화살표 없음. hover 시 오렌지 12% 섞은 바탕.
+- **기본 주요 버튼 (button-primary):** `brand` 바탕, 높이 48px, 8px 모서리, 18px/700.
+- **보조 버튼 (button-secondary):** `surface-300` 바탕, 흰 글자.
+- **Hover / Focus / Active:** hover는 바탕을 흰색 쪽으로 14% 섞어 밝힘(`color-mix(in srgb, var(--brand) 86%, var(--text-100))`), 화살표는 3px 오른쪽으로 이동. 누르면 1px 아래로. 포커스는 모든 요소에 2px `brand` 링(offset 2px). 비활성은 `surface-200` 바탕, `text-disabled` 글자.
+
+### Team Slots (팀 4칸, signature)
+"나 + 친구 3명"을 한 줄 4칸으로 보여 주는 이 이벤트의 중심 컴포넌트입니다. 홍보 라인업, 회원가입 초대 정보, 내 팀 현황에서 같은 규칙으로 씁니다.
+- **빈 칸:** 투명 바탕, 1px 점선 `line-300`, 8px 모서리, 가운데 정렬된 32px 점선 원 안에 순번, 아래 라벨 14px `text-300`.
+- **채운 칸:** `surface-300` 면, 흰 글자 700. 친구 칸은 오렌지 체크 원(32px), 주인 칸은 `text-300` 원 안에 이름 첫 글자.
+- **내 칸:** 2px `brand` 실선 테두리(주인 칸 또는 가입하면 들어갈 다음 칸).
+- **크기:** 기본 최소 높이 88px, 큰 칸(`is-lg`) 120px·원 44px, 모바일 76/88px. 칸 간격 8px. 이름은 첫 글자 뒤를 가립니다(홍**).
+
+### Dock (하단 고정 팀 바)
+라인업 CTA가 화면 위로 사라지면 아래에서 올라오는 바입니다. `bg-100` 94% 반투명, 위 1px `line-200`, 최소 높이 80px(모바일 72px). 왼쪽에 4칸 캡슐 표시(28×8px, 내 칸 `brand`, 채운 칸 `text-150`, 빈 칸 `surface-300`)와 한 줄 상태, 오른쪽 끝에 알약 CTA. 모바일에서는 문장을 숨기고 CTA가 남은 폭을 채웁니다. 0.35s `cubic-bezier(.16, 1, .3, 1)`로 올라옵니다.
+
+### Course Photo Cards (골프장 경품 카드)
+- **형태:** 4:5 세로 사진 카드(모바일 16:10), 8px 모서리, 넘침 잘라냄.
+- **글자:** 아래 60% `scrim-strong` 그라데이션 위에 골프장 이름 36px/800(-1.2px), "라운드 1팀" 17px/700, 지급 설명 14px.
+- **배지:** 왼쪽 위 혜택 배지(32px 캡슐, `scrim-strong` 바탕, 13px/700), 오른쪽 위 사진 출처(11px, `scrim-soft`, 3px 모서리). 실사 사진에는 출처를 붙입니다.
+- **Hover:** 사진이 0.8s 동안 1.04배로 천천히 확대.
+
+### Goods Cards (추가 경품)
+`surface-100` 바탕, 8px 모서리, 16px 패딩, 200px 정사각 제품 사진(밝은 `text-200` 바탕 위 contain, 모바일 104px) + 이름 20px/700과 수량 44px/800 숫자("명"은 18px). 예시 이미지는 그렇다고 적습니다.
+
+### Event Cards (이색 대회 카드)
+중계 편성표처럼 날짜가 먼저 보이는 카드입니다. `surface-100` 몸통, 8px 모서리. 상단은 `bg-300` 띠에 대회 날짜 64px/800과 요일, 오른쪽 끝에 D-day 28px/800 `text-300`, 아래 1px `line-100`. 몸통은 제목 24px/700, 본문, 위 선이 있는 정의 목록(형식·편성·출전, `text-300` 이름 / `text-100` 값), 필요할 때만 기본 주요 버튼.
+
+### Cards / Containers
+- **Corner Style:** 일반 카드 5px, 홍보 카드 8px.
+- **Background:** `surface-200`(일반, 내 팀 현황), `surface-100`(홍보 카드), `bg-300`(밴드, 노출 안내 블록).
+- **Shadow Strategy:** 없음. Elevation & Depth의 Tonal Stack Rule을 따릅니다.
+- **Internal Padding:** 24px(모바일 16px).
+
+### Chips / Tags
+- **상태 태그:** 28px 높이, 4px 모서리, 1px `line-300` 테두리, 13px/700 `text-250`. 켜진 상태(`is-on`)는 테두리와 글자 모두 `brand`.
+- **리그 칩:** 36px 높이, 20px 모서리, 1px `line-400`, 14px/700. 강조 칩은 테두리 `text-250`.
+
+### Inputs / Fields
+- **Style:** `surface-150` 바탕, 테두리 없음, 5px 모서리, 높이 48px(로그인 패널 안 50px·`surface-300`), 15px 글자, placeholder `text-placeholder`.
+- **Focus:** 2px `brand` 안쪽 링(offset -2px).
+- **Label / Help:** 라벨 14px/700 `text-250`이 위에, 도움말 14px `text-300`이 아래. 모든 입력에 `<label>`을 붙입니다.
+- **Error:** `text-100` 700 굵기 문장(Color-Free Error Rule).
+
+### Navigation
+- **GNB:** 높이 64px(모바일 56px), `scrim-strong` 반투명 바탕, 아래 1px `line-100`, DEMO 배너 아래 sticky. 왼쪽 흰색 공식 로고(20px, 모바일 15px) + 1px 테두리 "친구초대" 라벨, 메뉴 16px 흰 글자 간격 36px, 현재 메뉴는 `brand`. 오른쪽 유틸 14px `text-200`.
+- **모바일/태블릿(≤1023px):** 메뉴를 숨기고 44px 햄버거 버튼 + 로그인 링크. 펼친 메뉴는 ds5 사용자 메뉴 패널(`surface-100`) 안 가운데 정렬 목록, 현재 위치 `brand`.
+
+## Do's and Don'ts
+
+### Do:
+- **Do** 오렌지(`brand`)를 카운트다운 숫자, 주요 CTA, 내 칸, GNB 현재 위치, 체크, 응모 상태, 포커스 링에만 쓰세요.
+- **Do** 날짜·D-day·인원·수량은 Pretendard 800, tabular-nums, 음수 자간으로 크게 세우세요.
+- **Do** 팀 상태는 점선 빈 칸 → `surface-300` 채운 칸 → 2px `brand` 내 칸 순서로 표현하고, 어느 화면에서든 같은 4칸 규칙을 쓰세요.
+- **Do** 층은 `bg-000` → `bg-100` → `bg-300` → `surface` 단계와 1px 선으로 나누세요.
+- **Do** 큰 실사 사진은 `bg-000`으로 녹이고, 사진 위 글자는 `scrim-strong` 그라데이션 위에 올리세요. 실사 사진에는 출처를 적으세요.
+- **Do** 간격은 4/8/12/16/24/48px 단위, 섹션은 96px(모바일 48px)로 맞추세요.
+- **Do** 등장 동작은 `cubic-bezier(.16, 1, .3, 1)` 한 가지 감속 곡선으로 쓰고, `prefers-reduced-motion`에서는 끄세요.
+
+### Don't:
+- **Don't** 오렌지를 배경 면, 장식 도형, 제목 강조 글자에 쓰지 마세요.
+- **Don't** `live`(#ff0050)·`vod`(#7a43ff) 색을 이 이벤트 화면에 쓰지 마세요.
+- **Don't** 카드나 버튼에 바깥 그림자(drop shadow)나 어긋난 그림자(offset shadow)를 쓰지 마세요. `box-shadow`는 안쪽 상태 링에만 씁니다.
+- **Don't** 오류 표시를 위해 새 빨간색을 만들지 마세요.
+- **Don't** 오렌지 버튼 라벨을 16px/700 아래로 내리지 마세요.
+- **Don't** 확정되지 않은 경품·기간을 확정처럼 보이게 하지 말고, 예시 이미지와 예시 값은 그렇다고 적으세요.
+- **Don't** 이모지를 쓰지 마세요.

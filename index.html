@@ -415,26 +415,6 @@ a { color: inherit; }
 .note b { color: var(--text-100); }
 .btn-row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
 
-/* Hero */
-.hero { background: var(--bg-000); border-bottom: 1px solid var(--line-200); }
-.hero-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--space-12); align-items: center; padding-top: calc(var(--space-12) * 1.5); padding-bottom: calc(var(--space-12) * 1.5); }
-.hero-copy { display: flex; flex-direction: column; gap: var(--space-6); align-items: flex-start; min-width: 0; }
-.hero h1 { font: var(--type-headline); letter-spacing: var(--ls-headline); font-size: 44px; line-height: 1.25; color: var(--text-100); }
-.hero .lead { font: var(--type-form-label); color: var(--text-250); max-width: 34em; }
-.period { display: inline-flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
-
-/* Key visual: SPOTV NOW Golf 2026 PGA 투어 홍보 이미지 + 대회 정보 띠 */
-.kv { position: relative; margin: 0; border-radius: var(--radius-md); background: var(--bg-300); overflow: hidden; }
-.kv img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-.kv figcaption { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-6); background: var(--surface-100); border-top: 1px solid var(--line-100); }
-.kv .date { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 72px; padding: var(--space-2) var(--space-3); border: 1px solid var(--line-400); border-radius: var(--radius-sm); color: var(--text-100); }
-.kv .date b { font: 700 24px/1.1 var(--font-sans); letter-spacing: -0.5px; font-variant-numeric: tabular-nums; }
-.kv .date span { font: 500 13px/18px var(--font-sans); color: var(--text-250); }
-.kv .tt { font: 700 17px/24px var(--font-sans); letter-spacing: -0.4px; color: var(--text-100); }
-.kv .ts { font: var(--type-helper); color: var(--text-250); margin-top: 2px; }
-.hero-meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); font: var(--type-meta); letter-spacing: var(--ls-meta); color: var(--text-300); }
-.hero-meta b { color: var(--text-200); font-weight: 700; }
-
 /* Status card (logged-in promo) */
 .status { display: grid; grid-template-columns: 1fr auto; gap: var(--space-4) var(--space-6); align-items: center; }
 .status h2 { font: var(--type-section-title); font-size: 20px; color: var(--text-100); }
@@ -443,62 +423,151 @@ a { color: inherit; }
 /* Progress */
 .bar { height: var(--space-3); border-radius: var(--radius-full); background: var(--surface-300); overflow: hidden; }
 .bar > i { display: block; height: 100%; background: var(--text-150); border-radius: var(--radius-full); transition: width .5s ease; }
-.status .bar { grid-column: 1 / -1; }
+/* ===== Promo: 티오프 카운트다운 ===== */
+::selection { background: var(--brand); color: var(--on-brand); }
+html { scrollbar-color: var(--surface-300) var(--bg-100); }
 
-/* Team format: 대회(팀 대항전) ↔ 이벤트(4명 한 팀) */
-.sec-lead { font: var(--type-body); color: var(--text-250); max-width: 46em; margin: calc(var(--space-4) * -1) 0 var(--space-6); }
-.versus { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: var(--space-3); }
-.versus .card { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
-.versus .lbl { font: var(--type-meta); letter-spacing: var(--ls-meta); color: var(--text-300); }
-.versus h3 { font: 700 20px/28px var(--font-sans); letter-spacing: -0.5px; color: var(--text-100); }
-.versus p { font: var(--type-helper); color: var(--text-250); }
-.team { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); list-style: none; margin-top: var(--space-2); }
-.team li { min-height: 88px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-2); border-radius: var(--radius-sm); border: 1px dashed var(--line-300); font: 400 14px/20px var(--font-sans); color: var(--text-300); text-align: center; }
+/* Buttons: hover / press states (bundle has none) */
+.sng-btn, .sng-cta, .cta-pill { transition: background-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+.sng-btn-primary:hover:not(:disabled), .sng-cta-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--brand) 86%, var(--text-100)); }
+.sng-btn-secondary:hover:not(:disabled) { background: color-mix(in srgb, var(--surface-300) 80%, var(--text-100)); }
+.sng-btn:active:not(:disabled), .sng-cta:active:not(:disabled), .cta-pill:active { transform: translateY(1px); }
+
+/* Pill CTA with arrow (primary action of the event) */
+.cta-pill { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3); min-height: 64px; padding: 0 var(--space-6) 0 calc(var(--space-6) + var(--space-2)); border: 0; border-radius: var(--radius-pill); background: var(--brand); color: var(--on-brand); font: 700 20px/1.2 var(--font-sans); letter-spacing: -0.5px; cursor: pointer; white-space: nowrap; text-decoration: none; }
+.cta-pill svg { flex: none; transition: transform .2s cubic-bezier(.16, 1, .3, 1); }
+.cta-pill:hover { background: color-mix(in srgb, var(--brand) 86%, var(--text-100)); }
+.cta-pill:hover svg { transform: translateX(3px); }
+.cta-pill.is-done { background: transparent; color: var(--brand); box-shadow: inset 0 0 0 2px var(--brand); }
+.cta-pill.is-done:hover { background: color-mix(in srgb, var(--brand) 12%, transparent); }
+.cta-help { margin-top: var(--space-2); font: var(--type-helper); color: var(--text-300); }
+.cta-help b { color: var(--text-200); font-weight: 700; letter-spacing: 0.5px; }
+.cta-help a, .cta-help button { color: var(--text-250); background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* Stage: countdown over the PGA TOUR photo */
+.stage { position: relative; overflow: hidden; background: var(--bg-000); min-height: clamp(480px, calc(100svh - var(--demo-h) - var(--header-h) - 216px), 640px); display: flex; align-items: center; }
+.stage-photo { position: absolute; top: 0; right: 0; bottom: 0; width: 60%; }
+.stage-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 38%); mask-image: linear-gradient(to right, transparent 0, #000 38%); }
+.stage-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, var(--scrim-strong) 58%, var(--bg-000) 72%); }
+.stage-in { position: relative; z-index: 1; padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.tee { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+.count-num { font: 800 clamp(128px, 17vw, 260px)/0.8 var(--font-sans); letter-spacing: -0.04em; color: var(--text-100); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.count-num .n { color: var(--brand); }
+.count-meta { display: flex; align-items: baseline; gap: var(--space-2); }
+.count-meta b { font: 700 28px/1.1 var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.count-meta span { font: 500 17px/24px var(--font-sans); color: var(--text-250); }
+.stage-event { margin-top: var(--space-6); font: 700 36px/1.25 var(--font-sans); letter-spacing: -0.9px; color: var(--text-100); max-width: 15em; }
+.stage-sub { margin-top: var(--space-3); font: 400 18px/28px var(--font-sans); color: var(--text-250); max-width: 30em; }
+.stage-sub b { color: var(--text-100); font-weight: 700; }
+@media (prefers-reduced-motion: no-preference) {
+  .count-num { animation: rise .9s cubic-bezier(.16, 1, .3, 1) both; }
+  .count-meta, .stage-event, .stage-sub { animation: rise .9s .12s cubic-bezier(.16, 1, .3, 1) both; }
+}
+@keyframes rise { from { transform: translateY(24px); clip-path: inset(0 0 100% 0); } to { transform: none; clip-path: inset(0 0 -10% 0); } }
+
+/* Lineup band: h1 + 4 team slots + CTA (lower-third) */
+.lineup { position: relative; background: var(--bg-300); border-top: 1px solid var(--line-200); border-bottom: 1px solid var(--line-200); }
+.lineup-in { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) auto; align-items: center; gap: var(--space-12); padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.lineup h1 { font: 700 30px/1.3 var(--font-sans); letter-spacing: -0.75px; color: var(--text-100); }
+.lineup-copy p { margin-top: var(--space-2); font: var(--type-helper); color: var(--text-300); }
+.lineup-copy p b { color: var(--text-200); }
+.lineup-cta { display: flex; flex-direction: column; align-items: stretch; min-width: 280px; }
+
+/* Team slots (shared) */
+.team { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); list-style: none; }
+.team li { min-height: 88px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-2); border-radius: var(--radius-md); border: 1px dashed var(--line-300); font: 400 14px/20px var(--font-sans); color: var(--text-300); text-align: center; }
 .team li .ic { width: 32px; height: 32px; border-radius: var(--radius-full); display: grid; place-items: center; border: 1px dashed var(--line-300); color: var(--text-300); font: 700 15px/1 var(--font-sans); }
 .team li.on { border: 1px solid var(--surface-300); background: var(--surface-300); color: var(--text-100); font-weight: 700; }
 .team li.on .ic { border: 0; background: var(--text-300); color: var(--bg-100); }
-.team li.me { border: 1px solid var(--brand); }
+.team li.me { border: 2px solid var(--brand); }
 .team li.on .sng-check-box { width: 32px; height: 32px; background: var(--brand); border-color: var(--brand); }
 .team li.on .sng-check-box::after { width: 12px; height: 6px; border-width: 0 0 2px 2px; border-color: var(--on-brand); }
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin-top: var(--space-6); border-top: 1px solid var(--line-250); }
-.steps li { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-4) var(--space-6) 0 0; }
-.steps .no { font: 700 13px/18px var(--font-sans); color: var(--text-300); }
-.steps h3 { font: 700 17px/24px var(--font-sans); letter-spacing: -0.4px; color: var(--text-100); }
-.steps p { font: var(--type-helper); color: var(--text-300); }
+.team.is-lg li { min-height: 120px; font-size: 15px; }
+.team.is-lg li .ic, .team.is-lg li.on .sng-check-box { width: 44px; height: 44px; font-size: 17px; }
 
-/* Prizes */
-.prize-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-3); }
-.prize-head h3 { font: 700 18px/26px var(--font-sans); letter-spacing: -0.45px; color: var(--text-100); }
-.prize-head p { font: var(--type-helper); color: var(--text-300); }
-.prize-head p b { color: var(--text-200); }
+/* Dock: appears when the lineup CTA leaves the screen */
+.dock { visibility: hidden; position: fixed; left: 0; right: 0; bottom: 0; z-index: 85; background: color-mix(in srgb, var(--bg-100) 94%, transparent); border-top: 1px solid var(--line-200); transform: translateY(100%); transition: transform .35s cubic-bezier(.16, 1, .3, 1), visibility 0s .35s; }
+.dock.show { transform: none; visibility: visible; transition: transform .35s cubic-bezier(.16, 1, .3, 1); }
+.dock-in { display: flex; align-items: center; gap: var(--space-6); min-height: 80px; padding-top: var(--space-3); padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom)); }
+.dock-team { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+.pips { display: flex; gap: var(--space-1); }
+.pips i { width: 28px; height: 8px; border-radius: var(--radius-full); background: var(--surface-300); }
+.pips i.f { background: var(--text-150); }
+.pips i.me { background: var(--brand); }
+.dock-team p { font: 400 15px/22px var(--font-sans); color: var(--text-250); }
+.dock-team p b { color: var(--text-100); }
+.dock .cta-pill { margin-left: auto; min-height: 52px; font-size: 17px; }
+body.has-dock .fab { bottom: calc(80px + var(--space-4) + env(safe-area-inset-bottom)); }
+body.has-dock .site-foot { padding-bottom: calc(80px + var(--space-6)); }
+
+/* Section heads for promo */
+.p-sec { padding: calc(var(--space-12) * 2) 0; }
+.p-sec + .p-sec { padding-top: 0; }
+.p-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); margin-bottom: var(--space-12); }
+.p-head h2 { font: 800 44px/1.2 var(--font-sans); letter-spacing: -1.5px; color: var(--text-100); }
+.p-head p { font: 400 17px/26px var(--font-sans); color: var(--text-250); max-width: 30em; }
+
+/* How: 3 steps */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; }
+.steps li { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-6) 0 0; border-top: 2px solid var(--surface-300); }
+
+.steps .no { font: 800 40px/1 var(--font-sans); letter-spacing: -1px; color: var(--text-400); font-variant-numeric: tabular-nums; }
+
+.steps h3 { font: 700 20px/28px var(--font-sans); letter-spacing: -0.5px; color: var(--text-100); }
+.steps p { font: var(--type-helper); color: var(--text-300); max-width: 26em; }
+
+/* Prizes: course photos + product shots */
 .courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); list-style: none; }
-.course { display: flex; flex-direction: column; gap: var(--space-2); min-height: 168px; padding: var(--space-6); }
-.course .nm { font: 700 28px/36px var(--font-sans); letter-spacing: -0.8px; color: var(--text-100); }
-.course .ct { font: 500 16px/24px var(--font-sans); color: var(--text-200); }
-.course .ex { margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--line-100); font: var(--type-helper); color: var(--text-300); }
-.extras { list-style: none; border-top: 1px solid var(--line-250); }
-.extras li { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 61px; border-bottom: 1px solid var(--line-250); font: 400 16px/24px var(--font-sans); color: var(--text-200); }
-.extras li b { font: 700 16px/24px var(--font-sans); color: var(--text-100); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.prize-gap { margin-top: var(--space-12); }
+.course { position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius-md); overflow: hidden; background: var(--surface-200); isolation: isolate; }
+.course img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16, 1, .3, 1); }
+.course:hover img { transform: scale(1.04); }
+.course::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, var(--scrim-strong)); z-index: 0; }
+.course-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); }
+.course-body .nm { font: 800 36px/1.1 var(--font-sans); letter-spacing: -1.2px; color: var(--text-100); }
+.course-body .ct { font: 700 17px/24px var(--font-sans); color: var(--text-100); }
+.course-body .ex { font: var(--type-helper); color: var(--text-250); }
+.course .perk { position: absolute; top: var(--space-4); left: var(--space-4); z-index: 1; display: inline-flex; align-items: center; height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-full); background: var(--scrim-strong); color: var(--text-100); font: 700 13px/1 var(--font-sans); }
+.course .src { position: absolute; top: var(--space-4); right: var(--space-4); z-index: 1; padding: 2px var(--space-2); border-radius: var(--radius-xs); background: var(--scrim-soft); font: 400 11px/16px var(--font-sans); color: var(--text-150); }
+.prize-sub { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); margin: var(--space-12) 0 var(--space-4); }
+.prize-sub h3 { font: 700 24px/32px var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); }
+.prize-sub p { font: var(--type-helper); color: var(--text-300); }
+.prize-sub p b { color: var(--text-200); }
+.goods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); list-style: none; }
+.good { display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: center; gap: var(--space-6); padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface-100); }
+.good .ph { aspect-ratio: 1; border-radius: var(--radius-sm); background: var(--text-200); overflow: hidden; display: grid; place-items: center; }
+.good .ph img { width: 100%; height: 100%; object-fit: contain; }
+.good .nm { font: 700 20px/28px var(--font-sans); letter-spacing: -0.5px; color: var(--text-100); }
+.good .ct { margin-top: var(--space-2); font: 800 44px/1 var(--font-sans); letter-spacing: -1.2px; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.good .ct small { font: 700 18px/1 var(--font-sans); color: var(--text-250); margin-left: var(--space-1); letter-spacing: 0; }
+.good .ex { margin-top: var(--space-2); font: var(--type-helper); color: var(--text-300); }
 
-/* Special tournaments schedule */
-.special { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: var(--space-6); align-items: start; }
-.special figure { margin: 0; border-radius: var(--radius-md); overflow: hidden; background: var(--bg-300); }
-.special figure img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
-.sched { list-style: none; border-top: 1px solid var(--line-250); }
-.sched > li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: var(--space-6); padding: var(--space-6) 0; border-bottom: 1px solid var(--line-250); }
-.sched .day { display: flex; flex-direction: column; align-items: flex-start; color: var(--text-100); }
-.sched .day b { font: 700 28px/1.1 var(--font-sans); letter-spacing: -0.6px; font-variant-numeric: tabular-nums; }
-.sched .day span { font: var(--type-meta); color: var(--text-300); margin-top: var(--space-1); }
-.sched .body { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
-.sched h3 { font: 700 18px/26px var(--font-sans); letter-spacing: -0.45px; color: var(--text-100); }
-.sched p { font: var(--type-helper); color: var(--text-250); }
-.sched .tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-.sched .sng-tag { margin: 0; border-color: var(--line-200); color: var(--text-250); }
-.sched .sng-tag.is-key { border-color: var(--brand); color: var(--brand); }
-.sched dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-1) var(--space-4); font: var(--type-helper); margin-top: var(--space-1); }
-.sched dt { color: var(--text-300); }
-.sched dd { margin: 0; color: var(--text-200); }
+/* Special tournaments: broadcast-style event cards */
+.events { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: var(--space-3); }
+.event { display: flex; flex-direction: column; border-radius: var(--radius-md); background: var(--surface-100); overflow: hidden; min-width: 0; }
+
+.event-top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-4); padding: var(--space-6); background: var(--bg-300); border-bottom: 1px solid var(--line-100); }
+.event-date b { display: block; font: 800 64px/0.9 var(--font-sans); letter-spacing: -0.04em; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.event-date span { display: block; margin-top: var(--space-2); font: 500 16px/22px var(--font-sans); color: var(--text-250); }
+.event-dd { font: 800 28px/1 var(--font-sans); letter-spacing: -0.6px; color: var(--text-300); font-variant-numeric: tabular-nums; }
+
+.event-body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); flex: 1; }
+.event-body h3 { font: 700 24px/32px var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); }
+.event-body > p { font: var(--type-body); color: var(--text-250); }
+.event-body dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-2) var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--line-100); font: var(--type-helper); }
+.event-body dt { color: var(--text-300); }
+.event-body dd { margin: 0; color: var(--text-100); }
+.event-body .sng-btn { align-self: flex-start; margin-top: var(--space-2); }
+.reach { display: grid; grid-template-columns: 280px minmax(0, 1fr); align-items: center; gap: var(--space-12); margin-top: var(--space-3); padding: var(--space-6); border-radius: var(--radius-md); background: var(--bg-300); }
+.reach img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-sm); }
+.reach h3 { font: 800 32px/1.25 var(--font-sans); letter-spacing: -1px; color: var(--text-100); }
+.reach p { margin-top: var(--space-3); font: var(--type-body); color: var(--text-250); max-width: 34em; }
+.reach ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); list-style: none; }
+.reach li { height: 36px; display: inline-flex; align-items: center; padding: 0 var(--space-4); border-radius: var(--radius-chip); border: 1px solid var(--line-400); font: 700 14px/1 var(--font-sans); color: var(--text-200); }
+.reach li.is-plus { border-color: var(--text-250); color: var(--text-100); }
+
+/* Notice */
+.notice-wrap { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: var(--space-12); padding-top: var(--space-12); border-top: 1px solid var(--line-200); }
+.notice-wrap h2 { font: 700 24px/32px var(--font-sans); color: var(--text-100); }
 
 /* Invite header on signup */
 .inv { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface-200); }
@@ -522,7 +591,7 @@ a { color: inherit; }
 .m-cta { display: none; }
 
 /* Demo tools trigger */
-.fab { position: fixed; right: var(--space-6); bottom: var(--space-6); z-index: 80; min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--line-300); border-radius: var(--radius-chip); background: var(--surface-300); color: var(--text-100); font: 700 14px var(--font-sans); cursor: pointer; }
+.fab { position: fixed; left: var(--space-6); bottom: var(--space-6); z-index: 80; min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--line-300); border-radius: var(--radius-chip); background: var(--surface-300); color: var(--text-100); font: 700 14px var(--font-sans); cursor: pointer; }
 
 /* Toast */
 .toast { position: fixed; left: 50%; top: calc(var(--demo-h) + var(--header-h) + var(--space-3)); z-index: 120; max-width: calc(100% - var(--space-4) * 2); transform: translate(-50%, calc(var(--space-2) * -1)); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); background: var(--tooltip-bg); color: var(--bg-100); font: 700 14px/20px var(--font-sans); text-align: center; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
@@ -658,12 +727,18 @@ a { color: inherit; }
   .site-gnb nav, .sng-gnb-util { display: none; }
   .gnb-m { display: flex; }
   .gnb-m .gnb-link { white-space: nowrap; flex: none; padding: 0 var(--space-2); font-size: 15px; }
-  .hero-in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-6); padding-top: var(--space-12); padding-bottom: var(--space-12); }
-  .hero-in { grid-template-columns: minmax(0, 1fr); }
-  .hero h1 { font-size: 36px; }
-  .versus { grid-template-columns: minmax(0, 1fr); }
-  .course .nm { font-size: 24px; line-height: 32px; }
-  .special { grid-template-columns: minmax(0, 240px) minmax(0, 1fr); }
+  .stage-photo { width: 72%; }
+  .stage-event { font-size: 30px; }
+  .lineup-in { grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-6) var(--space-12); }
+  .lineup-in .team { grid-column: 1 / -1; grid-row: 2; }
+  .lineup-cta { grid-column: 2; grid-row: 1; }
+  .p-head { flex-direction: column; align-items: flex-start; }
+  .p-head h2 { font-size: 36px; }
+  .course-body .nm { font-size: 28px; }
+  .goods { grid-template-columns: minmax(0, 1fr); }
+  .events { grid-template-columns: minmax(0, 1fr); }
+  .reach { grid-template-columns: 200px minmax(0, 1fr); gap: var(--space-6); }
+  .notice-wrap { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .login-page .sng-login-panel { width: min(var(--login-panel-w), 62%); }
   .kv-caption, .kv-foot { max-width: calc(38% - var(--gutter) - var(--space-4)); }
   .kv-caption strong { font-size: 28px; line-height: 1.25; }
@@ -677,28 +752,55 @@ a { color: inherit; }
   .wordmark .wm { height: 15px; }
   .wordmark .wm-label { font-size: 11px; padding: 3px 6px; }
   .gnb-in { gap: var(--space-2); }
-  .kv figcaption { padding: var(--space-3) var(--space-4); gap: var(--space-3); }
-  .kv .date { min-width: 60px; padding: var(--space-1) var(--space-2); }
-  .kv .date b { font-size: 20px; }
-  .kv .tt { font-size: 15px; line-height: 22px; }
-  .kv .ts { font-size: 13px; line-height: 18px; }
   .team li { min-height: 76px; font-size: 13px; }
-  .steps { grid-template-columns: minmax(0, 1fr); }
-  .steps li { padding: var(--space-4) 0; border-bottom: 1px solid var(--line-250); }
-  .courses { grid-template-columns: minmax(0, 1fr); }
-  .course { min-height: 0; padding: var(--space-4); }
-  .course .nm { font-size: 22px; line-height: 30px; }
-  .prize-gap { margin-top: var(--space-6); }
-  .special { grid-template-columns: minmax(0, 1fr); }
-  .special figure { max-width: 420px; }
-  .sched > li { grid-template-columns: 64px minmax(0, 1fr); gap: var(--space-4); padding: var(--space-4) 0; }
-  .sched .day b { font-size: 22px; }
-  .sec-lead { margin-top: calc(var(--space-2) * -1); }
+  .team.is-lg li { min-height: 88px; font-size: 13px; }
+  .team.is-lg li .ic, .team.is-lg li.on .sng-check-box { width: 32px; height: 32px; font-size: 15px; }
   .gnb-m { display: flex; }
   .gnb-m .gnb-link { padding: 0 var(--space-2); font-size: 15px; }
-  .hero-in { grid-template-columns: minmax(0, 1fr); padding-top: var(--space-6); padding-bottom: var(--space-6); }
-  .hero h1 { font-size: 28px; line-height: 1.3; letter-spacing: -0.6px; }
-  .hero .hero-cta { display: none; }
+  /* Stage: photo on top, countdown overlapping its lower edge */
+  .stage { display: block; min-height: 0; }
+  .stage-photo { position: relative; width: 100%; height: 240px; }
+  .stage-photo img { -webkit-mask-image: none; mask-image: none; object-position: 50% 8%; }
+  .stage-photo::after { background: linear-gradient(to bottom, transparent 22%, var(--scrim-strong) 62%, var(--bg-000) 80%); }
+  .stage-in { margin-top: -88px; padding-top: 0; padding-bottom: var(--space-6); }
+  .tee { gap: var(--space-3); }
+  .count-num { font-size: 112px; }
+  .count-meta b { font-size: 20px; }
+  .count-meta span { font-size: 14px; line-height: 20px; }
+  .stage-event { margin-top: var(--space-4); font-size: 24px; letter-spacing: -0.6px; }
+  .stage-sub { font-size: 15px; line-height: 22px; }
+  .lineup-in { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding-top: var(--space-6); padding-bottom: var(--space-6); }
+  .lineup-in .team { grid-row: auto; }
+  .lineup-cta { grid-column: auto; grid-row: auto; min-width: 0; }
+  .lineup h1 { font-size: 22px; letter-spacing: -0.5px; }
+  .cta-pill { min-height: 56px; font-size: 18px; }
+  .dock-in { gap: var(--space-3); min-height: 72px; }
+  .dock-team p { display: none; }
+  .pips i { width: 16px; }
+  .dock .cta-pill { flex: 1; min-height: 48px; font-size: 16px; padding: 0 var(--space-4); }
+
+  .p-sec { padding: var(--space-12) 0; }
+  .p-head { margin-bottom: var(--space-6); gap: var(--space-3); }
+  .p-head h2 { font-size: 28px; letter-spacing: -0.8px; }
+  .p-head p { font-size: 15px; line-height: 22px; }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .steps li { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); padding: var(--space-4) 0; }
+  .steps .no { font-size: 28px; }
+  .steps p { flex-basis: 100%; }
+  .courses { grid-template-columns: minmax(0, 1fr); }
+  .course { aspect-ratio: 16 / 10; }
+  .course-body { padding: var(--space-4); }
+  .course-body .nm { font-size: 26px; }
+  .prize-sub { flex-direction: column; gap: var(--space-1); margin-top: var(--space-6); }
+  .good { grid-template-columns: 104px minmax(0, 1fr); gap: var(--space-4); padding: var(--space-3); }
+  .good .ct { font-size: 32px; }
+  .event-top, .event-body { padding: var(--space-4); }
+  .event-date b { font-size: 44px; }
+  .event-body h3 { font-size: 20px; line-height: 28px; }
+  .event-body > p { font-size: 15px; line-height: 22px; }
+  .reach { grid-template-columns: minmax(0, 1fr); padding: var(--space-4); }
+  .reach img { max-width: 240px; }
+  .reach h3 { font-size: 24px; }
   .sec { padding: calc(var(--space-12) - var(--space-4)) 0; }
   .sec-head .sng-section-title { font-size: 20px; }
   .card { padding: var(--space-4); }
@@ -709,8 +811,8 @@ a { color: inherit; }
   .m-cta .sng-btn { width: 100%; }
   body { padding-bottom: calc(44px + var(--space-6)); }
   body.has-mcta { padding-bottom: calc(var(--m-cta-h) + env(safe-area-inset-bottom)); }
-  .fab { right: var(--space-4); bottom: var(--space-4); }
-  body.has-mcta .fab { bottom: calc(var(--m-cta-h) + var(--space-3) + env(safe-area-inset-bottom)); }
+  .fab, body.has-dock .fab, body.has-mcta .fab { left: auto; right: var(--space-3); bottom: auto; top: calc(var(--demo-h) + var(--header-h) + var(--space-2)); min-height: 36px; padding: 0 var(--space-3); font-size: 13px; opacity: .92; }
+
   .login-page .sng-login-visual { display: none; }
   .login-page .sng-login-panel { width: 100%; background: var(--bg-100); padding: var(--space-6) var(--space-4) calc(var(--space-12) + var(--space-12)); align-items: flex-start; min-height: 0; }
   .site-topbar { height: var(--header-h); }
@@ -837,8 +939,10 @@ function render(){
   let fn = routes[path];
   if (!fn) fn = Promo;
   const out = fn(q);
+  dockObs?.disconnect(); dockObs = null;
   document.getElementById('view').innerHTML = out.html;
   document.body.classList.toggle('has-mcta', !!out.mcta);
+  document.body.classList.toggle('has-dock', !!out.dock);
   window.scrollTo(0, 0);
   out.after?.();
   if (pendingScroll){ const el = document.getElementById(pendingScroll); pendingScroll = null; el?.scrollIntoView(); }
@@ -901,9 +1005,9 @@ const footer = () => `
 function logout(){ db.session = null; save(); toast('로그아웃되었습니다.'); go('/'); }
 
 /* =========================================================
-   Screen 1. Promo (#/) - logged-in / logged-out
+   Promo shared parts: team slots, D-day, CTA, prizes, dock
    ========================================================= */
-/* 팀 칸: 초대한 사람(A) + 친구 3칸. opts.me = 'owner' | 'next'(가입하면 내가 들어갈 칸) */
+/* 팀 칸: 초대한 사람(A) + 친구 3칸. opts.me = 'owner' | 'next'(가입하면 내가 들어갈 칸), opts.lg = 큰 칸 */
 function teamSlots(owner, list, opts = {}){
   const ownerLabel = opts.ownerLabel || (owner ? esc(maskName(owner.name)) : '나');
   const cells = [`<li class="on ${opts.me === 'owner' ? 'me' : ''}"><span class="ic" aria-hidden="true">${owner ? esc(owner.name[0]) : 'A'}</span>${ownerLabel}</li>`];
@@ -913,121 +1017,157 @@ function teamSlots(owner, list, opts = {}){
     else if (opts.me === 'next' && i === list.length) cells.push(`<li class="me"><span class="ic" aria-hidden="true">+</span>나</li>`);
     else cells.push(`<li><span class="ic" aria-hidden="true">${i + 1}</span>친구 ${i + 1}</li>`);
   }
-  return `<ul class="team" aria-label="팀 구성 ${Math.min(list.length + 1, TEAM_SIZE)}/${TEAM_SIZE}명">${cells.join('')}</ul>`;
+  return `<ul class="team ${opts.lg ? 'is-lg' : ''}" aria-label="팀 구성 ${Math.min(list.length + 1, TEAM_SIZE)}/${TEAM_SIZE}명">${cells.join('')}</ul>`;
 }
 
+/* ---------- 대회 날짜와 D-day (날짜 기준, 방송 시간은 미정) ---------- */
+const TEE_OFF = new Date(2026, 11, 17);
+const PNC_DAY = new Date(2026, 11, 21);
+function dday(target){ const t = new Date(); const today = new Date(t.getFullYear(), t.getMonth(), t.getDate()); return Math.round((target - today) / 86400000); }
+const ddText = n => n > 0 ? `D-${n}` : n === 0 ? 'D-DAY' : '종료';
+
+/* ---------- 상태별 CTA: 비로그인 / 코드 없음 / 팀 구성 중 / 응모 완료 ---------- */
+const ARROW = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function ctaState(){
+  const u = me();
+  if (!u) return { label: '초대코드 만들기', act: `go('/login?next=/my')`, help: '로그인하면 나만의 초대코드가 바로 발급됩니다.' };
+  if (!u.code) return { label: '내 초대코드 받기', act: `ensureCode(me());go('/my')`, help: '발급 후 바로 친구에게 공유할 수 있습니다.' };
+  const n = invitees(u).length;
+  if (u.entered || n >= MAX_INVITES) return { label: '응모 완료 · 내 팀 보기', act: `go('/my')`, done: true, help: '4명 팀이 완성되어 자동 응모되었습니다.' };
+  return { label: '초대 링크 공유하기', act: `shareInvite()`, help: `친구 ${MAX_INVITES - n}명 남았습니다 · 내 코드 <b>${esc(u.code)}</b> · <a href="#/my">내 팀 현황</a>` };
+}
+function ctaButton(id = ''){
+  const c = ctaState();
+  return `<button type="button" class="cta-pill ${c.done ? 'is-done' : ''}" ${id ? `id="${id}"` : ''} onclick="${c.act}">${c.label}${c.done ? '' : ARROW}</button>`;
+}
+function shareInvite(){
+  const u = me(); if (!u) return go('/login?next=/my');
+  const code = ensureCode(u);
+  share(`${location.origin}${location.pathname}#/signup?ref=${code}`);
+}
+
+/* ---------- 경품 (홍보 페이지 · 내 팀 현황 공용) ---------- */
+/* 이미지 출처는 README '이미지' 항목 참고. 실서비스 전 사용 허락 확인 필요 */
+const COURSES = [
+  { nm: '서산수CC', img: 'assets/prize-seosansu.jpg', alt: '서산수CC 페어웨이와 성 모양 클럽하우스', src: '사진 서산수CC', pos: '28% 50%' },
+  { nm: '파인비치', img: 'assets/prize-pinebeach.jpg', alt: '바다와 섬이 내려다보이는 파인비치 골프링크스 홀', src: '사진 Golfplan', pos: '50% 50%', perk: '호텔 숙박 50% 할인' },
+  { nm: '군산CC', img: 'assets/prize-gunsan.jpg', alt: '깃발이 꽂힌 군산CC 그린과 연못', src: '사진 군산CC', pos: '42% 50%' }
+];
+const GOODS = [
+  { nm: 'PGA 드라이버 커버', ct: 3, img: 'assets/prize-driver-cover.jpg', alt: 'PGA 투어 라이선스 드라이버 헤드커버(예시 이미지)', note: '이미지는 예시이며 실제 경품과 다를 수 있습니다.' },
+  { nm: '볼빅 골프공', ct: 10, img: 'assets/prize-volvik-ball.png', alt: '볼빅 VIVID 골프공 패키지(예시 이미지)', note: '이미지는 예시이며 실제 경품과 다를 수 있습니다.' }
+];
+function prizesHTML(h = 'h3'){
+  const scope = WINNER[db.winnerScope];
+  return `
+    <ul class="courses">${COURSES.map(c => `
+      <li class="course">
+        <img src="${c.img}" alt="${c.alt}" loading="lazy" width="1200" height="1500" style="object-position:${c.pos}">
+        ${c.perk ? `<span class="perk">+ ${c.perk}</span>` : ''}<span class="src">${c.src}</span>
+        <div class="course-body"><${h} class="nm">${c.nm}</${h}><span class="ct">라운드 1팀</span><span class="ex">당첨 팀의 ${scope}에게 지급</span></div>
+      </li>`).join('')}
+    </ul>
+    <div class="prize-sub"><${h}>추가 경품</${h}><p>자동 응모된 참여자 중 추첨</p></div>
+    <ul class="goods">${GOODS.map(g => `
+      <li class="good"><div class="ph"><img src="${g.img}" alt="${g.alt}" loading="lazy" width="600" height="600"></div>
+        <div><p class="nm">${g.nm}</p><p class="ct">${g.ct}<small>명</small></p><p class="ex">${g.note}</p></div></li>`).join('')}
+    </ul>`;
+}
+
+/* 하단 고정 바: 라인업의 CTA가 화면 밖으로 나가면 나타납니다. */
+let dockObs = null;
+function setupDock(){
+  const cta = document.getElementById('heroCta'), dock = document.getElementById('dock');
+  if (!cta || !dock || !('IntersectionObserver' in window)) { dock?.classList.add('show'); return; }
+  dockObs = new IntersectionObserver(([e]) => {
+    const show = !e.isIntersecting && e.boundingClientRect.top < 0;
+    dock.classList.toggle('show', show); dock.inert = !show;
+  });
+  dockObs.observe(cta);
+}
+
+/* =========================================================
+   Screen 1. Promo (#/) - 티오프 카운트다운
+   ========================================================= */
 function Promo(){
   const u = me();
-  const cnt = u ? invitees(u).length : 0;
-  const ctaLabel = u && u.code ? '내 팀 현황 보기' : '초대코드 만들기';
-  const ctaGo = u ? `go('/my')` : `go('/login?next=/my')`;
-  const status = u ? `
-  <section class="sec" aria-labelledby="stTitle"><div class="wrap">
-    <div class="card status ${u.entered ? 'is-active' : ''}">
-      <div>
-        <h2 id="stTitle">${esc(maskName(u.name))} 님의 팀 ${Math.min(cnt + 1, TEAM_SIZE)}/${TEAM_SIZE}명</h2>
-        <p class="msg">${u.entered ? `${fmt(u.enteredAt)}에 팀이 완성되어 자동 응모되었습니다. 당첨 발표를 기다려 주세요.` : `친구 ${MAX_INVITES - cnt}명이 더 가입하면 팀이 완성되고 자동으로 응모됩니다.`}</p>
-      </div>
-      <div class="btn-row" style="align-items:center">
-        <span class="st-tag ${u.entered ? 'is-on' : ''}">${u.entered ? '응모 완료' : `친구 ${cnt} / ${MAX_INVITES}명`}</span>
-        <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" onclick="go('/my')">현황 보기</button>
-      </div>
-      <div class="bar" role="progressbar" aria-label="팀 구성 진행률" aria-valuemin="0" aria-valuemax="${MAX_INVITES}" aria-valuenow="${Math.min(cnt, MAX_INVITES)}"><i style="width:${Math.min(100, cnt / MAX_INVITES * 100)}%"></i></div>
-    </div>
-  </div></section>` : '';
+  const list = u ? invitees(u) : [];
+  const cnt = list.length;
   const scope = WINNER[db.winnerScope];
+  const n = dday(TEE_OFF), np = dday(PNC_DAY);
+  const pips = Array.from({ length: TEAM_SIZE }, (_, i) => `<i class="${i === 0 ? 'me' : i <= cnt ? 'f' : ''}"></i>`).join('');
 
   const html = `
   ${gnb('promo')}
   <main>
-    <section class="hero" id="intro" aria-labelledby="heroTitle"><div class="wrap hero-in">
-      <div class="hero-copy">
-        <h1 id="heroTitle">프로는 팀으로 겨루고,<br>우리는 팀으로 응모합니다</h1>
-        <p class="lead">12월 17일, PGA 투어 선수들이 팀을 꾸려 겨루는 옵텀 골프 채널 게임즈가 열립니다. 나와 친구 3명, 4명이 한 팀이 되면 골프장 라운드 이벤트에 자동으로 응모됩니다.</p>
-        <div class="btn-row hero-cta">
-          <button type="button" class="sng-btn sng-btn-primary sng-btn-lg" onclick="${ctaGo}">${ctaLabel}</button>
-          <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" onclick="toSec('how')">참여 방법</button>
+    <section class="stage" id="intro" aria-label="2026 PGA 투어 옵텀 골프 채널 게임즈 ${ddText(n)}">
+      <div class="stage-photo" aria-hidden="true"><img src="assets/kv-pga-tour.jpg" alt="" width="1280" height="720"></div>
+      <div class="wrap stage-in">
+        <div class="tee">
+          <p class="count-num">${n > 0 ? `D-<span class="n">${n}</span>` : n === 0 ? 'D-<span class="n">DAY</span>' : '<span class="n">종료</span>'}</p>
+          <p class="count-meta"><b>12.17 목</b><span>티오프까지</span></p>
         </div>
-        <p class="hero-meta"><span><b>경품</b> 서산수CC · 파인비치 · 군산CC 라운드 3팀</span><span><b>기간</b> ~ ${endLabel()} (예시)</span></p>
+        <p class="stage-event">2026 PGA 투어 옵텀 골프 채널 게임즈</p>
+        <p class="stage-sub">PGA 투어 선수들이 팀을 꾸려 겨루는 <b>팀 대항전</b>, SPOTV NOW Golf에서 생중계합니다.</p>
       </div>
-      <figure class="kv">
-        <img src="assets/kv-pga-tour.jpg" alt="SPOTV NOW Golf PGA 투어 홍보 이미지. PGA TOUR 로고와 투어 선수들" width="1280" height="720">
-        <figcaption>
-          <span class="date"><b>12.17</b><span>목요일</span></span>
-          <span><span class="tt">2026 PGA 투어 옵텀 골프 채널 게임즈</span><span class="ts" style="display:block">팀 대항전 · SPOTV NOW Golf 생중계</span></span>
-        </figcaption>
-      </figure>
+    </section>
+
+    <section class="lineup" aria-labelledby="heroTitle"><div class="wrap lineup-in">
+      <div class="lineup-copy">
+        <h1 id="heroTitle">프로는 팀으로 겨루고,<br>우리는 4명이 팀으로 응모합니다</h1>
+        <p>친구 3명이 가입하면 <b>서산수CC · 파인비치 · 군산CC</b> 라운드에 자동 응모 · 기간 ~ ${endLabel()} (예시)</p>
+      </div>
+      ${teamSlots(u, list, { me: 'owner', ownerLabel: u ? `${esc(maskName(u.name))}(나)` : '나', lg: true })}
+      <div class="lineup-cta">${ctaButton('heroCta')}<p class="cta-help">${ctaState().help}</p></div>
     </div></section>
 
-    ${status}
-
-    <section class="sec" id="how" aria-labelledby="howTitle"><div class="wrap">
-      <div class="sng-section-head sec-head"><h2 class="sng-section-title" id="howTitle">팀으로 겨루는 대회, 팀으로 응모하는 이벤트</h2></div>
-      <div class="versus">
-        <div class="card">
-          <span class="lbl">대회</span>
-          <h3>옵텀 골프 채널 게임즈는 팀 대항전입니다</h3>
-          <p>PGA 투어 선수들이 개인이 아닌 팀을 꾸려 승부를 겨루는 팀전 포맷의 이벤트 대회입니다. 12월 17일 SPOTV NOW Golf에서 생중계합니다.</p>
-        </div>
-        <div class="card">
-          <span class="lbl">친구초대 이벤트</span>
-          <h3>우리는 4명이 한 팀입니다</h3>
-          <p>내 초대코드로 친구 3명이 가입하면 팀이 완성되고, 따로 신청하지 않아도 자동으로 응모됩니다.</p>
-          ${teamSlots(null, [], { ownerLabel: '나' })}
-        </div>
-      </div>
+    <section class="p-sec" id="how" aria-labelledby="howTitle"><div class="wrap">
+      <div class="p-head"><h2 id="howTitle">대회도 팀전,<br>응모도 팀으로</h2><p>12월 17일 옵텀 골프 채널 게임즈에서는 PGA 투어 선수들이 개인이 아닌 팀으로 승부를 겨룹니다. 친구초대 이벤트도 나와 친구 3명, 4명이 한 팀이 되면 따로 신청하지 않아도 자동으로 응모됩니다.</p></div>
       <ol class="steps">
-        <li><span class="no">STEP 1</span><h3>초대코드 만들기</h3><p>SPOTV NOW Golf 계정으로 로그인하면 나만의 초대코드가 발급됩니다.</p></li>
-        <li><span class="no">STEP 2</span><h3>친구 3명에게 공유</h3><p>초대 링크를 보내면 친구는 코드가 입력된 회원가입 화면에서 바로 가입합니다.</p></li>
-        <li><span class="no">STEP 3</span><h3>팀 완성, 자동 응모</h3><p>3명이 가입을 마치면 4명 팀이 완성되어 자동 응모되고, 초대코드는 마감됩니다.</p></li>
+        <li><span class="no">1</span><h3>초대코드 만들기</h3><p>SPOTV NOW Golf 계정으로 로그인하면 나만의 초대코드가 발급됩니다.</p></li>
+        <li><span class="no">2</span><h3>친구 3명에게 공유</h3><p>초대 링크를 받은 친구는 코드가 입력된 회원가입 화면에서 바로 가입합니다.</p></li>
+        <li><span class="no">3</span><h3>팀 완성, 자동 응모</h3><p>3명이 가입을 마치면 4명 팀이 완성되어 자동 응모되고, 초대코드는 마감됩니다.</p></li>
       </ol>
     </div></section>
 
-    <section class="sec" id="prizes" aria-labelledby="przTitle"><div class="wrap">
-      <div class="sng-section-head sec-head"><h2 class="sng-section-title" id="przTitle">경품</h2></div>
-      <div class="prize-head"><h3>골프장 라운드 · 3팀</h3><p>당첨된 팀의 <b>${scope}</b>에게 드립니다.</p></div>
-      <ul class="courses">
-        <li class="card course"><span class="nm">서산수CC</span><span class="ct">라운드 1팀</span><span class="ex">${scope} 지급</span></li>
-        <li class="card course"><span class="nm">파인비치</span><span class="ct">라운드 1팀</span><span class="ex">${scope} 지급 · 파인비치 호텔 숙박 50% 할인</span></li>
-        <li class="card course"><span class="nm">군산CC</span><span class="ct">라운드 1팀</span><span class="ex">${scope} 지급</span></li>
-      </ul>
-      <div class="prize-head prize-gap"><h3>추가 경품</h3><p>자동 응모된 참여자 중 추첨</p></div>
-      <ul class="extras">
-        <li><span>PGA 드라이버 커버</span><b>3명</b></li>
-        <li><span>볼빅 골프공</span><b>10명</b></li>
-      </ul>
+    <section class="p-sec" id="prizes" aria-labelledby="przTitle"><div class="wrap">
+      <div class="p-head"><h2 id="przTitle">4명이 함께 나가는<br>골프장 라운드 3팀</h2><p>서산수CC, 파인비치, 군산CC에서 1팀씩 모두 3팀을 뽑습니다. 당첨 시 ${scope}에게 드립니다.</p></div>
+      ${prizesHTML('h3')}
     </div></section>
 
-    <section class="sec" id="special" aria-labelledby="spTitle"><div class="wrap">
-      <div class="sng-section-head sec-head"><h2 class="sng-section-title" id="spTitle">이색 대회 일정</h2></div>
-      <p class="sec-lead">PGA 투어, LPGA 투어 정규 대회만이 아닙니다. 팀 대항전, 가족이 함께 출전하는 대회처럼 특별한 이벤트 대회도 SPOTV NOW Golf에서 생중계합니다.</p>
-      <div class="special">
-        <figure><img src="assets/pga-2026-live.jpg" alt="2026 PGA 투어 독점 생중계, SPOTV Golf &amp; Health · SPOTV NOW Golf" width="720" height="720" loading="lazy"></figure>
-        <ul class="sched">
-          <li>
-            <p class="day"><b>12.17</b><span>목요일</span></p>
-            <div class="body">
-              <div class="tags"><span class="sng-tag is-key">친구초대 이벤트 연계</span><span class="sng-tag">팀 대항전</span></div>
-              <h3>2026 PGA 투어 옵텀 골프 채널 게임즈</h3>
-              <p>PGA 투어 선수들이 팀을 꾸려 겨루는 팀전 포맷의 이벤트 대회입니다.</p>
-              <dl><dt>편성</dt><dd>SPOTV NOW Golf 생중계 · 시간 추후 안내</dd></dl>
-            </div>
-          </li>
-          <li>
-            <p class="day"><b>12.21</b><span>월요일</span></p>
-            <div class="body">
-              <div class="tags"><span class="sng-tag">가족 팀전</span></div>
-              <h3>2026 PGA 투어 챔피언스 PNC 챔피언십</h3>
-              <p>프로 선수와 가족이 한 팀으로 출전하는 대회입니다.</p>
-              <dl><dt>출전</dt><dd>넬리 코다 가족, 아니카 소렌스탐 가족, 브룩스 켑카 가족 등</dd><dt>편성</dt><dd>Golf+ · 최종 라운드(FR) 생중계 예정</dd></dl>
-            </div>
-          </li>
-        </ul>
+    <section class="p-sec" id="special" aria-labelledby="spTitle"><div class="wrap">
+      <div class="p-head"><h2 id="spTitle">이색 대회 일정</h2><p>12월, 팀으로 치는 골프가 이어집니다. 정규 투어 밖의 특별한 대회도 SPOTV NOW Golf에서 생중계합니다.</p></div>
+      <div class="events">
+        <article class="event" aria-labelledby="ev1">
+          <div class="event-top"><p class="event-date"><b>12.17</b><span>목요일</span></p><p class="event-dd">${ddText(n)}</p></div>
+          <div class="event-body">
+            <h3 id="ev1">2026 PGA 투어 옵텀 골프 채널 게임즈</h3>
+            <p>PGA 투어 선수들이 팀을 꾸려 겨루는 팀전 포맷의 이벤트 대회입니다. 이번 친구초대 이벤트가 이 대회에 맞춰 열립니다.</p>
+            <dl><dt>형식</dt><dd>팀 대항전</dd><dt>편성</dt><dd>SPOTV NOW Golf 생중계 · 시간 추후 안내</dd></dl>
+            <button type="button" class="sng-btn sng-btn-primary sng-btn-lg" onclick="toSec('intro')">이벤트 참여하기</button>
+          </div>
+        </article>
+        <article class="event" aria-labelledby="ev2">
+          <div class="event-top"><p class="event-date"><b>12.21</b><span>월요일</span></p><p class="event-dd">${ddText(np)}</p></div>
+          <div class="event-body">
+            <h3 id="ev2">2026 PGA 투어 챔피언스 PNC 챔피언십</h3>
+            <p>프로 선수와 가족이 한 팀으로 출전하는 대회입니다.</p>
+            <dl><dt>형식</dt><dd>가족 팀전(프로 선수 + 가족)</dd><dt>출전</dt><dd>넬리 코다 가족, 아니카 소렌스탐 가족, 브룩스 켑카 가족 등</dd><dt>편성</dt><dd>Golf+ · 최종 라운드(FR) 생중계 예정</dd></dl>
+          </div>
+        </article>
+      </div>
+      <div class="reach">
+        <img src="assets/pga-2026-live.jpg" alt="2026 PGA 투어 독점 생중계, SPOTV Golf &amp; Health · SPOTV NOW Golf" width="720" height="720" loading="lazy">
+        <div>
+          <h3>PGA · LPGA 너머,<br>이색 대회까지 생중계</h3>
+          <p>PGA 투어, LPGA 투어 정규 대회만이 아닙니다. 팀 대항전, 가족이 함께 출전하는 대회처럼 특별한 이벤트 대회도 SPOTV NOW Golf에서 볼 수 있습니다.</p>
+          <ul><li>PGA 투어</li><li>LPGA 투어</li><li class="is-plus">+ 이색 대회</li></ul>
+        </div>
       </div>
     </div></section>
 
-    <section class="sec" id="notice" aria-labelledby="ntTitle"><div class="wrap">
-      <div class="sng-section-head sec-head"><h2 class="sng-section-title" id="ntTitle">유의사항</h2></div>
+    <section class="p-sec" id="notice" aria-labelledby="ntTitle"><div class="wrap notice-wrap">
+      <h2 id="ntTitle">유의사항</h2>
       <ul class="notice">
         <li>초대한 사람을 포함해 4명이 한 팀이 되면 이벤트에 자동 응모됩니다.</li>
         <li>초대는 1인당 최대 3명까지 가능합니다. 초대코드로 3명이 가입을 마치면 자동 응모되고, 해당 초대코드는 마감되어 더 이상 사용할 수 없습니다.</li>
@@ -1041,8 +1181,11 @@ function Promo(){
     </div></section>
   </main>
   ${footer()}
-  <div class="m-cta"><button type="button" class="sng-btn sng-btn-primary sng-btn-lg" onclick="${ctaGo}">${ctaLabel}</button></div>`;
-  return { html, mcta: true };
+  <div class="dock" id="dock" inert><div class="wrap dock-in">
+    <div class="dock-team"><span class="pips" aria-hidden="true">${pips}</span><p>${u ? `<b>내 팀 ${Math.min(cnt + 1, TEAM_SIZE)}/${TEAM_SIZE}명</b> · ${u.entered ? '자동 응모 완료' : `친구 ${MAX_INVITES - cnt}명 남음`}` : '<b>4명이 한 팀</b> · 친구 3명이 가입하면 자동 응모'}</p></div>
+    ${ctaButton()}
+  </div></div>`;
+  return { html, dock: true, after: setupDock };
 }
 
 /* =========================================================
@@ -1306,11 +1449,12 @@ function My(){
           <p class="code-big" id="myCode" ${closed ? 'style="color:var(--text-disabled)"' : ''}>${code}</p>
           ${closed
             ? `<p class="help">친구 3명이 모두 가입해 초대코드가 마감되었습니다. 이 코드로 접속한 사람에게는 마감 안내가 보이며, 일반 회원 가입만 할 수 있습니다.</p>`
-            : `<div class="btn-row">
-            <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" onclick="copy('${code}','초대코드를 복사했습니다.')">복사하기</button>
-            <button type="button" class="sng-btn sng-btn-primary sng-btn-lg" onclick="share('${esc(link)}')">공유하기</button>
+            : `<button type="button" class="cta-pill" onclick="share('${esc(link)}')">초대 링크 공유하기${ARROW}</button>
+          <div class="btn-row">
+            <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" style="flex:1 1 140px" onclick="copy('${esc(link)}','초대 링크를 복사했습니다.')">링크 복사</button>
+            <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" style="flex:1 1 140px" onclick="copy('${code}','초대코드를 복사했습니다.')">코드 복사</button>
           </div>
-          <p class="link-line">초대 링크(회원가입으로 연결) ${esc(link)}</p>`}
+          <p class="link-line">초대 링크(회원가입으로 연결) …/#/signup?ref=${code}</p>`}
         </section>
 
         <section class="card ${u.entered ? 'is-active' : ''}" aria-labelledby="pgTitle">
@@ -1327,7 +1471,12 @@ function My(){
       <section class="sec" style="padding-bottom:0" aria-labelledby="frTitle">
         <div class="sng-section-head sec-head" style="justify-content:flex-start"><h2 class="sng-section-title" id="frTitle">가입한 팀원</h2><span class="sub">${cnt} / ${MAX_INVITES}명</span></div>
         ${cnt ? `<ul class="board">${rows}</ul>` : `<p class="sng-empty">아직 가입한 팀원이 없습니다</p>`}
-        <p class="demo-hint">데모: 우측 하단 데모 도구의 친구 가입 시뮬레이션으로 인원 증가를 확인할 수 있습니다.</p>
+        <p class="demo-hint">데모: 데모 도구 버튼의 친구 가입 시뮬레이션으로 인원 증가를 확인할 수 있습니다.</p>
+      </section>
+
+      <section class="p-sec" style="padding-bottom:0" aria-labelledby="myPrz">
+        <div class="p-head"><h2 id="myPrz">${u.entered ? '우리 팀이 도전하는 경품' : '팀을 완성하면 도전하는 경품'}</h2><p>골프장 라운드 3팀(당첨 시 ${WINNER[db.winnerScope]} 지급)과 추가 경품을 추첨합니다.</p></div>
+        ${prizesHTML('h3')}
       </section>
     </div></div>
   </main>
