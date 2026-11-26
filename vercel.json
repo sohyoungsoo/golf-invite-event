@@ -1,10 +1,11 @@
 {
   "cleanUrls": true,
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
       "has": [{ "type": "host", "value": "golf-invite-event-v2-0.vercel.app" }],
-      "destination": "/Ver_2.0"
+      "destination": "/Ver_2.0",
+      "permanent": false
     }
   ],
   "headers": [
