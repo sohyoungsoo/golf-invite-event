@@ -1421,34 +1421,36 @@ main.v2 .v2-head p:not(.v2-eyebrow) { max-width: none; margin-top: var(--space-3
 .v2-live p span { font: 400 16px/1.4 var(--font-sans); color: var(--text-250); }
 
 /* ---------- 경품 ---------- */
-.v2-prz-h { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-4); }
+.v2-prz-h { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2) var(--space-3); margin-bottom: var(--space-3); }
 .v2-prz-h + .v2-courses { margin-top: 0; }
-.v2-goods + .v2-odds, .v2-courses + .v2-prz-h { margin-top: var(--space-12); }
-.v2-prz-h h3 { font: 800 28px/1.25 var(--font-sans); letter-spacing: -0.8px; color: var(--text-100); }
-.v2-prz-h p { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); font: 400 17px/26px var(--font-sans); color: var(--text-200); }
+.v2-goods + .v2-odds { margin-top: var(--space-3); }
+.v2-courses + .v2-prz-h { margin-top: 36px; }
+.v2-prz-h h3 { font: 800 22px/1.3 var(--font-sans); letter-spacing: -0.8px; color: var(--text-100); }
+.v2-prz-h p { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); font: 400 16px/24px var(--font-sans); color: var(--text-200); }
 .v2-courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); list-style: none; }
-.v2-course { border-radius: 14px; overflow: hidden; background: #141414; border: 1px solid #3a2a22; }
-.v2-course .ph { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.v2-course { display: grid; grid-template-columns: 48% minmax(0, 1fr); align-items: stretch; border-radius: 12px; overflow: hidden; background: #141414; border: 1px solid #3a2a22; }
+.v2-course .ph { position: relative; min-height: 112px; overflow: hidden; }
+.v2-course .ph img { position: absolute; inset: 0; }
 .v2-course img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.16, 1, .3, 1); }
 .v2-course:hover img { transform: scale(1.04); }
-.v2-course .src { position: absolute; right: 10px; top: 10px; padding: 2px 8px; border-radius: var(--radius-xs); background: rgba(0,0,0,.5); font: 400 12px/16px var(--font-sans); color: var(--text-150); }
-.v2-course .perk { position: absolute; left: 10px; bottom: 10px; padding: 6px 10px; border-radius: var(--radius-full); background: rgba(0,0,0,.8); font: 700 14px/1 var(--font-sans); color: #fff; }
-.v2-course .bd { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); padding: var(--space-4) var(--space-6) var(--space-6); }
-.v2-course .nm { margin: 0; font: 800 30px/1.1 var(--font-sans); letter-spacing: -1px; color: var(--text-100); }
-.v2-course .ct { font: 600 17px/1 var(--font-sans); color: #ff7a45; }
+.v2-course .src { position: absolute; right: 6px; top: 6px; padding: 1px 6px; border-radius: var(--radius-xs); background: rgba(0,0,0,.5); font: 400 11px/15px var(--font-sans); color: var(--text-150); }
+.v2-course .perk { position: absolute; left: 6px; bottom: 6px; padding: 4px 8px; border-radius: var(--radius-full); background: rgba(0,0,0,.8); font: 700 12px/1 var(--font-sans); color: #fff; }
+.v2-course .bd { display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: var(--space-3) var(--space-4); }
+.v2-course .nm { margin: 0; font: 800 22px/1.2 var(--font-sans); letter-spacing: -0.6px; color: var(--text-100); }
+.v2-course .ct { font: 600 15px/1.3 var(--font-sans); color: #ff7a45; }
 .v2-course .ct b { font-weight: 800; }
 .v2-goods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); list-style: none; }
-.v2-good { display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: center; gap: var(--space-4); padding: var(--space-4); border-radius: 14px; background: #141414; border: 1px solid #262626; }
+.v2-good { display: grid; grid-template-columns: 80px minmax(0, 1fr); align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: 12px; background: #141414; border: 1px solid #262626; }
 .v2-good .ph { aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: var(--text-200); display: grid; place-items: center; }
 .v2-good .ph img, .v2-good .ph svg { width: 100%; height: 100%; object-fit: contain; display: block; }
-.v2-good .nm { font: 700 19px/1.35 var(--font-sans); letter-spacing: -0.4px; color: var(--text-100); }
-.v2-good .sub { font: 400 15px/22px var(--font-sans); color: var(--text-250); }
-.v2-good .ct { margin-top: var(--space-1); font: 800 36px/1.1 var(--font-sans); letter-spacing: -1px; color: var(--text-100); font-variant-numeric: tabular-nums; }
-.v2-good .ct small { margin-left: 2px; font: 700 17px/1 var(--font-sans); color: var(--text-250); }
-.v2-good .ex { font: 400 13px/18px var(--font-sans); color: var(--text-300); }
-.v2-odds { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--space-2) var(--space-6); padding: var(--space-6); border-radius: 14px; background: #1a120d; border: 1px solid #5a3a20; }
-.v2-odds .k { font: 800 18px/1.3 var(--font-sans); color: #ff7a45; white-space: nowrap; }
-.v2-odds .v { font: 400 19px/1.5 var(--font-sans); color: var(--text-200); }
+.v2-good .nm { font: 700 17px/1.35 var(--font-sans); letter-spacing: -0.4px; color: var(--text-100); }
+.v2-good .sub { font: 400 14px/20px var(--font-sans); color: var(--text-250); }
+.v2-good .ct { margin-top: 2px; font: 800 26px/1.1 var(--font-sans); letter-spacing: -1px; color: var(--text-100); font-variant-numeric: tabular-nums; }
+.v2-good .ct small { margin-left: 2px; font: 700 15px/1 var(--font-sans); color: var(--text-250); }
+.v2-good .ex { font: 400 12px/17px var(--font-sans); color: var(--text-300); }
+.v2-odds { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--space-2) var(--space-4); padding: var(--space-4) var(--space-6); border-radius: 12px; background: #1a120d; border: 1px solid #5a3a20; }
+.v2-odds .k { font: 800 16px/1.3 var(--font-sans); color: #ff7a45; white-space: nowrap; }
+.v2-odds .v { font: 400 17px/1.5 var(--font-sans); color: var(--text-200); }
 .v2-odds .v b { color: #fff; }
 .v2-odds .s { font: 400 14px/1.4 var(--font-sans); color: var(--text-300); white-space: nowrap; }
 
@@ -1647,8 +1649,6 @@ main.v2 .v2-head p:not(.v2-eyebrow) { max-width: none; margin-top: var(--space-3
 @media (max-width: 1279px) {
   .v2-title { font-size: 54px; }
   .v2-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .v2-goods { grid-template-columns: minmax(0, 1fr); }
-  .v2-good { grid-template-columns: 96px minmax(0, 1fr); }
 }
 @media (max-width: 1023px) {
   .v2-hero-in { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding-top: var(--space-12); padding-bottom: var(--space-12); }
@@ -1656,9 +1656,7 @@ main.v2 .v2-head p:not(.v2-eyebrow) { max-width: none; margin-top: var(--space-3
   .v2-team { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding: 28px; }
   .v2-games { grid-template-columns: minmax(0, 1fr); }
   .v2-courses { grid-template-columns: minmax(0, 1fr); }
-  .v2-course { display: grid; grid-template-columns: 44% minmax(0, 1fr); }
-  .v2-course .ph { aspect-ratio: auto; min-height: 150px; }
-  .v2-course .bd { flex-direction: column; justify-content: center; padding: var(--space-4) var(--space-6); }
+  .v2-goods { grid-template-columns: minmax(0, 1fr); }
   .v2-odds { grid-template-columns: minmax(0, 1fr); }
   .v2-cardwrap { grid-template-columns: minmax(0, 1fr); }
   .v2-cardcol { position: static; }
@@ -1681,9 +1679,9 @@ main.v2 .v2-head p:not(.v2-eyebrow) { max-width: none; margin-top: var(--space-3
   main.v2 .v2-head h2 { font-size: 30px; letter-spacing: -0.9px; }
   main.v2 .v2-head p:not(.v2-eyebrow) { font-size: 17px; line-height: 26px; }
   .v2-prz-h h3, .v2-blk-h { font-size: 24px; }
-  .v2-course { grid-template-columns: minmax(0, 1fr); }
-  .v2-course .ph { aspect-ratio: 16 / 9; min-height: 0; }
-  .v2-course .bd { flex-direction: row; align-items: baseline; }
+  .v2-course { grid-template-columns: 44% minmax(0, 1fr); }
+  .v2-course .ph { min-height: 100px; }
+  .v2-course .nm { font-size: 20px; }
   .v2-team { padding: 22px 16px; }
   .v2-team-msg { font-size: 20px; }
   .v2-team-cta .cta-pill { width: 100%; }
@@ -2284,12 +2282,12 @@ function Promo(q = {}){
     </div></section>
 
     <section class="p-sec is-alt" id="games" aria-labelledby="gmTitle"><div class="wrap">
-      <div class="p-head v2-head"><p class="v2-eyebrow">${post ? '12월 대회 다시보기' : '12월 대회 정보'}</p><h2 id="gmTitle">${post ? '프로들의 팀 매치, 다시보기로 만나세요' : '프로들은 팀 매치, 우리는 라운드 팀!'}</h2><p>12월 SPOTV NOW Golf에서 만나는 특별한 팀 대항전</p></div>
-      <div class="v2-video" role="img" aria-label="${post ? '대회 하이라이트 영상 자리' : 'PGA 프로모 영상 자리'}, 추후 삽입">
+      <div class="p-head v2-head"><p class="v2-eyebrow">${post ? '12월 대회 다시보기' : '이후 대회 정보'}</p><h2 id="gmTitle">${post ? '프로들의 팀 매치, 다시보기로 만나세요' : '프로들은 팀 매치, 우리는 라운드 팀!'}</h2><p>12월 SPOTV NOW Golf에서 만나는 특별한 팀 대항전</p></div>
+      ${post ? `<div class="v2-video" role="img" aria-label="PGA 프로모 영상 자리, 추후 삽입">
         <img src="assets/kv-golf-channel-games.jpg" alt="" width="1280" height="720" loading="lazy">
         <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span>
-        <span class="lbl">${post ? '대회 하이라이트 영상' : 'PGA 프로모 영상'} · 추후 삽입</span>
-      </div>
+        <span class="lbl">PGA 프로모 영상 · 추후 삽입</span>
+      </div>` : ''}
       <ul class="v2-sched">
         <li><p class="d"><b>12.17 (목)</b><span>오전 9시 (예정)</span></p><p class="t"><b>2026 PGA 투어 옵텀 골프채널 게임스</b><span>SPOTV NOW Golf 생중계</span></p>${gameBtns(gSt, '옵텀 골프채널 게임스')}</li>
         <li><p class="d"><b>12.21 (월)</b><span>오전 2시 (예정)</span></p><p class="t"><b>2026 PGA 투어 챔피언스 PNC 챔피언십</b><span>SPOTV NOW Golf 생중계</span></p>${gameBtns(pSt, 'PNC 챔피언십')}</li>
@@ -2655,27 +2653,6 @@ function My(){
         <p class="demo-hint">데모: 데모 도구 버튼의 친구 가입 시뮬레이션으로 인원 증가를 확인할 수 있습니다.</p>
       </section>
 
-      <section class="sec v2-cardsec" style="padding-bottom:0" aria-labelledby="tcTitle">
-        <div class="v2-cardsec-h"><span class="v2-tag">NEW</span><h2 id="tcTitle">나만의 팀 카드 만들기</h2><p>팀 이름을 짓고 팀원 사진을 올려 우리 팀만의 카드를 만들어 보세요. 4명이 모두 모이면 <b>LEGEND 카드</b>로 바뀝니다.</p></div>
-        <div class="v2-cardwrap">
-          <div class="v2-cardcol"><div id="teamCard">${teamCardHTML(u)}</div><p class="help" id="cardHint">${n === TEAM_SIZE ? '팀 완성! LEGEND 카드가 되었어요' : `팀원이 ${TEAM_SIZE - n}명 더 모이면 LEGEND 카드로 바뀌어요`}</p></div>
-          <div class="v2-cardform">
-            <div><label class="f-label" for="tcName">① 팀 이름</label><div class="sng-field"><input class="sng-input" id="tcName" maxlength="12" value="${esc(u.teamName || '')}" placeholder="예) 상암동 버디즈" oninput="setCard('teamName', this.value)"></div><p class="f-help">최대 12자 · 예) 상암동 버디즈, 월요일 새벽조</p></div>
-            <div><p class="f-label">② 팀원 사진 · 포지션</p>
-              <ul class="v2-members">${cardMembers(u).map((m, i) => `<li><span class="dot" style="background:${m.joined ? CARD_DOTS[i] : 'var(--surface-300)'}">${m.ini}</span><span class="tx"><b>${m.name}</b><small>${i === 0 ? '나 · 팀 대표' : m.joined ? '가입 완료' : '아직 합류 전이에요'}</small></span>
-                ${m.joined ? `<select class="sng-input v2-sel" aria-label="${m.name} 포지션" onchange="setRole(${i}, this.value)">${CARD_ROLES.map(r => `<option ${r === m.role ? 'selected' : ''}>${r}</option>`).join('')}</select><label class="sng-btn sng-btn-primary sng-btn-sm v2-up">사진 올리기<input type="file" accept="image/*" onchange="setPhoto(${i}, this)"></label>` : ''}</li>`).join('')}</ul>
-              <p class="f-help">친구 사진은 꼭 친구에게 동의를 받고 올려 주세요. 사진 없이도 카드를 만들 수 있어요.</p></div>
-            <div><p class="f-label">③ 카드 테마</p><div class="v2-themes">${CARD_THEMES.map((t, i) => `<button type="button" aria-pressed="${(u.cardTheme || 0) === i}" onclick="setCard('cardTheme', ${i})"><span style="background:${t.color}"></span>${t.name}</button>`).join('')}</div></div>
-            <div><p class="f-label">④ 카드 자랑하기</p><div class="v2-sharebtns">
-              <button type="button" class="sng-btn sng-btn-primary sng-btn-lg" onclick="notInDemo()">인스타 스토리 공유</button>
-              <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" onclick="notInDemo()">카카오톡 공유</button>
-              <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" onclick="notInDemo()">카드 이미지 저장</button>
-              ${link ? `<button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" onclick="copy('${esc(link)}','초대 링크를 복사했습니다.')">초대 링크 복사</button>` : ''}
-            </div><p class="f-help">공유한 카드에는 내 초대 링크가 함께 담겨, 카드를 본 친구가 바로 우리 팀에 합류할 수 있어요.</p></div>
-          </div>
-        </div>
-      </section>
-
       <section class="p-sec" style="padding-bottom:0;border-top:0" aria-labelledby="myPrz">
         <div class="p-head v2-head"><h2 id="myPrz">${u.entered ? '우리 팀이 도전하는 경품' : '팀을 완성하면 도전하는 경품'}</h2><p>라운드권 3팀(당첨 시 대표자에게 지급)과 추가 경품 ${GOODS_TOTAL}명을 추첨합니다.</p></div>
         ${prizesHTML('h3')}
@@ -2685,45 +2662,6 @@ function My(){
   ${footer()}`;
   return { html };
 }
-/* ---------- 나만의 팀 카드 (마이페이지) ---------- */
-const CARD_ROLES = ['티샷', '어프로치', '퍼팅', '분위기 메이커'];
-const CARD_DOTS = ['#ff4600', '#21c7a8', '#7b6cff', '#ffb020'];
-const CARD_THEMES = [
-  { name: 'SPOTV 오렌지', color: '#ff4600', bg: '#ffe7dc' },
-  { name: '서산수 그린', color: '#2e7d5b', bg: '#ddefe5' },
-  { name: '파인비치 블루', color: '#2a6fb0', bg: '#dce9f6' },
-  { name: '군산 선셋', color: '#c2552a', bg: '#f6e2d6' }
-];
-const cardPhotos = {}; // 데모: 사진은 저장하지 않고 이 화면에서만 미리보기
-function cardMembers(u){
-  const ppl = [u, ...invitees(u)];
-  const roles = u.cardRoles || CARD_ROLES;
-  return Array.from({ length: TEAM_SIZE }, (_, i) => {
-    const p = ppl[i];
-    return { joined: !!p, name: p ? (i === 0 ? esc(u.name) : esc(maskName(p.name))) : '빈 자리', ini: p ? esc(p.name[0]) : '?', role: p ? roles[i] : '모집 중', photo: p ? cardPhotos[i] : null };
-  });
-}
-function teamCardHTML(u){
-  const n = teamCount(u), legend = n === TEAM_SIZE;
-  const th = CARD_THEMES[u.cardTheme || 0];
-  const accent = legend ? '#a97a00' : th.color;
-  const ms = cardMembers(u);
-  return `<div class="v2-card ${legend ? 'is-legend' : ''}" style="--c:${accent};--bgc:${th.bg}" aria-label="팀 카드 미리보기">
-    <div class="in">
-      <div class="top"><span class="rar">${legend ? 'LEGEND' : 'ROOKIE'}</span><span class="tc">TEAM <b>${n}</b>/4</span></div>
-      <p class="tn">${esc(u.teamName || '우리 팀')}</p>
-      <div class="art">${ms.map((m, i) => `<div class="cell">${m.photo ? `<img src="${m.photo}" alt="">` : `<span class="ini" style="background:${m.joined ? CARD_DOTS[i] : '#bdb7a8'}">${m.ini}</span>`}<span class="role">${m.role}</span></div>`).join('')}</div>
-      <ul class="names">${ms.map(m => `<li class="${m.joined ? '' : 'off'}"><b>${m.role}</b> · ${m.name}</li>`).join('')}</ul>
-      <div class="pw"><p><b>필살기 · 팀 릴레이</b><b class="v">${n * 25} / 100</b></p><span>4명이 번갈아 샷을 이어 치며 최단 시간 홀아웃에 도전!</span></div>
-      <p class="ft"><span>SPOTV NOW Golf · 2026-27 라운드 팀 시즌</span><span>No. ${esc(u.code || '-')}</span></p>
-    </div>
-  </div>`;
-}
-function refreshCard(){ const u = me(); const el = document.getElementById('teamCard'); if (u && el) el.innerHTML = teamCardHTML(u); }
-function setCard(k, v){ const u = me(); if (!u) return; u[k] = k === 'teamName' ? String(v).slice(0, 12) : v; save(); refreshCard();
-  if (k === 'cardTheme') document.querySelectorAll('.v2-themes button').forEach((b, i) => b.setAttribute('aria-pressed', String(i === v))); }
-function setRole(i, v){ const u = me(); u.cardRoles = (u.cardRoles || CARD_ROLES).slice(); u.cardRoles[i] = v; save(); refreshCard(); }
-function setPhoto(i, input){ const f = input.files && input.files[0]; if (!f) return; cardPhotos[i] = URL.createObjectURL(f); refreshCard(); toast('사진을 카드에 넣었습니다. (데모: 저장되지 않음)'); }
 function copy(t, msg){ (navigator.clipboard?.writeText(t) || Promise.reject()).then(() => toast(msg), () => toast(t)); }
 function share(link){
   const data = { title: 'SPOTV NOW Golf 친구초대 이벤트', text: '프로는 팀 매치, 우리는 라운드 팀! 링크로 SPOTV NOW Golf에 가입하고 내 팀에 합류해 주세요. 가입만 해도 추가 경품에 자동 응모되고, 4명이 모이면 4인 라운드권에 응모됩니다.', url: link };
@@ -2748,6 +2686,19 @@ function simulateFriend(){
   if (!wasEntered && u.entered) setTimeout(() => toast('4명 팀이 완성되어 자동 응모되었습니다. 초대코드는 마감됩니다.'), 1800);
   render();
 }
+/* 데모: 가장 최근에 가입한 친구 1명을 지웁니다. 3명 미만이 되면 응모 완료·코드 마감을 되돌립니다. */
+function removeFriend(){
+  const u = me();
+  if (!u){ toast('먼저 로그인해 주세요.'); return; }
+  const list = invitees(u);
+  if (!list.length){ closeModal(); toast('제거할 친구가 없습니다.'); return; }
+  const last = list[list.length - 1];
+  db.users = db.users.filter(x => x.id !== last.id);
+  if (u.entered && list.length - 1 < MAX_INVITES){ u.entered = false; u.enteredAt = null; }
+  save(); closeModal();
+  toast(`${maskName(last.name)} 님을 팀에서 제거했습니다. (데모)`);
+  render();
+}
 function setWinner(v){ db.winnerScope = v; save(); closeModal(); render(); toast(`당첨 대상을 '${WINNER[v]}'(으)로 바꿨습니다.`); }
 function setLoginMode(m){ db.loginMode = m; save(); closeModal(); render(); }
 /* 가입 분기 미리보기: 샘플 초대자 코드로 회원가입 링크를 엽니다. */
@@ -2768,7 +2719,11 @@ function openTools(){
     <div class="tools-grp">
       <h3>친구 가입 시뮬레이션</h3>
       <p class="help">${u ? `${esc(maskName(u.name))} 님의 초대코드로 가상 친구 1명을 가입시킵니다. 3명이 모이면 자동 응모되고 코드가 마감됩니다.` : '로그인한 뒤 사용할 수 있습니다.'}</p>
-      <button type="button" class="sng-btn sng-btn-primary sng-btn-lg" id="simBtn" ${u && !(u.code && invitees(u).length >= MAX_INVITES) ? '' : 'disabled'} onclick="simulateFriend()">${u && u.code && invitees(u).length >= MAX_INVITES ? '초대코드 마감됨' : '가입시키기'}</button>
+      <div class="btn-row">
+        <button type="button" class="sng-btn sng-btn-primary sng-btn-lg" id="simBtn" ${u && !(u.code && invitees(u).length >= MAX_INVITES) ? '' : 'disabled'} onclick="simulateFriend()">${u && u.code && invitees(u).length >= MAX_INVITES ? '초대코드 마감됨' : '친구 추가'}</button>
+        <button type="button" class="sng-btn sng-btn-secondary sng-btn-lg" id="rmBtn" ${u && invitees(u).length ? '' : 'disabled'} onclick="removeFriend()">마지막 친구 제거</button>
+      </div>
+      <p class="help">${u ? `현재 팀원 ${invitees(u).length}/${MAX_INVITES}명 · 제거하면 팀 인원이 줄고, 팀이 완성됐던 경우 응모 완료와 코드 마감이 풀립니다.` : ''}</p>
     </div>
     <div class="tools-grp">
       <h3>가입 분기 미리보기</h3><p class="help">샘플 초대 링크로 회원가입 화면을 엽니다. 어떤 코드여도 가입은 계속할 수 있습니다.</p>
