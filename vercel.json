@@ -1,5 +1,12 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "golf-invite-event-v2-0.vercel.app" }],
+      "destination": "/Ver_2.0"
+    }
+  ],
   "headers": [
     { "source": "/(.*)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex, nofollow" } ] }
   ]
