@@ -1721,6 +1721,126 @@ main.v2 .v2-head p:not(.v2-eyebrow) { max-width: none; margin-top: var(--space-3
   .cs-code { font-size: 32px; letter-spacing: 3px; }
   .cs-btns { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* =========================================================
+   [Ver.2 · 11.27] 메인 홍보 영역 (참고 디자인: 팀 매치 키 비주얼)
+   ========================================================= */
+.v3-hero { position: relative; overflow: hidden; border-bottom: 1px solid #1f1f1f; background: radial-gradient(ellipse 900px 600px at 50% 300px, #17305a 0%, #0b1c36 55%, #08142a 100%); }
+.v3-stage { position: relative; max-width: 1440px; height: 720px; margin: 0 auto; }
+.v3-visual { position: absolute; inset: 0; }
+.v3-visual .tm { position: absolute; width: auto; height: 540px; }
+.v3-visual .tm-l { left: 0; bottom: 81px; }
+.v3-visual .tm-r { right: -20px; bottom: 90px; }
+.v3-visual .vig { position: absolute; left: 50%; top: 0; width: 640px; height: 100%; transform: translateX(-50%); background: radial-gradient(ellipse 320px 380px at 50% 45%, rgba(8,20,42,.8) 0%, rgba(8,20,42,0) 100%); }
+.v3-visual .fade { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; background: linear-gradient(180deg, rgba(8,20,42,0) 0%, #08142a 100%); }
+.v3-visual .tag { position: absolute; bottom: 44px; display: flex; flex-direction: column; gap: 2px; line-height: 1; }
+.v3-visual .tag span { font: 800 20px/1 var(--font-sans); letter-spacing: 3px; color: #fff; }
+.v3-visual .tag b { font: 900 34px/1.05 var(--font-sans); font-style: italic; letter-spacing: -0.5px; color: var(--brand); }
+.v3-visual .tag-l { left: 60px; }
+.v3-visual .tag-r { right: 60px; align-items: flex-end; }
+.v3-visual .logo-key, .v3-visual .vs { display: none; }
+.v3-copy { position: absolute; left: 50%; top: 36px; width: 560px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 1; }
+.v3-copy .logo-wide { display: block; width: 140px; height: auto; margin-bottom: 18px; }
+.v3-badge { display: inline-flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px 12px; padding: 9px 16px; border-radius: var(--radius-md); background: var(--brand); color: #fff; font: 700 16px/1.3 var(--font-sans); }
+.v3-badge i { width: 1px; height: 16px; background: rgba(255,255,255,.5); }
+.v3-eye { margin-top: 14px; padding: 6px 14px; border-radius: var(--radius-full); box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); font: 700 15px/1.3 var(--font-sans); color: #fff; }
+.v3-h1 { margin-top: 22px; font: 900 60px/1.16 var(--font-sans); letter-spacing: -2px; color: #fff; text-shadow: 0 2px 18px rgba(8,20,42,.6); }
+.v3-h1 em { font-style: normal; color: var(--brand); }
+.v3-lede { margin-top: 20px; font: 400 18px/1.6 var(--font-sans); color: #d6dbe4; }
+.v3-lede b { color: #fff; font-weight: 700; }
+.v3-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 480px; max-width: 100%; margin-top: 24px; list-style: none; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; overflow: hidden; background: rgba(8,20,42,.72); text-align: left; }
+.v3-steps li { display: flex; flex-direction: column; gap: 2px; padding: 13px 16px; }
+.v3-steps li + li { border-left: 1px solid rgba(255,255,255,.14); }
+.v3-steps b { font: 700 17px/1.3 var(--font-sans); color: #fff; white-space: nowrap; }
+.v3-steps span { font: 400 15px/1.35 var(--font-sans); color: #b7c0ce; }
+.v3-steps .is-goal { background: rgba(255,70,0,.16); }
+.v3-steps .is-goal b { color: #ff7a3d; }
+.v3-act { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 24px; }
+.v3-act .cta-pill { width: 440px; max-width: 100%; min-height: 62px; font-size: 19px; }
+.v3-act .cta-help { margin: 0; font: 400 15px/1.4 var(--font-sans); color: #a9b3c2; }
+.v3-act .cta-help b { color: #fff; }
+
+@media (max-width: 1279px) {
+  .v3-stage { height: 680px; }
+  .v3-visual .tm { height: 440px; }
+  .v3-visual .tm-l { left: -40px; bottom: 90px; }
+  .v3-visual .tm-r { right: -50px; bottom: 96px; }
+  .v3-visual .tag-l { left: 32px; } .v3-visual .tag-r { right: 32px; }
+  .v3-h1 { font-size: 52px; }
+}
+/* 태블릿·모바일: 글 → 선수 이미지 → 3단계 · 버튼 순서로 세로 배치 */
+@media (max-width: 1023px) {
+  .v3-stage { height: auto; display: flex; flex-direction: column; align-items: center; padding: 32px 0 36px; text-align: center; }
+  .v3-copy { display: contents; }
+  .v3-copy .logo-wide { display: none; }
+  .v3-badge, .v3-eye, .v3-h1, .v3-lede { order: 1; margin-left: 20px; margin-right: 20px; }
+  .v3-eye { margin-top: 12px; }
+  .v3-h1 { margin-top: 18px; font-size: 44px; letter-spacing: -1.4px; }
+  .v3-lede { margin-top: 12px; font-size: 17px; }
+  .v3-visual { order: 2; position: relative; width: 640px; max-width: 100%; height: 360px; margin-top: 12px; overflow: hidden; }
+  .v3-visual .tm { height: 300px; }
+  .v3-visual .tm-l { left: -24px; bottom: 0; }
+  .v3-visual .tm-r { right: -24px; bottom: 0; }
+  .v3-visual .vig { display: none; }
+  .v3-visual .fade { height: 80px; }
+  .v3-visual .tag { bottom: 12px; gap: 0; }
+  .v3-visual .tag span { font-size: 12px; letter-spacing: 2px; }
+  .v3-visual .tag b { font-size: 22px; }
+  .v3-visual .tag-l { left: 16px; } .v3-visual .tag-r { right: 16px; }
+  .v3-visual .logo-key { display: block; position: absolute; left: 50%; top: 6px; transform: translateX(-50%); width: 150px; height: auto; z-index: 2; }
+  .v3-visual .vs { display: block; position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); font: 900 16px/1 var(--font-sans); color: #fff; z-index: 2; }
+  .v3-steps { order: 3; align-self: stretch; width: auto; margin: 16px 20px 0; }
+  .v3-act { order: 3; align-self: stretch; margin: 18px 20px 0; }
+  .v3-act .cta-pill { width: 100%; }
+}
+@media (max-width: 600px) {
+  .v3-badge { gap: 4px 8px; padding: 7px 12px; font-size: 14px; }
+  .v3-badge i { height: 12px; }
+  .v3-h1 { font-size: 36px; line-height: 1.18; letter-spacing: -1px; }
+  .v3-lede { font-size: 15px; }
+  .v3-visual { height: 280px; }
+  .v3-visual .tm { height: 236px; }
+  .v3-visual .logo-key { width: 134px; }
+  .v3-visual .tag b { font-size: 18px; }
+  .v3-visual .tag span { font-size: 11px; }
+  .v3-steps li { padding: 11px 12px; }
+  .v3-steps b { font-size: 15px; } .v3-steps span { font-size: 13px; }
+  .v3-act .cta-pill { min-height: 56px; font-size: 17px; }
+  .v3-act .cta-help { font-size: 13px; }
+}
+
+/* ---------- 최대 2개 팀 ---------- */
+.v2-team-tag { display: inline-flex; align-items: center; height: 26px; margin-bottom: var(--space-3); padding: 0 10px; border-radius: var(--radius-tag); background: var(--brand); color: #fff; font: 800 13px/1 var(--font-sans); white-space: nowrap; }
+.v2-team-tag.is-line { background: transparent; color: var(--text-150); box-shadow: inset 0 0 0 1px var(--line-400); }
+.v2-teams-h { margin-bottom: var(--space-3); }
+.v2-teams-h p { font: 400 17px/1.5 var(--font-sans); color: var(--text-200); }
+.v2-teams-h b { margin-right: var(--space-2); font-weight: 800; color: #ff7a45; }
+.v2-team.is-joined { margin-top: var(--space-3); background: #0e0e0e; }
+.v2-team.is-joined .lt-count b { color: var(--text-100); }
+.v2-slots li.me b { color: #fff; }
+.v2-two { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: var(--space-6) 36px; margin-top: 40px; padding: 28px 32px; border-radius: 16px; background: #121212; border: 1px solid #2a2a2a; }
+.v2-two .tx h3 { font: 800 22px/1.4 var(--font-sans); letter-spacing: -0.4px; color: #fff; }
+.v2-two .tx h3 em { font-style: normal; color: #ff7a45; }
+.v2-two .tx > p:last-child { margin-top: var(--space-2); font: 400 16px/1.65 var(--font-sans); color: var(--text-200); }
+.v2-two .dia { display: flex; align-items: center; gap: var(--space-2); list-style: none; }
+.v2-two .dia li:not(.plus) { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 14px 16px; border-radius: 12px; background: #0b0b0b; border: 1px solid #262626; }
+.v2-two .dia .k { font: 800 12px/1 var(--font-sans); letter-spacing: 1px; color: var(--text-300); }
+.v2-two .dia b { font: 700 16px/1.35 var(--font-sans); color: #fff; }
+.v2-two .dia small { font: 400 13px/1.4 var(--font-sans); color: var(--text-300); }
+.v2-two .dots { display: flex; gap: 5px; margin: 2px 0; }
+.v2-two .dots i { width: 18px; height: 18px; border-radius: 50%; border: 1px dashed #5a5a5a; }
+.v2-two .dots i.l { border: 2px solid #fff; }
+.v2-two .dots i.me { background: var(--brand); border-color: var(--brand); }
+.v2-two .plus { font: 800 24px/1 var(--font-sans); color: var(--text-300); }
+.v2-my-joined { margin-top: var(--space-3); }
+.v2-my-two { margin-top: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); background: var(--surface-200); font: 400 15px/1.6 var(--font-sans); color: var(--text-250); }
+@media (max-width: 1023px) {
+  .v2-two { grid-template-columns: minmax(0, 1fr); padding: 22px 20px; }
+}
+@media (max-width: 600px) {
+  .v2-two .dia { flex-direction: column; align-items: stretch; }
+  .v2-two .plus { text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -1799,7 +1919,9 @@ function checkEntry(u){
 const SEEDS = [
   { code: 'GNTEAM01', name: '김민수', friends: ['오세훈'] },
   { code: 'GNFULL03', name: '박지훈', friends: ['한도윤', '서지우', '문채원'] },
-  { code: 'GN25PAST', name: '이수진', friends: [], codeExpired: true }
+  { code: 'GN25PAST', name: '이수진', friends: [], codeExpired: true },
+  /* 데모 도구 '2개 팀' 미리보기용: 로그인한 사용자가 이 팀에 초대받아 합류한 것으로 보여 줍니다. */
+  { code: 'GNJOIN02', name: '정다은', friends: ['최유진', '송민재'] }
 ];
 function ensureSeeds(){
   SEEDS.forEach((s, si) => {
@@ -2046,7 +2168,7 @@ const inviteLink = code => `${location.href.split('#')[0]}#/signup?ref=${code}`;
 
 /* 내 팀 현황: 채워진 인원(빈 자리 수)마다 다른 안내 */
 const TEAM_MSG = [
-  ['로그인하고 초대코드를 만들면 내 팀이 시작됩니다.', '계정이 없다면 회원가입 후 바로 시작할 수 있어요.'],
+  ['로그인하고 친구를 초대해 보세요', '계정이 없다면 회원가입 후 바로 시작할 수 있어요.'],
   ['나와 함께 라운드할 친구 3명을 초대해 보세요!', '초대 링크로 친구가 신규 가입하면 빈 자리가 하나씩 채워집니다.'],
   ['친구 2명만 더 모이면 우리 팀 완성!', '먼저 가입한 친구는 추가 경품에 이미 자동 응모되었어요.'],
   ['단 한 명! 라운드권 응모까지 한 걸음 남았어요.', '마지막 자리가 채워지면 팀원 모두의 추가 경품 당첨 확률이 올라갑니다.'],
@@ -2054,12 +2176,45 @@ const TEAM_MSG = [
 ];
 const teamCount = u => u ? Math.min(invitees(u).length + 1, TEAM_SIZE) : 0;
 
+/* 최대 2개 팀: ① 내가 대표인 팀(내 초대코드) ② 친구의 초대로 가입하며 합류한 팀 */
+const MAX_TEAMS = 2;
+const joinedTeam = u => (u && u.referredBy) ? byCode(u.referredBy) : null;
+const teamTotal = u => u ? 1 + (joinedTeam(u) ? 1 : 0) : 0;
+const TWO_TEAM_COPY = '친구의 초대로 가입했다면, 나만의 초대코드를 만들어 친구 3명과 새 팀을 꾸릴 수 있어요. 1인 최대 2개 팀까지 구성할 수 있고, 2개 팀 모두 경품에 응모됩니다.';
+/* 팀 4칸: 대표 + 친구 3. opts.mine = 내가 대표인 팀, opts.meId = 나를 강조 */
+function slotsHTML(leader, members, opts = {}){
+  return Array.from({ length: TEAM_SIZE }, (_, i) => {
+    if (i === 0){
+      if (!leader) return `<li><span class="ic" aria-hidden="true">나</span><b>나</b><small>로그인 필요</small></li>`;
+      const isMe = leader.id === opts.meId;
+      return `<li class="on ${isMe ? 'me' : ''}"><span class="ic" aria-hidden="true">${esc(leader.name[0])}</span><b>${esc(maskName(leader.name))}${isMe ? '(나)' : ''}</b><small>팀 대표</small></li>`;
+    }
+    const f = members[i - 1];
+    if (f){ const isMe = f.id === opts.meId; return `<li class="on ${isMe ? 'me' : ''}"><span class="sng-check-box" aria-hidden="true"></span><b>${esc(maskName(f.name))}${isMe ? '(나)' : ''}</b><small>가입 완료</small></li>`; }
+    return `<li><span class="ic" aria-hidden="true">${i}</span><b>친구 ${i}</b><small>${opts.mine && leader && i === members.length + 1 ? '다음 초대 자리' : '빈 자리'}</small></li>`;
+  }).join('');
+}
+/* 초대받아 합류한 팀 카드 (메인 · 마이 공용) */
+function joinedTeamCard(u){
+  const L = joinedTeam(u); if (!L) return '';
+  const mem = invitees(L), cnt = Math.min(mem.length + 1, TEAM_SIZE);
+  return `<div class="v2-team is-joined">
+    <div class="v2-team-l">
+      <p class="v2-team-tag is-line">초대받아 합류한 팀 · 팀원</p>
+      <div class="lt-head"><h3>${esc(maskName(L.name))} 님 팀</h3><p class="lt-count"><b>${cnt}</b>/${TEAM_SIZE}명</p></div>
+      <p class="v2-team-msg">${L.entered ? '팀 완성! 4인 라운드권에 자동 응모되었습니다.' : `친구 ${MAX_INVITES - mem.length}명이 더 모이면 팀이 완성돼요.`}</p>
+      <p class="v2-team-sub">${L.entered ? '라운드권은 대표자에게 지급되며, 당첨되면 4명이 함께 라운드합니다.' : '팀 대표가 초대를 이어 가고 있어요. 나는 가입과 함께 추가 경품에 응모되었습니다.'}</p>
+    </div>
+    <ul class="v2-slots" aria-label="${esc(maskName(L.name))} 님 팀 ${cnt}/${TEAM_SIZE}명">${slotsHTML(L, mem, { meId: u.id })}</ul>
+  </div>`;
+}
+
 /* ---------- CTA: 비로그인은 로그인/가입으로, 로그인은 바로 초대코드 표시 ---------- */
 const CODE_NEXT = encodeURIComponent('/?code=1');
 function ctaState(){
   const u = me(), ph = phase();
   if (ph === 'end') return { label: '이벤트가 종료되었습니다', act: '', off: true, help: '당첨자는 이벤트 종료 후 개별 안내합니다(일정 추후 안내).' };
-  if (!u) return { label: '친구 초대하고 나만의 팀 꾸리기', act: `go('/login?next=${CODE_NEXT}')`, help: '로그인하면 나만의 초대코드가 바로 발급됩니다.' };
+  if (!u) return { label: '친구 초대하고 나만의 팀 꾸리기', act: `go('/login?next=${CODE_NEXT}')`, help: '로그인 후 초대코드를 발급받으세요' };
   const n = invitees(u).length;
   if (u.entered || n >= MAX_INVITES) return { label: '응모 완료 · 내 팀 보기', act: `go('/my')`, done: true, help: '4명 팀이 완성되어 자동 응모되었습니다.' };
   return { label: u.code ? '내 초대코드 보기' : '친구 초대하고 나만의 팀 꾸리기', act: 'openCode()', help: `친구 ${MAX_INVITES - n}명 남았습니다${u.code ? ` · 내 코드 <b>${esc(u.code)}</b>` : ' · 누르면 바로 초대코드가 발급됩니다'}` };
@@ -2096,20 +2251,20 @@ function openCode(){
 /* 이미지 출처는 README '이미지' 항목 참고. 실서비스 전 사용 허락 확인 필요 */
 const COURSES = [
   { nm: '서산수CC', img: 'assets/prize-seosansu.jpg', alt: '서산수CC 페어웨이와 성 모양 클럽하우스', src: '사진 서산수CC', pos: '28% 50%' },
-  { nm: '파인비치', img: 'assets/prize-pinebeach.jpg', alt: '바다와 섬이 내려다보이는 파인비치 골프링크스 홀', src: '사진 Golfplan', pos: '50% 50%', perk: '+ 호텔 숙박 50% 할인' },
+  { nm: '파인비치 골프 링크스', img: 'assets/prize-pinebeach.jpg', alt: '바다와 섬이 내려다보이는 파인비치 골프링크스 홀', src: '사진 Golfplan', pos: '50% 50%', perk: '+ 호텔 숙박 50% 할인' },
   { nm: '군산CC', img: 'assets/prize-gunsan.jpg', alt: '깃발이 꽂힌 군산CC 그린과 연못', src: '사진 군산CC', pos: '42% 50%' }
 ];
 /* 영화 관람권: 공식 이미지가 없어 직접 그린 티켓(로고 없음) */
 const MOVIE_ART = `<svg viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="#ededed"/><g transform="rotate(-8 100 100)"><path d="M38 62h124a8 8 0 0 1 8 8v18a12 12 0 0 0 0 24v18a8 8 0 0 1-8 8H38a8 8 0 0 1-8-8v-18a12 12 0 0 0 0-24V70a8 8 0 0 1 8-8z" fill="#1b1b1b"/><path d="M128 70v60" stroke="#ff4600" stroke-width="2" stroke-dasharray="4 4"/><text x="44" y="94" font-size="11" font-weight="700" letter-spacing="2" fill="#bdbdbd">MOVIE</text><text x="44" y="118" font-size="22" font-weight="800" fill="#fff">관람권</text><text x="148" y="108" text-anchor="middle" font-size="20" font-weight="800" fill="#ff4600">2</text><text x="148" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#bdbdbd">매</text></g></svg>`;
 const GOODS = [
   { nm: '롯데시네마 관람권', sub: '1인 2매 (총 200매)', ct: 100, art: MOVIE_ART, note: '이미지는 예시입니다.' },
-  { nm: 'PGA 투어 드라이버 커버', sub: 'PGA 투어 라이선스 헤드커버', ct: 3, img: 'assets/prize-driver-cover.jpg', alt: 'PGA 투어 라이선스 드라이버 헤드커버(예시 이미지)', note: '이미지는 예시이며 실제 경품과 다를 수 있습니다.' },
+  { nm: 'PGA투어 드라이버 커버', sub: 'PGA투어 라이선스 헤드커버', ct: 3, img: 'assets/prize-driver-cover.jpg', alt: 'PGA 투어 라이선스 드라이버 헤드커버(예시 이미지)', note: '이미지는 예시이며 실제 경품과 다를 수 있습니다.' },
   { nm: '볼빅 골프공', sub: '모델 추후 안내', ct: 30, img: 'assets/prize-volvik-ball.png', alt: '볼빅 골프공 패키지(예시 이미지)', note: '이미지는 예시이며 실제 경품과 다를 수 있습니다.' }
 ];
 const GOODS_TOTAL = GOODS.reduce((s, g) => s + g.ct, 0);
 function prizesHTML(h = 'h3'){
   return `
-    <div class="v2-prz-h"><${h}>골프장 4인 라운드권</${h}><p><span class="v2-tag">대표자 팀</span>초대코드를 만든 대표자에게 지급, 대표자 팀 4명이 함께 라운드합니다.</p></div>
+    <div class="v2-prz-h"><${h}>골프장 4인 라운드권</${h}><p><span class="v2-tag">대표자 팀</span>초대코드를 만든 대표자에게 지급됩니다</p></div>
     <ul class="v2-courses">${COURSES.map(c => `
       <li class="v2-course">
         <div class="ph"><img src="${c.img}" alt="${c.alt}" loading="lazy" width="1200" height="1500" style="object-position:${c.pos}"><span class="src">${c.src}</span>${c.perk ? `<span class="perk">${c.perk}</span>` : ''}</div>
@@ -2121,7 +2276,7 @@ function prizesHTML(h = 'h3'){
       <li class="v2-good"><div class="ph">${g.img ? `<img src="${g.img}" alt="${g.alt}" loading="lazy" width="600" height="600">` : g.art}</div>
         <div class="bd"><p class="nm">${g.nm}</p><p class="sub">${g.sub}</p><p class="ct">${g.ct}<small>명</small></p><p class="ex">${g.note}</p></div></li>`).join('')}
     </ul>
-    <div class="v2-odds"><p class="k">팀 완성 보너스</p><p class="v">4명 팀을 완성하면 <b>팀원 모두의 추가 경품 당첨 확률이 올라갑니다.</b></p><p class="s">확률 산정 기준은 추후 안내</p></div>`;
+    <div class="v2-odds"><p class="k">Tip</p><p class="v">4명 팀을 완성하면 <b>팀원 모두의 당첨 확률 UP!</b></p><p class="s">확률 산정 기준은 추후 안내</p></div>`;
 }
 
 /* 하단 고정 바: 히어로 CTA가 화면 밖으로 나가면 나타납니다. */
@@ -2148,9 +2303,9 @@ const PRO_TEAMS = [
     { nm: '마이클 브레넌', rk: '세계 19위', img: 'brennan' }, { nm: '잭슨 코이번', rk: '세계 52위', img: 'koivun' }] }
 ];
 const GCG_RULES = [
-  ['팀 릴레이', '4명이 한 홀을 이어 칩니다. 가장 빠른 기록과 가장 적은 타수에 승점.'],
-  ['14클럽 챌린지', '2명씩 14개 클럽을 하나씩 골라 핀에 붙입니다. 한 번 쓴 클럽은 다시 못 씁니다.'],
-  ['캡틴 챌린지 · 새 게임', '두 주장의 1대1 대결(승점 2). 올해 새 게임은 대회 전에 공개됩니다.']
+  ['팀 릴레이', '4명이 한 홀을 이어 칩니다.<br>가장 빠른 기록과 가장 적은 타수에 승점.'],
+  ['14클럽 챌린지', '2명씩 14개 클럽을 하나씩 골라 핀에 붙입니다.<br>한 번 쓴 클럽은 다시 못 씁니다.'],
+  ['캡틴 챌린지 · 새 게임', '두 주장의 1대1 대결(승점 2).<br>올해 새 게임은 대회 전에 공개됩니다.']
 ];
 const PNC = [
   { pro: '넬리 코다', img: 'korda', rel: '아버지', tag: '여자 세계 1위' },
@@ -2193,60 +2348,57 @@ function Promo(q = {}){
   const dEnd = dday(EV_END);
   const c = ctaState();
   const liveNow = ph === 'gcg' ? ['2026 PGA 투어 옵텀 골프채널 게임스', '팀 매킬로이 vs 팀 셰플러'] : ph === 'pnc' ? ['2026 PGA 투어 챔피언스 PNC 챔피언십', '프로와 가족이 한 팀'] : null;
-  const ownerLabel = u ? `${esc(maskName(u.name))}(나)` : '나';
-  const slots = Array.from({ length: TEAM_SIZE }, (_, i) => {
-    if (i === 0) return `<li class="${u ? 'on me' : ''}"><span class="ic" aria-hidden="true">${u ? esc(u.name[0]) : '나'}</span><b>${ownerLabel}</b><small>${u ? '팀 대표' : '로그인 필요'}</small></li>`;
-    const f = list[i - 1];
-    return f ? `<li class="on"><span class="sng-check-box" aria-hidden="true"></span><b>${esc(maskName(f.name))}</b><small>가입 완료</small></li>`
-             : `<li><span class="ic" aria-hidden="true">${i}</span><b>친구 ${i}</b><small>${u && i === list.length + 1 ? '다음 초대 자리' : '빈 자리'}</small></li>`;
-  }).join('');
+  const slots = slotsHTML(u, list, { mine: true, meId: u?.id });
+  const two = teamTotal(u) === MAX_TEAMS;
   const teamCta = !u ? 'go(\'/login?next=' + CODE_NEXT + '\')' : c.act;
   const teamLabel = ph === 'end' ? '이벤트 종료' : !u ? '초대코드 만들기' : c.done ? '응모 완료 · 내 팀 보기' : '초대 링크 공유하기';
 
   const hero = ph === 'end'
-    ? { eye: '이벤트 종료', h1: '친구초대 이벤트가<br><em>종료되었습니다</em>', lede: '<b>참여해 주셔서 감사합니다.</b><br>당첨자는 이벤트 종료 후 개별 안내드립니다. 일정은 추후 공지합니다.' }
+    ? { eye: '이벤트 종료', h1: '친구초대 이벤트가<br><em>종료되었습니다</em>', lede: '<b>참여해 주셔서 감사합니다.</b><br>당첨자는 이벤트 종료 후 개별 안내드립니다.' }
     : post
-    ? { eye: '12월 팀 매치는 끝! 팀 꾸리기는 1월 17일까지', h1: '프로는 팀 매치!<br>우리는 <em>라운드 팀!</em>', lede: '<b>12월 팀 매치 다시보기로 열기를 이어 가고, 나만의 팀을 꾸려 보세요.</b><br>친구 3명을 초대해 한 팀이 되면 4인 라운드권에 자동 응모됩니다.' }
-    : { eye: '', h1: '프로는 팀 매치!<br>우리는 <em>라운드 팀!</em>', lede: '<b>12월 팀 매치 중계 보고, 나만의 팀을 꾸려 보세요.</b><br>친구 3명을 초대해 한 팀이 되면 4인 라운드권에 자동 응모됩니다.' };
+    ? { eye: '12월 팀 매치는 끝! 팀 꾸리기는 1월 17일까지', h1: '프로는 팀 매치!<br>우리는 <em>라운드 팀!</em>', lede: '<b>12월 팀 매치는 다시보기로, 나만의 팀은 1월 17일까지!</b><br>친구 3명이 가입하면 4인 라운드권 자동 응모!' }
+    : { eye: '', h1: '프로는 팀 매치!<br>우리는 <em>라운드 팀!</em>', lede: '<b>12월 팀 매치 중계 보고, 나만의 팀을 꾸려 보세요.</b><br>친구 3명이 가입하면 4인 라운드권 자동 응모!' };
 
   const html = `
   ${gnb('promo')}
   <main class="promo v2">
-    <section class="v2-hero" id="intro" aria-labelledby="evTitle"><div class="wrap v2-hero-in">
-      <div class="v2-copy">
-        <p class="v2-period"><span class="k">이벤트 기간</span><span class="v">2026.12.14(월) ~ 2027.01.17(일)</span>${ph !== 'end' ? `<span class="dd">마감 ${dEnd > 0 ? `D-${dEnd}` : dEnd === 0 ? 'D-DAY' : '종료'}</span>` : ''}</p>
-        ${hero.eye ? `<p class="v2-eye">${hero.eye}</p>` : ''}
-        <h1 class="v2-title" id="evTitle">${hero.h1}</h1>
-        <p class="v2-lede">${hero.lede}</p>
-        ${ph !== 'end' ? `<ol class="v2-flow" aria-label="응모 흐름">
+    <section class="v3-hero" id="intro" aria-labelledby="evTitle"><div class="v3-stage">
+      <div class="v3-visual" aria-hidden="true">
+        <img class="logo-key" src="assets/hero/gcg-logo-key.png" alt="" width="397" height="240">
+        <img class="tm tm-l" src="assets/hero/team-mcilroy.png" alt="" width="585" height="560" fetchpriority="high">
+        <img class="tm tm-r" src="assets/hero/team-scheffler.png" alt="" width="535" height="560" fetchpriority="high">
+        <span class="vig"></span><span class="fade"></span>
+        <p class="tag tag-l"><span>TEAM</span><b>MCILROY</b></p>
+        <p class="tag tag-r"><span>TEAM</span><b>SCHEFFLER</b></p>
+        <span class="vs">VS</span>
+      </div>
+      <div class="v3-copy">
+        <img class="logo-wide" src="assets/hero/gcg-logo-wide.png" alt="Optum Golf Channel Games" width="1248" height="444">
+        <p class="v3-badge"><span>이벤트 기간</span><span>2026.12.14(월) ~ 2027.01.17(일)</span>${ph !== 'end' ? `<i aria-hidden="true"></i><span>마감 ${dEnd > 0 ? `D-${dEnd}` : dEnd === 0 ? 'D-DAY' : '종료'}</span>` : ''}</p>
+        ${hero.eye ? `<p class="v3-eye">${hero.eye}</p>` : ''}
+        <h1 class="v3-h1" id="evTitle">${hero.h1}</h1>
+        <p class="v3-lede">${hero.lede}</p>
+        ${ph !== 'end' ? `<ol class="v3-steps" aria-label="응모 흐름">
           <li><b>친구 3명</b><span>신규 가입</span></li>
           <li><b>4명 팀</b><span>완성</span></li>
           <li class="is-goal"><b>4인 라운드권</b><span>3팀 추첨</span></li>
         </ol>` : ''}
-        <div class="v2-act">${ctaButton('heroCta', '친구 초대하고 나만의 팀 꾸리기')}<p class="cta-help">${c.help}</p></div>
-      </div>
-      <div class="v2-visual" aria-hidden="true">
-        <img class="bg" src="assets/prize-pinebeach.jpg" alt="" width="1200" height="1500" fetchpriority="high">
-        <div class="squad">
-          <div class="row"><span class="av is-me">${avatarIcon()}<i>나</i></span><span class="dash"></span>
-          <span class="av c1">${avatarIcon()}<i>친구 1</i></span><span class="av c2">${avatarIcon()}<i>친구 2</i></span><span class="av c3">${avatarIcon()}<i>친구 3</i></span></div>
-          <span class="done">4명 팀 완성!</span>
-        </div>
-        <div class="ticket"><div class="tl"><span class="k">ROUND TICKET</span><b>4인 라운드권</b><span class="s">서산수CC · 파인비치 · 군산CC</span></div><div class="tr"><b>3</b><span>TEAMS</span></div></div>
-        <span class="cap">사진 Golfplan (파인비치)</span>
+        <div class="v3-act">${ctaButton('heroCta', '친구 초대하고 라운드 가자')}<p class="cta-help">${c.help}</p></div>
       </div>
     </div></section>
     ${liveNow ? `<div class="v2-live"><div class="wrap v2-live-in"><span class="lv">LIVE</span><p><b>${liveNow[0]}</b><span>${liveNow[1]} · SPOTV NOW Golf 생중계 중</span></p><a class="v2-gbtn is-live" href="${WATCH_URL}" target="_blank" rel="noopener">라이브 보러가기</a></div></div>` : ''}
 
     <section class="p-sec is-alt" id="prizes" aria-labelledby="przTitle"><div class="wrap">
-      <div class="p-head v2-head"><p class="v2-eyebrow">경품</p><h2 id="przTitle">골프장 4인 라운드권 3팀, 추가 경품 ${GOODS_TOTAL}명</h2><p>라운드권은 초대코드를 만든 대표자 팀에게, 추가 경품은 응모자 각각에게 드립니다.<br class="br-d"> 팀을 완성하면 추가 경품 당첨 확률이 올라갑니다.</p></div>
+      <div class="p-head v2-head"><p class="v2-eyebrow">경품</p><h2 id="przTitle">4인 라운드권부터 푸짐한 골프 경품까지!</h2></div>
       ${prizesHTML('h3')}
     </div></section>
 
     <section class="p-sec" id="how" aria-labelledby="howTitle"><div class="wrap">
       <div class="p-head v2-head"><p class="v2-eyebrow">참여 방법</p><h2 id="howTitle">프로처럼 4명이 한 팀, 친구 3명이 가입하면 자동 응모</h2></div>
+      ${two ? `<div class="v2-teams-h"><p><b>참여 중인 팀 ${MAX_TEAMS}/${MAX_TEAMS}</b> 내가 만든 팀과 초대받아 합류한 팀, 2개 팀 모두 경품에 응모됩니다.</p></div>` : ''}
       <div class="v2-team">
         <div class="v2-team-l">
+          ${two ? '<p class="v2-team-tag">내가 만든 팀 · 대표</p>' : ''}
           <div class="lt-head"><h3>내 팀 현황</h3><p class="lt-count"><b>${n}</b>/${TEAM_SIZE}명</p></div>
           <p class="v2-team-msg">${ph === 'end' ? '이벤트가 종료되었습니다.' : TEAM_MSG[n][0]}</p>
           <p class="v2-team-sub">${ph === 'end' ? (u?.entered ? '우리 팀은 자동 응모되었습니다. 당첨 결과는 개별 안내합니다.' : '참여해 주셔서 감사합니다.') : TEAM_MSG[n][1]}</p>
@@ -2255,26 +2407,37 @@ function Promo(q = {}){
         </div>
         <ul class="v2-slots" aria-label="내 팀 ${n}/${TEAM_SIZE}명">${slots}</ul>
       </div>
+      ${two ? joinedTeamCard(u) : ''}
 
       <div class="v2-blk">
-        <h3 class="v2-blk-h">친구 초대 방법</h3>
+        <h3 class="v2-blk-h">이벤트 참여 방법</h3>
         <ol class="v2-steps">
-          <li><p class="no">STEP 1</p>${ART.code}<div class="bd"><h4>나의 초대코드<br><em>발급받기</em></h4><p>SPOTV NOW Golf 계정으로 로그인하면 나만의 초대코드와 초대 링크가 바로 발급됩니다.</p></div></li>
-          <li><p class="no">STEP 2</p>${ART.share}<div class="bd"><h4>친구에게<br><em>초대 링크 보내기</em></h4><p>링크를 받은 친구는 코드가 미리 입력된 회원가입 화면으로 바로 이동합니다.</p></div></li>
-          <li><p class="no">STEP 3</p>${ART.signup}<div class="bd"><h4>친구가<br><em>신규 회원가입</em></h4><p>가입을 마친 친구는 내 팀원으로 자동 합류하고, 추가 경품에 바로 응모됩니다.</p><p class="v2-fn">신규 회원만 인정 (기존 회원, 탈퇴 후 재가입, 본인 명의 중복 가입 불가)</p></div></li>
-          <li><p class="no">STEP 4</p>${ART.team}<div class="bd"><h4>4명 팀 완성,<br><em>라운드권 자동 응모</em></h4><p>3명이 가입을 마치면 4명 팀이 완성되어 4인 라운드권에 자동 응모됩니다.</p><p class="v2-fn">응모 후 초대코드는 마감</p></div></li>
+          <li><p class="no">STEP 1</p>${ART.code}<div class="bd"><h4>초대코드 <em>발급</em></h4><p>로그인 후 나의 초대코드를 발급받으세요</p></div></li>
+          <li><p class="no">STEP 2</p>${ART.share}<div class="bd"><h4>친구 <em>초대</em></h4><p>함께 라운드 가고 싶은 친구에게 초대 링크를 공유하세요.</p></div></li>
+          <li><p class="no">STEP 3</p>${ART.signup}<div class="bd"><h4>초대받은 친구 <em>회원가입</em></h4><p>초대받은 친구가 초대코드를 통해 신규 가입하면 초대 완료</p><p class="v2-fn">신규 회원만 인정 (기존 회원, 탈퇴 후 재가입, 본인 명의 중복 가입 불가)</p></div></li>
+          <li><p class="no">STEP 4</p>${ART.team}<div class="bd"><h4>4명 완성시, <em>라운드권 자동 응모</em></h4><p>친구 3명이 가입하면 4인 라운드권에 자동 응모됩니다</p><p class="v2-fn">응모 후 초대코드는 마감</p></div></li>
         </ol>
       </div>
 
+      ${ph !== 'end' ? `<div class="v2-two" aria-labelledby="twoH">
+        <div class="tx"><p class="v2-team-tag">최대 2개 팀</p><h3 id="twoH">초대받아 가입했다면, <em>나도 팀 대표가 될 수 있어요</em></h3><p>${TWO_TEAM_COPY}</p></div>
+        <ol class="dia" aria-label="2개 팀 구성 예시">
+          <li><span class="k">팀원으로 참여</span><b>초대받아 합류한 팀</b><span class="dots" aria-hidden="true"><i class="l"></i><i class="me"></i><i></i><i></i></span><small>친구 팀의 팀원으로 응모</small></li>
+          <li class="plus" aria-hidden="true">+</li>
+          <li><span class="k">대표로 참여</span><b>내가 만든 팀</b><span class="dots" aria-hidden="true"><i class="me l"></i><i></i><i></i><i></i></span><small>내 초대코드로 친구 3명 초대</small></li>
+        </ol>
+      </div>` : ''}
+
       <div class="v2-blk">
-        <h3 class="v2-blk-h">누가, 무엇에 응모되나요?</h3>
+        <h3 class="v2-blk-h">참여자별 응모 혜택</h3>
         <table class="v2-rule">
           <colgroup><col class="c1"><col><col></colgroup>
           <thead><tr><th scope="col"><span class="sr-only">구분</span></th><th scope="col">초대코드를 만든 사람<small>팀 대표자</small></th><th scope="col">초대코드로 가입한 친구<small>팀원 3명</small></th></tr></thead>
           <tbody>
             <tr><th scope="row">추가 경품<small>관람권 · 드라이버 커버 · 골프공</small></th><td><b class="ok">자동 응모</b>초대코드를 만들면 응모</td><td><b class="ok">자동 응모</b>가입을 마치면 바로 응모</td></tr>
             <tr><th scope="row">4인 라운드권<small>3팀</small></th><td><b class="ok">팀 완성 시 응모</b>당첨되면 대표자에게 지급</td><td><b>대표자 팀으로 함께</b>당첨되면 4명이 함께 라운드</td></tr>
-            <tr class="is-bonus"><th scope="row">팀 완성 보너스</th><td colspan="2"><b>4명이 모이면 팀원 모두의 추가 경품 당첨 확률 UP</b></td></tr>
+            <tr class="is-bonus"><th scope="row">팀 완성 혜택</th><td colspan="2"><b>4명이 모이면 팀원 모두의 추가 경품 당첨 확률 UP</b></td></tr>
+            <tr><th scope="row">새 팀 만들기<small>1인 최대 2개 팀</small></th><td><b>초대받아 가입한 친구도 대표자로</b>나만의 초대코드로 새 팀을 꾸릴 수 있어요</td><td><b class="ok">2개 팀 모두 응모</b>합류한 팀 + 내가 만든 팀</td></tr>
           </tbody>
         </table>
       </div>
@@ -2282,26 +2445,26 @@ function Promo(q = {}){
     </div></section>
 
     <section class="p-sec is-alt" id="games" aria-labelledby="gmTitle"><div class="wrap">
-      <div class="p-head v2-head"><p class="v2-eyebrow">${post ? '12월 대회 다시보기' : '이후 대회 정보'}</p><h2 id="gmTitle">${post ? '프로들의 팀 매치, 다시보기로 만나세요' : '프로들은 팀 매치, 우리는 라운드 팀!'}</h2><p>12월 SPOTV NOW Golf에서 만나는 특별한 팀 대항전</p></div>
+      <div class="p-head v2-head"><p class="v2-eyebrow">${post ? '12월 대회 다시보기' : '이후 대회 정보'}</p><h2 id="gmTitle">${post ? '프로들의 팀 매치, 다시보기로 만나세요' : '프로들은 팀 매치, 우리는 라운드 팀!'}</h2><p>SPOTV NOW Golf와 함께하는 12월 골프 빅매치</p></div>
       ${post ? `<div class="v2-video" role="img" aria-label="PGA 프로모 영상 자리, 추후 삽입">
         <img src="assets/kv-golf-channel-games.jpg" alt="" width="1280" height="720" loading="lazy">
         <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span>
         <span class="lbl">PGA 프로모 영상 · 추후 삽입</span>
       </div>` : ''}
       <ul class="v2-sched">
-        <li><p class="d"><b>12.17 (목)</b><span>오전 9시 (예정)</span></p><p class="t"><b>2026 PGA 투어 옵텀 골프채널 게임스</b><span>SPOTV NOW Golf 생중계</span></p>${gameBtns(gSt, '옵텀 골프채널 게임스')}</li>
-        <li><p class="d"><b>12.21 (월)</b><span>오전 2시 (예정)</span></p><p class="t"><b>2026 PGA 투어 챔피언스 PNC 챔피언십</b><span>SPOTV NOW Golf 생중계</span></p>${gameBtns(pSt, 'PNC 챔피언십')}</li>
+        <li><p class="d"><b>12.17 (목)</b><span>오전 9시 (예정)</span></p><p class="t"><b>2026 옵텀 골프채널 게임스</b><span>SPOTV NOW Golf 생중계</span></p>${gameBtns(gSt, '옵텀 골프채널 게임스')}</li>
+        <li><p class="d"><b>12.21 (월)</b><span>오전 2시 (예정)</span></p><p class="t"><b>2026 PGA투어 챔피언스 PNC 챔피언십</b><span>SPOTV NOW Golf 생중계</span></p>${gameBtns(pSt, 'PNC 챔피언십')}</li>
       </ul>
       <div class="v2-games">
         <article class="v2-game">
           <div class="gh"><span class="v2-tag is-line">4대4 팀 챌린지</span><h3>옵텀 골프채널 게임스</h3><p>세계 1위 셰플러와 2위 매킬로이가 4명씩 팀을 꾸려 겨루는 팀 대항전</p></div>
           ${PRO_TEAMS.map(t => `<div class="v2-roster t-${t.key}"><p class="rh">${t.nm}${t.badge ? `<span>${t.badge}</span>` : ''}</p><ul>${t.players.map(p => `<li class="${p.cap ? 'is-cap' : ''}"><img src="assets/players/${p.img}.jpg" alt="" width="240" height="240" loading="lazy"><b>${p.nm}</b><span>${p.rk}</span></li>`).join('')}</ul></div>`).join('')}
-          <div class="v2-gfoot"><div class="v2-grules"><p class="k">이렇게 겨뤄요 <span>나이트 매치 · 모든 챌린지에 시간 제한</span></p><ul>${GCG_RULES.map(([k, v]) => `<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul></div></div>
+          <div class="v2-gfoot"><div class="v2-grules"><p class="k">경기방식 <span>나이트 매치 · 모든 챌린지에 타임 어택</span></p><ul>${GCG_RULES.map(([k, v]) => `<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul></div></div>
         </article>
         <article class="v2-game">
           <div class="gh"><span class="v2-tag is-line">가족 팀전 (프로 + 가족)</span><h3>PNC 챔피언십</h3><p>프로 선수와 가족이 한 팀, 이틀간 36홀 스크램블로 겨루는 대회</p></div>
           <ul class="v2-pnc">${PNC.map(t => `<li><img src="assets/pnc/${t.img}.jpg" alt="" width="240" height="240" loading="lazy"><b>${t.pro}</b><span class="rel">+ ${t.rel}</span><span class="tg">${t.tag}</span></li>`).join('')}</ul>
-          <div class="v2-gfoot"><div class="v2-grules"><p class="k">이렇게 겨뤄요 <span>이틀간 36홀 · 출전 20팀</span></p><ul><li><b>스크램블</b><span>프로와 가족이 각자 티샷한 뒤 더 좋은 공 자리에서 둘 다 다음 샷을 칩니다. 홀아웃까지 반복해 한 팀 한 타수로 기록합니다.</span></li></ul></div>
+          <div class="v2-gfoot"><div class="v2-grules"><p class="k">경기방식 <span>이틀간 36홀 · 출전 20팀</span></p><ul><li><b>스크램블</b><span>프로와 가족이 각자 티샷한 뒤 더 좋은 공 자리에서 둘 다 다음 샷을 칩니다. 홀아웃까지 반복해 한 팀 한 타수로 기록합니다.</span></li></ul></div>
             <div class="v2-grules"><p class="k">관전 포인트</p><ul>
             <li><b>91세의 출전</b><span>게리 플레이어, 대회 역대 최고령</span></li>
             <li><b>2연패 도전</b><span>맷 쿠차, 지난해 아들 캐머런 → 올해 아들 카슨과</span></li>
@@ -2309,7 +2472,7 @@ function Promo(q = {}){
         </article>
       </div>
       <p class="src-note">세계 랭킹은 OWGR ${OWGR_DATE} 기준. 선수 사진은 PGA TOUR · LPGA 공식 프로필(사용 허락 확인 필요). 중계 시간은 예정이며 바뀔 수 있습니다.</p>
-      ${ph !== 'end' ? `<div class="v2-band"><p>프로도 가족과 한 팀으로 나간다!<br><em>우리도 4명 팀 꾸리고 라운드 가자</em></p>${ctaButton('', '친구 초대하고 팀 꾸리기')}</div>` : ''}
+      ${ph !== 'end' ? `<div class="v2-band"><p>프로들의 팀 매치도 즐기고<br><em>친구들과 함께 라운드도 떠나자!</em></p>${ctaButton('', '친구 초대하고 팀 꾸리기')}</div>` : ''}
     </div></section>
 
     <section class="p-sec" id="notice" aria-labelledby="ntTitle"><div class="wrap">
@@ -2320,12 +2483,14 @@ function Promo(q = {}){
           <li>초대코드를 만든 사람과 그 초대코드로 신규 가입한 사람은 모두 추가 경품(롯데시네마 관람권, PGA 투어 드라이버 커버, 볼빅 골프공)에 자동 응모됩니다.</li>
           <li>초대코드를 만든 사람(대표자)을 포함해 4명이 한 팀이 되면 4인 라운드권에 자동 응모됩니다. 라운드권은 대표자에게 지급되며 대표자 팀 4명이 함께 이용합니다.</li>
           <li>4명 팀을 완성하면 팀원 모두의 추가 경품 당첨 확률이 올라갑니다. 세부 기준은 추후 안내합니다.</li>
+          <li>친구의 초대로 가입한 회원도 나만의 초대코드를 만들어 새 팀을 꾸릴 수 있습니다. 1인 최대 2개 팀(합류한 팀 1개 + 내가 만든 팀 1개)까지 구성할 수 있으며, 2개 팀 모두 경품에 응모됩니다.</li>
           <li>초대는 1인당 최대 3명까지 가능합니다. 초대코드로 3명이 가입을 마치면 해당 초대코드는 마감되어 더 이상 사용할 수 없습니다.</li>
           <li>초대받은 친구가 초대 링크(또는 초대코드)로 신규 회원 가입을 마쳐야 팀원으로 인정됩니다. 기존 회원, 탈퇴 후 재가입, 본인 명의 중복 가입은 인정되지 않습니다.</li>
           <li>마감되었거나 만료된 초대코드로 접속해도 회원 가입은 할 수 있으며, 이 경우 팀원으로 반영되지 않습니다.</li>
           <li>라운드 경품은 3팀(서산수CC 1팀, 파인비치 1팀, 군산CC 1팀)에게 드립니다. 파인비치 당첨 팀에게는 파인비치 호텔 숙박 50% 할인 혜택이 제공됩니다.</li>
-          <li>롯데시네마 관람권은 100명(1인 2매, 총 200매)에게 우편으로 발송하며, 제세공과금은 없습니다. 추가 경품은 PGA 투어 드라이버 커버 3명, 볼빅 골프공 30명입니다.</li>
           <li>당첨자는 이벤트 종료 후 개별 안내합니다. 부정 참여가 확인되면 당첨이 취소될 수 있습니다.</li>
+          <li>경품 지급을 위해 당첨자에 한하여 필요한 개인정보를 수집할 수 있습니다.</li>
+          <li>경품에 대한 제세공과금은 SPOTV에서 부담합니다. 단, 제세공과금 신고 대상 경품의 경우 신분증 사본 등 관련 서류의 제출을 요청할 수 있으며, 제출을 거부하거나 지정된 기한 내 제출하지 않을 경우 당첨이 취소될 수 있습니다.</li>
         </ul>
       </details>
     </div></section>
@@ -2483,7 +2648,7 @@ function benefitsBlock(){
       <li><span class="v2-tag">가입 즉시</span><p><b>추가 경품 자동 응모</b>롯데시네마 관람권 · PGA 투어 드라이버 커버 · 볼빅 골프공</p></li>
       <li><span class="v2-tag is-line">팀 완성</span><p><b>4인 라운드권 응모</b>4명이 모이면 서산수CC · 파인비치 · 군산CC 라운드권 추첨, 팀원 모두 추가 경품 당첨 확률 UP</p></li>
       <li><span class="v2-tag is-line">중계 시청</span><p><b>골프 중계를 한곳에서</b>PGA 투어 · LPGA · DP 월드투어 · LET 생중계부터 하이라이트, 다시보기까지</p></li>
-      <li><span class="v2-tag is-line">내 팀도</span><p><b>나도 팀 대표가 될 수 있어요</b>가입 후 나만의 초대코드를 만들어 친구 3명과 새 팀을 꾸릴 수 있습니다.</p></li>
+      <li><span class="v2-tag is-line">내 팀도</span><p><b>나도 팀 대표가 될 수 있어요</b>가입 후 나만의 초대코드를 만들어 친구 3명과 새 팀을 꾸릴 수 있습니다. 최대 2개 팀까지 구성할 수 있고, 2개 팀 모두 경품에 응모됩니다.</p></li>
     </ul>
   </section>`;
 }
@@ -2537,7 +2702,7 @@ function signupStep(){
     ${skipped ? `<p class="note">${skipped}여서 팀원으로 반영되지 않고 일반 회원으로 가입되었습니다.</p>` : ''}
     ${phase() === 'end' ? `<button type="button" class="sng-cta sng-cta-primary gap-l" onclick="su=null;window.open(WATCH_URL,'_blank')">SPOTV NOW Golf 중계 보기</button>` : `
     ${ref ? '<p class="note">가입과 함께 <b>추가 경품에 자동 응모</b>되었습니다.</p>' : ''}
-    <section class="inv is-off" aria-labelledby="ownTitle"><h2 id="ownTitle">나도 팀 대표가 되어 보세요</h2><p>나만의 초대코드를 만들어 친구 3명이 가입하면 4명 팀이 완성되어 4인 라운드권에 자동 응모됩니다.</p></section>
+    <section class="inv is-off" aria-labelledby="ownTitle"><h2 id="ownTitle">나도 팀 대표가 되어 보세요</h2><p>${ref ? '방금 합류한 팀과 별도로, ' : ''}나만의 초대코드를 만들어 친구 3명과 새 팀을 꾸릴 수 있습니다. ${ref ? '최대 2개 팀까지 구성할 수 있고, 2개 팀 모두 경품에 응모됩니다.' : '친구 3명이 가입하면 4인 라운드권에 자동 응모됩니다.'}</p></section>
     <button type="button" class="sng-cta sng-cta-primary gap-l" onclick="su=null;go('/?code=1')">나도 초대코드 만들기</button>`}
     <button type="button" class="sng-cta sng-cta-ghost" onclick="su=null;go('/')">이벤트 안내 보기</button>`;
 }
@@ -2615,7 +2780,7 @@ function My(){
       <span class="avatar" aria-hidden="true">${esc(u.name[0])}</span>
       <div style="min-width:0">
         <h1 class="band-name">${esc(u.name)}<small>님</small></h1>
-        <p class="band-status">${code ? `내 초대코드 <b>${code}</b>${closed ? ' · 마감' : ''}` : '초대코드 없음'}${u.referredBy ? ` · ${esc(maskName(byCode(u.referredBy)?.name))} 님 팀 팀원` : ''}</p>
+        <p class="band-status">${code ? `내 초대코드 <b>${code}</b>${closed ? ' · 마감' : ''}` : '초대코드 없음'} · 참여 중인 팀 <b>${teamTotal(u)}/${MAX_TEAMS}</b>${u.referredBy ? ` (${esc(maskName(byCode(u.referredBy)?.name))} 님 팀 팀원)` : ''}</p>
       </div>
     </div></section>
 
@@ -2637,7 +2802,7 @@ function My(){
         </section>
 
         <section class="card ${u.entered ? 'is-active' : ''}" aria-labelledby="pgTitle">
-          <div class="card-h"><h2 id="pgTitle">내 팀 현황</h2><span class="st-tag ${u.entered ? 'is-on' : ''}">${u.entered ? '라운드권 자동 응모 완료' : '팀 구성 중'}</span></div>
+          <div class="card-h"><h2 id="pgTitle">${teamTotal(u) === MAX_TEAMS ? '내가 만든 팀 · 대표' : '내 팀 현황'}</h2><span class="st-tag ${u.entered ? 'is-on' : ''}">${u.entered ? '라운드권 자동 응모 완료' : '팀 구성 중'}</span></div>
           <p class="count"><b id="cnt">${n}</b><span>/ ${TEAM_SIZE}명</span></p>
           <div class="bar" role="progressbar" aria-label="팀 구성 진행률" aria-valuemin="1" aria-valuemax="${TEAM_SIZE}" aria-valuenow="${n}"><i style="width:${n / TEAM_SIZE * 100}%"></i></div>
           ${teamSlots(u, list, { me: 'owner', ownerLabel: '나' })}
@@ -2646,6 +2811,7 @@ function My(){
           <p class="help">추가 경품: ${code ? '<b>자동 응모 완료</b>' : '초대코드를 만들면 자동 응모'}${u.entered ? ' · 팀 완성 보너스로 당첨 확률 UP' : ''}</p>
         </section>
       </div>
+      ${teamTotal(u) === MAX_TEAMS ? `<section class="v2-my-joined" aria-label="초대받아 합류한 팀">${joinedTeamCard(u)}</section>` : `<p class="v2-my-two">${TWO_TEAM_COPY}</p>`}
 
       <section class="sec" style="padding-bottom:0" aria-labelledby="frTitle">
         <div class="sng-section-head sec-head" style="justify-content:flex-start"><h2 class="sng-section-title" id="frTitle">가입한 팀원</h2><span class="sub">${cnt} / ${MAX_INVITES}명</span></div>
@@ -2685,6 +2851,19 @@ function simulateFriend(){
   toast(`${maskName(n)} 님이 초대 링크로 가입해 팀에 합류했습니다.`);
   if (!wasEntered && u.entered) setTimeout(() => toast('4명 팀이 완성되어 자동 응모되었습니다. 초대코드는 마감됩니다.'), 1800);
   render();
+}
+/* 데모: 참여 중인 팀 수 전환. 2개 팀 = 샘플 팀(GNJOIN02)에 초대받아 합류한 회원으로 표시 */
+function setTeamMode(n){
+  const u = me(); if (!u){ toast('먼저 로그인해 주세요.'); return; }
+  ensureSeeds(); ensureCode(u);
+  const L = byCode('GNJOIN02');
+  if (n === 2 && !u.referredBy){ u.referredBy = L.code; checkEntry(L); }
+  if (n === 1 && u.referredBy){
+    const prev = byCode(u.referredBy); u.referredBy = null;
+    if (prev && prev.entered && invitees(prev).length < MAX_INVITES){ prev.entered = false; prev.enteredAt = null; }
+  }
+  save(); closeModal(); render();
+  toast(n === 2 ? '2개 팀 상태: 정** 님 팀에 합류 + 내가 만든 팀' : '1개 팀 상태: 내가 만든 팀만');
 }
 /* 데모: 가장 최근에 가입한 친구 1명을 지웁니다. 3명 미만이 되면 응모 완료·코드 마감을 되돌립니다. */
 function removeFriend(){
@@ -2733,6 +2912,10 @@ function openTools(){
         <button type="button" class="sng-chip" onclick="previewCode('expired')">만료된 코드</button>
         <button type="button" class="sng-chip" onclick="previewCode('invalid')">잘못된 코드</button>
       </div>
+    </div>
+    <div class="tools-grp">
+      <h3>참여 중인 팀 수</h3><p class="help">${u ? '2개 팀: 내가 만든 팀 + 정** 님 팀에 초대받아 합류한 상태로 보여 줍니다. 1개 팀: 내가 만든 팀만 있는 상태입니다.' : '로그인한 뒤 사용할 수 있습니다.'}</p>
+      ${u ? chips([[1, '1개 팀'], [2, '2개 팀']], teamTotal(u), 'setTeamMode') : ''}
     </div>
     <div class="tools-grp">
       <h3>화면 단계</h3><p class="help">이벤트는 1.17까지 운영됩니다. 대회 중계 상태와 12.22 대회 종료 후, 이벤트 종료 화면을 확인할 수 있습니다.</p>
